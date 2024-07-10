@@ -1,0 +1,55 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    background-color: #fffefe;
+}
+
+.navigationNameContainer{
+    width:48%;
+    padding: 1rem;
+}
+
+.navigationNameContainer p{
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 20px;
+    font-weight: 400;
+    padding: 1rem 2rem;
+}
+
+.navigationListContainer{
+    width: 52%;
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+    align-items: center;
+}
+
+.navigationListContainer ul{
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+}
+
+.navigationListContainer li{
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigationListContainer li p {
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 20px;
+    font-weight: 400;
+    padding: 1rem;
+    margin:1rem
+}
+
+.navigationListContainer li p:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-thickness: 2px;
+    cursor: pointer;
+    text-decoration-color: #000000 ;
+    -moz-text-decoration-color: #f00f0f ;
+}
