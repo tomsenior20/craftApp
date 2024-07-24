@@ -1,11 +1,21 @@
-FROM node:14-alpine3.16
+FROM node:latest
 
 WORKDIR /app
 
-COPY . .
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
 
-EXPOSE 80
-
+# Install project dependencies
 RUN npm install
 
-CMD [ "npm", "start", "run" ]
+# Copy the rest of your application code
+COPY . .
+
+# If you need to run the build command (if using something like create-react-app)
+RUN npm run build
+
+# Expose the port your app runs on
+EXPOSE 80
+
+# Command to run your application
+CMD ["npm", "start"]

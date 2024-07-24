@@ -20,7 +20,7 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
     <>
       {PartnershipName.map((item,index) => (
         <div className='partneshipContainerImage' key={index}>
-          <Image src={`./${item.Name}.png`} alt={item.Name} width={200} height={200}/>
+          <Image src={`/${item.Name}.png`} alt={item.Name} width={300} height={300} aria-label={item.Name}/>
         </div>
       ))}
     </>
@@ -46,18 +46,19 @@ export default function Home() {
       {/* Main Section */}
       <section className='mainSection'>
           <div className='headerImageContainer'>
-            <Image src="/bmw.png" alt='headerImage' width={200} height={200} />
+            <Image src="/bmw.png" alt='headerImage' aria-label="headerImage" width={200} height={200} />
           </div>
           <div className='exploreHeaderContainer'>
-            <h1>{HeaderTitles.Title}</h1>
-            <p>{HeaderTitles.SubTitle}</p>
-            <button>Click</button>
+            <h1 aria-label='headerTitle'>{HeaderTitles.Title}</h1>
+            <p aria-label='headerSubTitle'>{HeaderTitles.SubTitle}</p>
+            {/* Explore button */}
+            <button id="exploreButton" type='button' role='button' aria-label='exploreButton'>Click</button>
           </div>
       </section>
       {/* Partnerships */}
       <div className='partnershipContainer'>
-        <div>
-          <h3>Partneships:</h3>
+        <div className='partnershipTitleContainer'>
+          <h2 aria-label='partnershipTitle'>Partnerships</h2>
         </div>
         <div className='patnershipMainContainer'>
           <GenerateParnterShips PartnershipName={partnerships} />
