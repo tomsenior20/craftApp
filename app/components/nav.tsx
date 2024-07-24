@@ -4,7 +4,6 @@
 import { useEffect, useState } from 'react';
 import '../styling/nav.css';
 import Link from 'next/link';
-import { Console } from 'console';
 
     export default function Nav(){
         type Option = {
@@ -24,11 +23,7 @@ import { Console } from 'console';
             useEffect(() => {
                 const handleLoad = () => {
                     var windowPath = window.location.pathname;
-                    if(windowPath){
-                        setCurrentPage(window.location.pathname);
-                    } else{
-                        console.log("Window Path is null");
-                    }
+                    (windowPath) ? setCurrentPage(window.location.pathname) : console.log("Window Path is null");
                 }
 
                 handleLoad();

@@ -20,7 +20,12 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
     <>
       {PartnershipName.map((item,index) => (
         <div className='partneshipContainerImage' key={index}>
-          <Image src={`/${item.Name}.png`} alt={item.Name} width={300} height={300} aria-label={item.Name}/>
+          <Image src={`/${item.Name}.svg`} 
+          alt={item.Name} 
+          width={300} 
+          height={300}
+          quality={100}
+          aria-label={item.Name}/>
         </div>
       ))}
     </>
@@ -30,7 +35,7 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
 export default function Home() {
   const tradeMarkResult = {  Name: "Tom Senior" };
   const partnerships : Partnership[] = [
-    {Name: "bmw"},
+    {Name: "stackoverflow"},
     {Name: "github"}
   ];
 
@@ -46,7 +51,7 @@ export default function Home() {
       {/* Main Section */}
       <section className='mainSection'>
           <div className='headerImageContainer'>
-            <Image src="/bmw.png" alt='headerImage' aria-label="headerImage" width={200} height={200} />
+            <Image src="/Jamaica.jpg" alt='headerImage' aria-label="headerImage" width={200} height={200} />
           </div>
           <div className='exploreHeaderContainer'>
             <h1 aria-label='headerTitle'>{HeaderTitles.Title}</h1>

@@ -12,7 +12,7 @@ const GenerateCurrentYear = () => {
     const [currentYear,setCurrentYear] = useState("");
     useEffect(() => {
         const year = new Date().getFullYear().toString();
-        setCurrentYear(year);
+        (year) ? setCurrentYear(year) : console.log("Current year is null");
     },[])
     // Returns Current Year
     return( <p>{currentYear}</p> ) 

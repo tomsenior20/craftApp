@@ -4,7 +4,7 @@ export default function About() {
     return(
         <main>
             <Nav/>
-            News 
+            About 
         </main>
     )
 }
