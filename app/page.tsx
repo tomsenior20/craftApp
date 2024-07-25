@@ -22,8 +22,8 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
         <div className='partneshipContainerImage' key={index}>
           <Image src={`/${item.Name}.svg`} 
           alt={item.Name} 
-          width={300} 
-          height={300}
+          width={200} 
+          height={200}
           quality={100}
           aria-label={item.Name}/>
         </div>
