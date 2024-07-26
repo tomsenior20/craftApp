@@ -3,9 +3,7 @@
 import { useEffect, useState } from 'react';
 import '../styling/footer.css';
 
-interface TradeMark{
-    Name: string;
-}
+const port : number = 3010;
 
 // Generates Current Year for trademark footer
 const GenerateCurrentYear = () => {
@@ -16,13 +14,38 @@ const GenerateCurrentYear = () => {
     },[])
     // Returns Current Year
     return( <p>{currentYear}</p> ) 
-}
+};
 
-export default function Footer({ trademark }: { trademark : TradeMark}) {
+const FetchTrademark = () => {
+    const [tradeMarkName , setTrademarkname] = useState("");
+    const url = `http://localhost:${port}/getTrademarkName`;
+    
+    useEffect(() => {
+        fetch(url)
+        .then((response) => {
+            if(!response.ok){ console.log("Network is not okay")}
+                return response.json();
+            })
+        .then((data) => {   
+            if(data){
+                setTrademarkname(data[0].TradeMarkName);
+            }
+        })
+        .catch((error) => {
+            console.log("FetchTrademark: " + error);
+        })
+    },[url]);
+
+    return(
+        <p>Trademark: {tradeMarkName}</p>
+    )
+};
+
+export default function Footer() {
     return(
         <footer>
             <div className="footerNameContainer">
-                <p>Trademark: {trademark.Name}</p>
+                <FetchTrademark />
             </div>
             <div className='currentYearContainer'>
                 <GenerateCurrentYear/>

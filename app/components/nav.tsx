@@ -16,15 +16,38 @@ import Link from 'next/link';
             {key: "Contact", value: "/contact"},
             {key: "About", value: "/about"}
         ];
+        // Port Number
+        const port : number = 3010;
+
+        // #region Fetch Brand Name
+        const [brand,setBrandName] = useState("");
+        const FetchBrandName = () => {
+            const url = `http://localhost:${port}/selectBrandName`;
+
+            fetch(url)
+            .then((response) => {
+                if(!response.ok){ console.log("Network is not okay")}
+                return response.json();
+            })
+            .then((data) => {
+                setBrandName(data[0].BrandName);
+            })
+            .catch((error) => {
+                console.log("FetchBrandError: " + error);
+            })
+        }
+        // #endregion
 
         const GenerateOptions = ({options} : {options : Option[]}) => {
             const [currentPage, setCurrentPage] = useState("");
-
+            
             useEffect(() => {
                 const handleLoad = () => {
                     var windowPath = window.location.pathname;
                     (windowPath) ? setCurrentPage(window.location.pathname) : console.log("Window Path is null");
                 }
+
+                FetchBrandName();
 
                 handleLoad();
 
@@ -52,7 +75,7 @@ import Link from 'next/link';
         return(
             <nav>
                 <div className="navigationNameContainer">
-                    <p aria-label='navNameText'>Tom Senior</p>
+                    <p aria-label='navNameText'>{brand}</p>
                 </div>
                 <div className="navigationListContainer">
                     <GenerateOptions options={Options}/>

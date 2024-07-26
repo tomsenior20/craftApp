@@ -1,0 +1,117 @@
+.contactMainContainer{
+    padding:1rem;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactTitleSection{
+    background-color: rgb(51, 51, 51);
+}
+/*  Contact Title */
+.contactPageTitle{
+    font-size: 30px;
+    line-height: 1.5;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.007em;
+    color: #fff;
+}
+
+
+/* first Section */
+.contactFormInformationContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.contactFormInformationContainer h2{
+    font-size: 23px;
+    font-weight: 400;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.007em;
+    padding: 2rem 1rem;
+    margin: 0 1rem;
+    color: #1b1b1b;
+}
+.contactFormInformationContainer p{
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.007em;
+    padding: 2rem 1rem;
+    margin: 0 1rem;
+    color: #1b1b1b;
+}
+
+/* Contact Form Section */
+.contactFormSection{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    min-height: 500px;
+    margin: 1rem 0;
+    background-color: rgba(251, 249, 249, 0.9);
+}
+
+.contactForm{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    margin:1rem;
+}
+
+.contactForm label{
+    margin: 0.5rem 1rem;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.005em;
+    color: #1b1b1b;
+}
+.contactForm input, .contactForm textarea{
+    margin: 0.5rem 1rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border:1px solid rgb(193, 193, 193);
+    color: #1b1b1b;
+    line-height: 1.5;
+    padding: 0.4em;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.submitForm{
+    width:200px;
+    height:50px;
+    margin: 1rem auto;
+    background:rgba(19, 173, 250, 0.984);
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+.submitForm:hover, .submitForm:active{
+    cursor: pointer;
+    background-color: rgba(9, 77, 249, 0.984);
+    color: #f0f0f0;
+}

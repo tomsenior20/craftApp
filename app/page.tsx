@@ -70,7 +70,7 @@ export default function Home() {
         </div>
       </div>
       {/* Footer  */}
-      <Footer trademark={tradeMarkResult} />
+      <Footer />
     </>
   );
 }
