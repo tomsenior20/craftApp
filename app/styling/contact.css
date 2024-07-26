@@ -97,7 +97,9 @@
     width:200px;
     height:50px;
     margin: 1rem auto;
-    background:rgba(19, 173, 250, 0.984);
+    background-color: rgba(39, 115, 208, 0.984);
+    border: none;
+    color: rgb(255, 255, 255);
     font-size: 16px;
     font-weight: 600;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -112,6 +114,6 @@
 
 .submitForm:hover, .submitForm:active{
     cursor: pointer;
-    background-color: rgba(9, 77, 249, 0.984);
-    color: #f0f0f0;
+    background-color: rgb(44, 153, 139);
+    color: #fff;
 }
