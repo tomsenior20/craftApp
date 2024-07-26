@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors());
-
+app.use(express.json())
 
 app.listen(port, () => {
     console.log(`Server running at ${port}`);
@@ -56,6 +56,25 @@ app.get("/getTrademarkName", (req, res) => {
         }
         else {
             res.json(success);
+        }
+    })
+})
+
+
+app.post('/submitForm', (req, res) => {
+    if (!req.body) {
+        return res.status(400).json({ error: "No Data Sent" });
+    }
+
+    const { name, number, comment } = req.body;
+    const query = "insert into ContactTickets(Name,ContactNumber,Comment) values(?,?,?)";
+    con.query(query, [name, number, comment], (error, result) => {
+        if (error) {
+            console.log("error submitting form");
+            res.status(500).json({ error: "Error submitting form" });
+        }
+        else {
+            res.status(200).json({ message: "Form Submitted Successfully", result })
         }
     })
 })

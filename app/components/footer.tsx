@@ -21,7 +21,9 @@ const FetchTrademark = () => {
     const url = `http://localhost:${port}/getTrademarkName`;
     
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            method: "GET"
+        })
         .then((response) => {
             if(!response.ok){ console.log("Network is not okay")}
                 return response.json();

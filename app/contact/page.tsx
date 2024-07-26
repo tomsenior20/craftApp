@@ -1,8 +1,56 @@
+'use client';
+
 import  Nav  from "../components/nav";
 import Footer  from "../components/footer";
 import '../styling/contact.css';
+import { json } from "stream/consumers";
 
 export default function Contact(){
+    const port : number = 3010;
+
+    const Test = () =>{
+        const url = `http://localhost:${port}/submitForm`;
+
+        var nameInput = (document.getElementById("nameInput") as HTMLInputElement).value.trim();
+        var numberInput = (document.getElementById("contactNumberText") as HTMLInputElement).value.trim();
+        var commentInput = (document.getElementById("formComment") as HTMLInputElement).value.trim();
+
+        if(nameInput && numberInput && commentInput ){
+            // Create the Post Data Obj
+            const postData = {
+                name: nameInput,
+                number: numberInput,
+                comment: commentInput
+            }
+            // Post the Form
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(postData)
+            })
+            .then((response) => {
+                if(!response.ok){
+                    console.log("Error submitting form " + response.statusText )
+                }else{
+                    return response.json();
+                }
+            })
+            .then((data) => {
+                console.log(data);
+                nameInput = "";
+                numberInput = "";
+                commentInput = "";
+            })
+            .catch((error) => {
+                console.log("error posting form" + error);
+            });
+
+        }else{
+            alert("Please Enter Valid Contact Form details");
+        }
+    }
     return(
         <>
             <Nav/>
@@ -30,7 +78,7 @@ export default function Contact(){
                         Enter Contact Number:
                     </label>
                     <input 
-                        type="text"
+                        type="number"
                         id="contactNumberText"
                         placeholder="Enter Contact Number"
                         aria-label="form number entry">
@@ -39,7 +87,7 @@ export default function Contact(){
                         Enter Comment:
                     </label>
                     <textarea id='formComment' placeholder="Enter Comment"></textarea>
-                    <button id="submitForm" className="submitForm" role="button" type="button" aria-label="submitForm">Submit</button>
+                    <button id="submitForm" className="submitForm" role="button" type="button" onClick={Test} aria-label="submitForm">Submit</button>
                 </form>
             </section>
             <Footer />

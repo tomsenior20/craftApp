@@ -14,7 +14,8 @@ import Link from 'next/link';
         const Options : Option[] = [
             {key: "Home",value: "/"},
             {key: "Contact", value: "/contact"},
-            {key: "About", value: "/about"}
+            {key: "About", value: "/about"},
+            {key: "Admin", value: "/admin"}
         ];
         // Port Number
         const port : number = 3010;
@@ -24,7 +25,9 @@ import Link from 'next/link';
         const FetchBrandName = () => {
             const url = `http://localhost:${port}/selectBrandName`;
 
-            fetch(url)
+            fetch(url, {
+               method: "GET"
+            })
             .then((response) => {
                 if(!response.ok){ console.log("Network is not okay")}
                 return response.json();
