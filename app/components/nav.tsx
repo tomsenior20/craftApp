@@ -21,7 +21,7 @@ import Link from 'next/link';
         const port : number = 3010;
 
         // #region Fetch Brand Name
-        const [brand,setBrandName] = useState("");
+        const [brand,setBrandName] = useState<string>("");
         const FetchBrandName = () => {
             const url = `http://localhost:${port}/selectBrandName`;
 
@@ -42,7 +42,7 @@ import Link from 'next/link';
         // #endregion
 
         const GenerateOptions = ({options} : {options : Option[]}) => {
-            const [currentPage, setCurrentPage] = useState("");
+            const [currentPage, setCurrentPage] = useState<string>("");
             
             useEffect(() => {
                 const handleLoad = () => {

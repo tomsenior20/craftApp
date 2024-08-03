@@ -8,8 +8,8 @@ type InputValues = {
 
 
 export default function AdminForm(){
-    const [usernameInput, setusernameInput] = useState("");
-    const [passwordInput, setPasswordInput] = useState("");
+    const [usernameInput, setusernameInput] = useState<string>("");
+    const [passwordInput, setPasswordInput] = useState<string>("");
 
     const SubmitForm = (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -18,11 +18,13 @@ export default function AdminForm(){
             // Continue
         } else{
             alert("Please enter username or password");
+            setusernameInput("");
+            setPasswordInput("");
         }
     }
 
+    // Checkbox functionality
     const [isChecked, setIsChecked] = useState<boolean>(false);
-
     const handleToggleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setIsChecked(e.target.checked);
   

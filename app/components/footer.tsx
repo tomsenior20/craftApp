@@ -7,7 +7,7 @@ const port : number = 3010;
 
 // Generates Current Year for trademark footer
 const GenerateCurrentYear = () => {
-    const [currentYear,setCurrentYear] = useState("");
+    const [currentYear,setCurrentYear] = useState<string>("");
     useEffect(() => {
         const year = new Date().getFullYear().toString();
         (year) ? setCurrentYear(year) : console.log("Current year is null");
@@ -17,7 +17,7 @@ const GenerateCurrentYear = () => {
 };
 
 const FetchTrademark = () => {
-    const [tradeMarkName , setTrademarkname] = useState("");
+    const [tradeMarkName , setTrademarkname] = useState<string>("");
     const url = `http://localhost:${port}/getTrademarkName`;
     
     useEffect(() => {
