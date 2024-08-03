@@ -1,27 +1,58 @@
+'use client';
+
+import { useState } from "react";
+type InputValues = {
+    UsernameValue : string,
+    PasswordValue : string;
+}
+
+
 export default function AdminForm(){
-    return(
+    const [usernameInput, setusernameInput] = useState("");
+    const [passwordInput, setPasswordInput] = useState("");
+
+    const SubmitForm = (e : React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        // Checks Valid Input Enteries
+        if(usernameInput && passwordInput){
+            // Continue
+        } else{
+            alert("Please enter username or password");
+        }
+    }
+
+    const [isChecked, setIsChecked] = useState<boolean>(false);
+
+    const handleToggleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsChecked(e.target.checked);
+  
+    };
+
+    return (
         <>
-            <form id="adminLogInForm" className="adminLogInForm" aria-label="adminLogInForm">
+            <form id="adminLogInForm" onSubmit={(e) => SubmitForm(e)} className="adminLogInForm" aria-label="adminLogInForm">
                 <div className="usernameContainer">
                     <label htmlFor="">Enter Username</label>
                     <input 
                     type="text"
                     placeholder="Enter Username"
+                    onChange={(e) => setusernameInput(e.target.value)}
                     id="usernameInput"
                     role="input" />
                 </div>
                 <div className="passwordContainer">
                     <label htmlFor="">Enter Password:</label>
                     <input 
-                    type="password"
+                    type={isChecked ? 'text' : 'password'}
                     placeholder="Enter Password"
                     id="passwordInput"
+                    onChange={(e) => setPasswordInput(e.target.value)}
                     role="password" />
                 </div>
                 <div className="passwordToggleContainer">
                     {/* Password Switch Checkbox */}
                     <label htmlFor="passwordSwitch">Click to show / hide password</label>
-                    <input type="checkbox" name="passwordSwitch" id="passwordSwitch" />
+                    <input type="checkbox" onChange={handleToggleChange} checked={isChecked} name="passwordSwitch" id="passwordSwitch" />
                 </div>
                 <div id="passwordButtonContainer" className="passwordButtonContainer">
                     <button type="submit" aria-label="loginButton" id="loginButton">Log In</button>

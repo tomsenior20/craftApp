@@ -1,6 +1,6 @@
 .contactMainContainer{
     padding:1rem;
-    min-height: 200px;
+    min-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,13 +11,13 @@
 }
 /*  Contact Title */
 .contactPageTitle{
-    font-size: 30px;
+    font-size: 36px;
     line-height: 1.5;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 1rem;
     font-weight: 600;
     letter-spacing: 0.007em;
-    color: #fff;
+    color: #f0f0f0;
 }
 
 
@@ -56,18 +56,24 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    padding: 2rem;
     min-height: 500px;
     margin: 1rem 0;
-    background-color: rgba(251, 249, 249, 0.9);
 }
 
 .contactForm{
+    background: rgba(198, 198, 198, 0.3);
+    border-radius: 1rem;
     width:50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 1rem;
-    margin:1rem;
+    margin:2rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
 }
 
 .contactForm label{
