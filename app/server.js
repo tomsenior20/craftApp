@@ -1,6 +1,7 @@
 const http = require("http");
 var mysql = require('mysql');
 var express = require("express");
+const crypto = require('crypto');
 require('dotenv').config();
 const cors = require("cors");
 
@@ -31,6 +32,9 @@ con.connect(function (err) {
     console.log("Connected!");
 });
 
+function hashPassword(password) {
+    return crypto.createHash('sha256').update(password).digest('hex');
+}
 
 // Select Brand Name for nav
 app.get("/selectBrandName", (req, res) => {
@@ -77,4 +81,26 @@ app.post('/submitForm', (req, res) => {
             res.status(200).json({ message: "Form Submitted Successfully", result })
         }
     })
+})
+
+// Submit Form (Admin Form)
+app.get('/loginAdminForm', (req, res) => {
+    if (!req.query) {
+        return res.status(400).json({ error: 'Failed to submit form' });
+    }
+
+    const { username, password } = req.query;
+    const hashedPassword = hashPassword(password);
+
+    const query = 'select * from Users where username = ? and password = ?';
+
+    con.query(query, [username, hashedPassword], (error, result) => {
+        if (error) {
+            console.log("Error submitting form");
+            res.status(400).json({ error: 'Error Logging in' });
+        } else {
+            res.status(200).json({ message: 'Record retrieved', result });
+        }
+    })
+
 })

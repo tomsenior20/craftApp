@@ -17,14 +17,16 @@
 
 .headerImageContainer img{
     aspect-ratio: 5 / 4;
-    height: 94%;
-    width: 75%;
+    height: 50%;
+    width: 50%;
     object-fit: cover;
-    border-radius: 1rem;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    -o-border-radius: 1rem;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    -webkit-border-radius: 10px !important;
+    -moz-border-radius: 10px !important;
+    -ms-border-radius: 10px !important;
+    -o-border-radius: 10px !important;
 }
 
 .exploreHeaderContainer{
@@ -42,7 +44,7 @@
     font-weight: 600;
     margin: 1rem auto;
     color:#d0d0d0;
-    font-size: 30px;
+    font-size: 36px;
 }
 .exploreHeaderContainer p{
     margin: 1rem auto;
@@ -51,7 +53,7 @@
     letter-spacing: 0.007em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 30px;
     color: #d0d0d0;
 }
 
