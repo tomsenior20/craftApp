@@ -2,8 +2,13 @@
 
 import  Nav  from "../components/nav";
 import Footer  from "../components/footer";
-import '../styling/contact.css';
-import { json } from "stream/consumers";
+import '../styling/Contact/contact.css';
+
+function getTrimmedInput(value : string) : string {
+    const element = document.getElementById(value) as HTMLInputElement;
+    return element ? element.value.trim() : "";
+
+}
 
 export default function Contact(){
     const port : number = 3010;
@@ -11,9 +16,9 @@ export default function Contact(){
     const Test = () =>{
         const url = `http://localhost:${port}/submitForm`;
 
-        var nameInput = (document.getElementById("nameInput") as HTMLInputElement).value.trim();
-        var numberInput = (document.getElementById("contactNumberText") as HTMLInputElement).value.trim();
-        var commentInput = (document.getElementById("formComment") as HTMLInputElement).value.trim();
+        var nameInput = getTrimmedInput("nameInput");
+        var numberInput = getTrimmedInput("contactNumberText");
+        var commentInput = getTrimmedInput("formComment");
 
         if(nameInput && numberInput && commentInput ){
             // Create the Post Data Obj

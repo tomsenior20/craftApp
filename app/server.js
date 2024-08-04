@@ -92,14 +92,14 @@ app.get('/loginAdminForm', (req, res) => {
     const { username, password } = req.query;
     const hashedPassword = hashPassword(password);
 
-    const query = 'select * from Users where username = ? and password = ?';
+    const query = 'select username,password,admin from Users where username = ? and password = ?';
 
     con.query(query, [username, hashedPassword], (error, result) => {
         if (error) {
             console.log("Error submitting form");
             res.status(400).json({ error: 'Error Logging in' });
         } else {
-            res.status(200).json({ message: 'Record retrieved', result });
+            res.status(200).json({ type: 'success', message: 'Record retrieved', result });
         }
     })
 

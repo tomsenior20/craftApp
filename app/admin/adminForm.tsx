@@ -36,10 +36,9 @@ export default function AdminForm(){
                     console.log("Response isn't okay"); 
                 }
                 
-                const data = await response.json(); 
-                    
-                if(data.result.length > 0 ){
-                        handleLogIn(data.result)
+                const data = await response.json();           
+                if(data.result.length > 0 ) {
+                    handleLogIn(data.result)
                 } else{
                     alert("User Doesn't exsist"); 
                 }

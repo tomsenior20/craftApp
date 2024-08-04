@@ -1,5 +1,5 @@
 import Nav from "../components/nav";
-import '../styling/admin.css';
+import '../styling/Admin/admin.css';
 
 // Component Import
 import Form from './adminForm';
