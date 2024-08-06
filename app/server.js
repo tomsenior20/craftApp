@@ -1,8 +1,9 @@
+require('dotenv').config();
+
 const http = require("http");
-var mysql = require('mysql');
+var mysql = require('mysql2');
 var express = require("express");
 const crypto = require('crypto');
-require('dotenv').config();
 const cors = require("cors");
 
 const app = express();

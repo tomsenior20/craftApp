@@ -78,7 +78,7 @@ export default function AdminForm(){
                     onChange={(e) => setusernameInput(e.target.value)}
                     id="usernameInput"
                     value={usernameInput}
-                    role="input" />
+                    role="textbox" />
                 </div>
                 <div className="passwordContainer">
                     <label htmlFor="">Enter Password:</label>
@@ -88,7 +88,7 @@ export default function AdminForm(){
                     value={passwordInput}
                     id="passwordInput"
                     onChange={(e) => setPasswordInput(e.target.value)}
-                    role="password" />
+                    role="textbox" />
                 </div>
                 <div className="passwordToggleContainer">
                     {/* Password Switch Checkbox */}
