@@ -11,7 +11,7 @@ The following command, will run the node.js server and dev environment concurren
 - RUN CMD - npm run start
 
 ## Technology Stacks used.
-1) Typescript ![Alt text](https://static-00.iconduck.com/assets.00/typescript-icon-icon-2048x2048-2rhh1z66.png)
-2) React
-3) Node.js
-4) Docker
+1) Typescript ![Typescript Icon](https://cdn.iconscout.com/icon/free/png-256/free-typescript-1174965.png?f=webp&w=256)
+2) React ![React Icon]()
+3) Node.js ![Node.js Icon]()
+4) Docker ![Docker Icon]()
