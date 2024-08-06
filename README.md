@@ -7,11 +7,10 @@ The Purpose of this application, is to explore typescript. Whilst, being able to
 
 ## via the terminal 
 The following command, will run the node.js server and dev environment concurrently.
-
-- RUN CMD - npm run start
+1) RUN CMD - npm run start
 
 ## Technology Stacks used.
-1) Typescript ![Typescript Icon](https://cdn.iconscout.com/icon/free/png-256/free-typescript-1174965.png?f=webp&w=256)
-2) React ![React Icon]()
-3) Node.js ![Node.js Icon]()
-4) Docker ![Docker Icon]()
+1) Typescript
+2) React
+3) Node.js
+4) Docker
