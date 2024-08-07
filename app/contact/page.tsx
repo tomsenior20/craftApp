@@ -1,64 +1,64 @@
 'use client';
 
-import  Nav  from "../components/nav";
-import Footer  from "../components/footer";
+import Nav from "../components/nav";
+import Footer from "../components/footer";
 import '../styling/Contact/contact.css';
+import { useState } from "react";
 
-function getTrimmedInput(value : string) : string {
-    const element = document.getElementById(value) as HTMLInputElement;
-    return element ? element.value.trim() : "";
+export default function Contact() {
+    const port = 3010;
+    const [name, setName] = useState("");
+    const [number, setNumber] = useState("");
+    const [comment, setComment] = useState("");
 
-}
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault(); // Prevent default form submission behavior
 
-export default function Contact(){
-    const port : number = 3010;
+        // Validate form fields
+        if (!name.trim() || !number.trim() || !comment.trim()) {
+            alert("Please fill out all fields.");
+            return; // Exit the function if any field is empty
+        }
 
-    const Test = () =>{
         const url = `http://localhost:${port}/submitForm`;
 
-        var nameInput = getTrimmedInput("nameInput");
-        var numberInput = getTrimmedInput("contactNumberText");
-        var commentInput = getTrimmedInput("formComment");
+        // Create the Post Data Object
+        const postData = {
+            name,
+            number,
+            comment
+        };
 
-        if(nameInput && numberInput && commentInput ){
-            // Create the Post Data Obj
-            const postData = {
-                name: nameInput,
-                number: numberInput,
-                comment: commentInput
+        // Post the Form
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(postData)
+        })
+        .then((response) => {
+            if (!response.ok) {
+                console.log("Error submitting form " + response.statusText);
+            } else {
+                return response.json();
             }
-            // Post the Form
-            fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(postData)
-            })
-            .then((response) => {
-                if(!response.ok){
-                    console.log("Error submitting form " + response.statusText )
-                }else{
-                    return response.json();
-                }
-            })
-            .then((data) => {
-                console.log(data);
-                nameInput = "";
-                numberInput = "";
-                commentInput = "";
-            })
-            .catch((error) => {
-                console.log("error posting form" + error);
-            });
+        })
+        .then((data) => {
+            alert(data.message);
+            // Reset form fields
+            setName("");
+            setNumber("");
+            setComment("");
+        })
+        .catch((error) => {
+            console.log("Error posting form: " + error);
+        });
+    };
 
-        }else{
-            alert("Please Enter Valid Contact Form details");
-        }
-    }
-    return(
+    return (
         <>
-            <Nav/>
+            <Nav />
             <section className="contactTitleSection">
                 <div className="contactMainContainer">
                     <h1 className="contactPageTitle" aria-label="contact Main title">Contact Me</h1>
@@ -67,9 +67,9 @@ export default function Contact(){
             <section className="contactFormSection d-flex flex-column flex-sm-row">
                 <div className="contactFormInformationContainer w-100" aria-label="contactFormInformationContainer">
                     <h2>If you are wanting to contact us, please fill in the form</h2>
-                    <p>All date is completed and handled confidentially</p>
+                    <p>All data is completed and handled confidentially</p>
                 </div>
-                <form className="contactForm w-100 d-flex p-2" aria-label="contactForm">
+                <form className="contactForm w-100 d-flex p-2" aria-label="contactForm" onSubmit={handleSubmit}>
                     <div className="input-group">
                         <label htmlFor="nameInput" className="input-group-text formLabel">
                             Contact Me:
@@ -78,6 +78,8 @@ export default function Contact(){
                             type="text"
                             id="nameInput"
                             placeholder="Enter Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             className="form-control"
                             aria-label="form Name entry" />
                     </div>
@@ -85,24 +87,35 @@ export default function Contact(){
                         <label className="input-group-text formLabel" htmlFor="contactNumberText">
                             Enter Contact Number:
                         </label>
-                        <input 
+                        <input
                             type="number"
                             id="contactNumberText"
                             className="form-control"
+                            value={number}
                             placeholder="Enter Contact Number"
-                            aria-label="form number entry">
-                        </input>
+                            onChange={(e) => setNumber(e.target.value)}
+                            aria-label="form number entry" />
                     </div>
                     <div className="input-group">
                         <label htmlFor="formComment" className="input-group-text formLabel">
                             Enter Comment:
                         </label>
-                        <textarea id='formComment' placeholder="Enter Comment" className="form-control"></textarea>
+                        <textarea
+                            id='formComment'
+                            placeholder="Enter Comment"
+                            className="form-control"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)} />
                     </div>
-                    <button id="submitForm" className="submitForm" role="button" type="button" onClick={Test} aria-label="submitForm">Submit</button>
+                    <button
+                        id="submitForm"
+                        className="submitForm"
+                        role="button"
+                        type="submit"
+                        aria-label="submitForm">Submit</button>
                 </form>
             </section>
             <Footer />
         </>
-    )
+    );
 }

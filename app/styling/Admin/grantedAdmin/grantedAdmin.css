@@ -1,0 +1,14 @@
+.mainSection {
+    background-color: var(--header-color);
+    padding: 2rem 1rem;
+    flex-direction: row;
+    min-height: 400px;
+}
+
+.openTicketTitle{
+    color: var(--header-color-text);
+    letter-spacing: 0.007em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+}

@@ -19,7 +19,7 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
   return (
     <>
       {PartnershipName.map((item,index) => (
-        <div className='partneshipContainerImage d-flex' key={index}>
+        <div className='partneshipContainerImage d-flex m-3' key={index}>
           <Image src={`/${item.Name}.svg`} 
           alt={item.Name} 
           width={200} 

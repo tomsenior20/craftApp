@@ -5,9 +5,10 @@ var mysql = require('mysql2');
 var express = require("express");
 const crypto = require('crypto');
 const cors = require("cors");
+const { error } = require('console');
 
 const app = express();
-const port = 3010;
+const port = process.env.PORT || 3010;
 
 app.get("/", (req, res) => {
     res.send("welcome");
@@ -29,8 +30,11 @@ var con = mysql.createConnection({
 });
 
 con.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected!");
+    if (err) {
+        console.log("Error connecting to db ", err);
+    } else {
+        console.log("Connected!");
+    }
 });
 
 function hashPassword(password) {
@@ -103,5 +107,20 @@ app.get('/loginAdminForm', (req, res) => {
             res.status(200).json({ type: 'success', message: 'Record retrieved', result });
         }
     })
+});
 
+app.get("/retrieveTicket", (req, res) => {
+    if (!req.query) {
+        return res.status(400).json({ Error: "Error getting Tickets" });
+    }
+    const query = 'select * from ContactTickets';
+
+    con.query(query, (error, success) => {
+        if (error) {
+            console.log("Error getting form");
+            res.status(400).json({ error: "Error getting tickets" });
+        } else {
+            res.status(200).json({ Success: "Successfully got tickets", Result: success })
+        }
+    })
 })
