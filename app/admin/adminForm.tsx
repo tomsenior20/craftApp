@@ -78,7 +78,7 @@ export default function AdminForm(){
 
     return (
         <>
-            <form id="adminLogInForm" onSubmit={(e) => SubmitForm(e)} className="adminLogInForm" aria-label="adminLogInForm">
+            <form id="adminLogInForm" onSubmit={(e) => SubmitForm(e)} className="adminLogInForm d-flex flex-col" aria-label="adminLogInForm">
                 <div className="usernameContainer input-group p-2">
                     <label className="input-group-text">Enter Username</label>
                     <input 

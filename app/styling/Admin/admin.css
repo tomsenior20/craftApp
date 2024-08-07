@@ -37,7 +37,6 @@
 }
 /* #region Admin Form styling */
 .adminLogInForm{
-    display: flex;
     flex-direction: column;
     padding: 1rem;
     width: auto;

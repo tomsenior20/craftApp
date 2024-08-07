@@ -64,12 +64,12 @@ export default function Contact(){
                     <h1 className="contactPageTitle" aria-label="contact Main title">Contact Me</h1>
                 </div>
             </section>
-            <section className="contactFormSection">
-                <div className="contactFormInformationContainer" aria-label="contactFormInformationContainer">
+            <section className="contactFormSection d-flex flex-column flex-sm-row">
+                <div className="contactFormInformationContainer w-100" aria-label="contactFormInformationContainer">
                     <h2>If you are wanting to contact us, please fill in the form</h2>
                     <p>All date is completed and handled confidentially</p>
                 </div>
-                <form className="contactForm" aria-label="contactForm">
+                <form className="contactForm w-100 d-flex p-2" aria-label="contactForm">
                     <div className="input-group">
                         <label htmlFor="nameInput" className="input-group-text formLabel">
                             Contact Me:
