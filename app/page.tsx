@@ -25,6 +25,7 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
           width={200} 
           height={200}
           quality={100}
+          className='rounded'
           aria-label={item.Name}/>
         </div>
       ))}
@@ -51,7 +52,7 @@ export default function Home() {
       {/* Main Section */}
       <section className='mainSection'>
           <div className='headerImageContainer'>
-            <Image src="/Jamaica.jpg" alt='headerImage' aria-label="headerImage" width={200} height={200} />
+            <Image src="/Jamaica.jpg" alt='headerImage' className='rounded img-fluid' aria-label="headerImage" width={200} height={200} />
           </div>
           <div className='exploreHeaderContainer'>
             <h1 aria-label='headerTitle'>{HeaderTitles.Title}</h1>

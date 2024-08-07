@@ -1,6 +1,6 @@
 /* #region First Section Styling  */
 .mainSection{
-    background-color: rgb(51, 51, 51);
+    background-color: var(--header-color);
     display: flex;
     padding: 1rem;
     flex-direction: row;
@@ -17,16 +17,10 @@
 
 .headerImageContainer img{
     aspect-ratio: 5 / 4;
-    height: 50%;
     width: 50%;
     object-fit: cover;
-    border-radius: 10px !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
-    -webkit-border-radius: 10px !important;
-    -moz-border-radius: 10px !important;
-    -ms-border-radius: 10px !important;
-    -o-border-radius: 10px !important;
 }
 
 .exploreHeaderContainer{
@@ -43,7 +37,7 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 600;
     margin: 1rem auto;
-    color:#d0d0d0;
+    color:var(--header-color-text);
     font-size: 36px;
 }
 .exploreHeaderContainer p{
@@ -54,7 +48,7 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
     font-size: 30px;
-    color: #d0d0d0;
+    color: var(--header-color-text);
 }
 
 /* #endregion */
@@ -128,7 +122,6 @@
     height:100%;
     margin: 1rem;
     padding: 2rem;
-    border-radius: 1rem;
     background-color: rgba(253, 253, 253, 0.942);
     box-shadow: 1px 3px 12px #dbdada;
 }

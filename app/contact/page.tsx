@@ -70,28 +70,35 @@ export default function Contact(){
                     <p>All date is completed and handled confidentially</p>
                 </div>
                 <form className="contactForm" aria-label="contactForm">
-                    <label htmlFor="nameInput">
-                        Contact Me:
-                    </label>
-                    <input 
-                        type="text"
-                        id="nameInput"
-                        placeholder="Enter Name"
-                        aria-label="form Name entry">
-                    </input>
-                    <label htmlFor="contactNumberText">
-                        Enter Contact Number:
-                    </label>
-                    <input 
-                        type="number"
-                        id="contactNumberText"
-                        placeholder="Enter Contact Number"
-                        aria-label="form number entry">
-                    </input>
-                    <label htmlFor="formComment">
-                        Enter Comment:
-                    </label>
-                    <textarea id='formComment' placeholder="Enter Comment"></textarea>
+                    <div className="input-group">
+                        <label htmlFor="nameInput" className="input-group-text formLabel">
+                            Contact Me:
+                        </label>
+                        <input
+                            type="text"
+                            id="nameInput"
+                            placeholder="Enter Name"
+                            className="form-control"
+                            aria-label="form Name entry" />
+                    </div>
+                    <div className="input-group">
+                        <label className="input-group-text formLabel" htmlFor="contactNumberText">
+                            Enter Contact Number:
+                        </label>
+                        <input 
+                            type="number"
+                            id="contactNumberText"
+                            className="form-control"
+                            placeholder="Enter Contact Number"
+                            aria-label="form number entry">
+                        </input>
+                    </div>
+                    <div className="input-group">
+                        <label htmlFor="formComment" className="input-group-text formLabel">
+                            Enter Comment:
+                        </label>
+                        <textarea id='formComment' placeholder="Enter Comment" className="form-control"></textarea>
+                    </div>
                     <button id="submitForm" className="submitForm" role="button" type="button" onClick={Test} aria-label="submitForm">Submit</button>
                 </form>
             </section>

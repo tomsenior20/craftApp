@@ -1,6 +1,7 @@
 // Create client component
 'use client';
 // Import 
+import  "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from 'react';
 import '../styling/nav.css';
 import Link from 'next/link';
@@ -67,7 +68,7 @@ import Link from 'next/link';
                     {options.map((item,index) => (
                         currentPage !== item.value ? (
                             <li key={index}>
-                                <Link href={item.value}>{item.key}</Link>
+                                <Link href={item.value} className="nav-link">{item.key}</Link>
                             </li>
                         ) : null
                     ))}
@@ -76,11 +77,11 @@ import Link from 'next/link';
         };
 
         return(
-            <nav>
-                <div className="navigationNameContainer">
-                    <p aria-label='navNameText'>{brand}</p>
+            <nav className="navbar d-flex flex-row">
+                <div className="navigationNameContainer d-flex">
+                    <p aria-label='navNameText' className='navbar-brand'>{brand}</p>
                 </div>
-                <div className="navigationListContainer">
+                <div className="navigationListContainer d-flex">
                     <GenerateOptions options={Options}/>
                 </div>
             </nav>    
