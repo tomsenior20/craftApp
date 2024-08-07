@@ -2,7 +2,7 @@
 .mainSection{
     background-color: var(--header-color);
     display: flex;
-    padding: 1rem;
+    padding: 2rem 1rem;
     flex-direction: row;
     min-height: 500px;
 }
@@ -111,13 +111,10 @@
 }
 
 .patnershipMainContainer{
-    display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     margin: 2rem 0;
 }
 .partneshipContainerImage{
-    display: flex;
     justify-content: center;
     height:100%;
     margin: 1rem;

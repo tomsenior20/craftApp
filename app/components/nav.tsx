@@ -5,6 +5,7 @@ import  "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from 'react';
 import '../styling/nav.css';
 import Link from 'next/link';
+import '../styling/globals.css';
 
     export default function Nav(){
         type Option = {
@@ -16,7 +17,8 @@ import Link from 'next/link';
             {key: "Home",value: "/"},
             {key: "Contact", value: "/contact"},
             {key: "About", value: "/about"},
-            {key: "Admin", value: "/admin"}
+            {key: "Admin", value: "/admin"},
+            {key: "Log Out", value: "/"}
         ];
         // Port Number
         const port : number = 3010;
@@ -65,13 +67,19 @@ import Link from 'next/link';
             
             return (
                 <ul>
-                    {options.map((item,index) => (
-                        currentPage !== item.value ? (
-                            <li key={index}>
-                                <Link href={item.value} className="nav-link">{item.key}</Link>
-                            </li>
-                        ) : null
-                    ))}
+                {options.map((item, index) => (
+                    (currentPage === '/admin/grantedAdmin' && item.key === 'Log Out') ? (
+                        <li key={index}
+                            className="d-flex justify-content-around">
+                            <Link href={item.value} className="nav-link">{item.key}</Link>
+                        </li>
+                    ) : (currentPage !== '/admin/grantedAdmin' && item.key !== 'Log Out') ? (
+                        <li key={index}
+                            className="d-flex justify-content-around">
+                            <Link href={item.value} className="nav-link">{item.key}</Link>
+                        </li>
+                    ) : null
+                ))}
                 </ul>
             )
         };

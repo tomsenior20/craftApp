@@ -79,7 +79,7 @@ export default function AdminForm(){
     return (
         <>
             <form id="adminLogInForm" onSubmit={(e) => SubmitForm(e)} className="adminLogInForm" aria-label="adminLogInForm">
-                <div className="usernameContainer input-group">
+                <div className="usernameContainer input-group p-2">
                     <label className="input-group-text">Enter Username</label>
                     <input 
                     type="text"
@@ -90,7 +90,7 @@ export default function AdminForm(){
                     value={usernameInput}
                     role="textbox" />
                 </div>
-                <div className="passwordContainer input-group">
+                <div className="passwordContainer input-group p-2">
                     <label className='input-group-text' htmlFor="">Enter Password:</label>
                     <input 
                     type={isChecked ? 'text' : 'password'}

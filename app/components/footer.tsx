@@ -45,11 +45,11 @@ const FetchTrademark = () => {
 
 export default function Footer() {
     return(
-        <footer>
-            <div className="footerNameContainer">
+        <footer className='d-flex flex-row justify-between'>
+            <div className="footerNameContainer d-flex justify-content-start">
                 <FetchTrademark />
             </div>
-            <div className='currentYearContainer'>
+            <div className='currentYearContainer d-flex justify-content-end'>
                 <GenerateCurrentYear/>
             </div>
         </footer>

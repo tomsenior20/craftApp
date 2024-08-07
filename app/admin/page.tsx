@@ -12,10 +12,10 @@ export default function Admin() {
         <>
         <Nav/>
         {/* Header Title Section */}
-        <section id="ContactTitleSection"  className="ContactTitleSection" aria-label="ContactTitleSection">
+        <section id="ContactTitleSection"  className="ContactTitleSection d-flex flex-column" aria-label="ContactTitleSection">
             <HeaderSection/>
         </section>
-        <section id="formSection"  className="formSection" aria-label="formSection">
+        <section id="formSection"  className="formSection p-3 d-flex my-4" aria-label="formSection">
             <Form/>
         </section>
         <Footer/>
