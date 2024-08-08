@@ -6,11 +6,6 @@ import  "bootstrap/dist/css/bootstrap.min.css";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 
-type InputValues = {
-    UsernameValue : string,
-    PasswordValue : string;
-}
-
 type UsernameRecord = {
     Username : string;
     Password: string;

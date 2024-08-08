@@ -109,6 +109,7 @@ app.get('/loginAdminForm', (req, res) => {
     })
 });
 
+// Get All Tickets
 app.get("/retrieveTicket", (req, res) => {
     if (!req.query) {
         return res.status(400).json({ Error: "Error getting Tickets" });
@@ -121,6 +122,23 @@ app.get("/retrieveTicket", (req, res) => {
             res.status(400).json({ error: "Error getting tickets" });
         } else {
             res.status(200).json({ Success: "Successfully got tickets", Result: success })
+        }
+    })
+})
+
+app.delete("/deleteTicket", (req, res) => {
+    if (!req.body) {
+        res.status(500).json({ Error: "Error deleting ticket" });
+    }
+
+    const id = req.query.id;
+    const query = 'delete from ContactTickets where id = ?'
+
+    con.query(query, [id], (error, success) => {
+        if (error) {
+            res.status(500).json({ error: "error deleting ticket" });
+        } else {
+            res.status(200).json({ message: "Successfully deleted ticket", success });
         }
     })
 })

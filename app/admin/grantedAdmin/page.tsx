@@ -14,44 +14,70 @@ export default function GrantedAdmin(){
     // Port Number
     const port : number = 3010;
     const [tickets, setTickets] = useState<any[]>([]);
-
-    const DeleteTicket = () => {
-        alert("DELETE");
-    }
+    const [openTickets, setOpenTickets] = useState(0);
+    const [deletedTickets,setDeleteTicket] = useState(0);
     
+    // Fetch to get all tickets
+    const GetTicket = () => {
+    const url = `http://localhost:${port}/retrieveTicket`;
+        fetch(url, {
+            method: 'GET'
+        })
+        .then((response) => {
+            if(!response.ok){   
+                console.log("Error fetching data");
+            } else{
+                return response.json();
+            }
+        })
+        .then((data) => {
+            setTickets(data.Result);
+            setOpenTickets(data.Result.length);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    };
+
+    // Deletes the tickets per id value
+    const DeleteTicket = (id: number) => {
+    const url = `http://localhost:${port}/deleteTicket?id=${id}`;
+        fetch(url, {
+            method: "DELETE",
+        })
+        .then((response) => { 
+            if(response.ok){
+                return response.json();
+            } else{
+                console.log("Error deleting record");
+            }
+        })
+        .then((data) => {
+            if(data.success){
+                setDeleteTicket(prev => prev + 1);
+                GetTicket();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+
+    // Renders the Tickets to the page
     useEffect(() => {
-        const GetTicket = () => {
-            const url = `http://localhost:${port}/retrieveTicket`;
-            fetch(url, {
-                method: 'GET'
-            })
-            .then((response) => {
-                if(!response.ok){   
-                    console.log("Error fetching data");
-                } else{
-                    return response.json();
-                }
-            })
-            .then((data) => {
-                console.log(data);
-                setTickets(data.Result);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-        };
         GetTicket();
-    },[])
+    },[]);
         return(
             <>
                 <Nav />
                 <section className='mainSection d-flex w-100'>
                     <div className='w-100 d-flex justify-content-center align-items-center'>
-                        <h1 className='openTicketTitle'>Current Open Tickets</h1>
+                        <h1 className='openTicketTitle'>Ticket Portal</h1>
                     </div>
                 </section>
-                <section className='p-4 my-4 mx-2'>
-                <table className='table'>
+                <section className='p-4 my-5 mx-2 ticketSection'>
+                <h2 className='my-4 text-center openTicketText'>Current Open Tickets</h2>
+                <table className='table my-2'>
                     <thead>
                         <tr>
                         <th scope="col">ID</th>
@@ -73,7 +99,7 @@ export default function GrantedAdmin(){
                                     <button 
                                         type='button'
                                         className='btn btn-danger'
-                                        onClick={DeleteTicket}>Delete
+                                        onClick={() => DeleteTicket(item.id)}>Delete
                                     </button>
                                 </td>
                             </tr>
@@ -81,11 +107,33 @@ export default function GrantedAdmin(){
                 ) : (
                     <tr>
                         <td>No Tickets</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 )}
                 </tbody>
                 </table>
                 </section>
+                {/* Dashboard section */}
+                <section className='d-flex flex-column p-4 my-4 mx-auto w-50 rounded dashboardContainer'>
+                    <h3 className='text-center my-4 dashboardText'>Dashboard</h3>
+                    <div className='d-flex flex-row justify-content-around my-4 py-3 w-50 mx-auto'>
+                    <div className='card m-2'>
+                        <div className='card-body'>
+                            <p className='card-title'>Open Tickets</p>
+                            <p className='card-text text-center'>{openTickets}</p>
+                        </div>
+                    </div>
+                    <div className='card m-2'>
+                        <div className='card-body'>
+                            <p className="card-title">Deleted Tickets</p>
+                            <p className='card-text text-center'>{deletedTickets}</p>
+                        </div>
+                    </div>
+                    </div>
+                </section>  
                 <Footer/>
             </>
         )

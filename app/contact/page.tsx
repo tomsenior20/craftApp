@@ -7,9 +7,9 @@ import { useState } from "react";
 
 export default function Contact() {
     const port = 3010;
-    const [name, setName] = useState("");
-    const [number, setNumber] = useState("");
-    const [comment, setComment] = useState("");
+    const [name, setName] = useState<string>("");
+    const [number, setNumber] = useState<string>("");
+    const [comment, setComment] = useState<string>("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault(); // Prevent default form submission behavior
@@ -24,7 +24,7 @@ export default function Contact() {
 
         // Create the Post Data Object
         const postData = {
-            name,
+            name ,
             number,
             comment
         };
