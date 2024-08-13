@@ -1,6 +1,7 @@
 import Nav from "../components/nav";
-import '../styling/Admin/admin.css';
-import '../styling/globals.css'; 
+// Styling Import
+import '../styling/Admin/admin.scss';
+import '../styling/globals.scss'; 
 
 // Component Import
 import Form from './adminForm';

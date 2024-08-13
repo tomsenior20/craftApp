@@ -1,3 +1,5 @@
+@import '../globals.scss';
+
 .contactMainContainer{
     padding:1rem;
     min-height: 400px;
@@ -12,8 +14,7 @@
 /*  Contact Title */
 .contactPageTitle{
     font-size: 36px;
-    line-height: 1.5;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    @include DefaultTextStyle();
     padding: 1rem;
     font-weight: 600;
     letter-spacing: 0.007em;
@@ -33,8 +34,7 @@
 .contactFormInformationContainer h2{
     font-size: 23px;
     font-weight: 400;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    line-height: 1.5;
+    @include DefaultTextStyle();
     letter-spacing: 0.007em;
     padding: 2rem 1rem;
     margin: 0 1rem;
@@ -43,8 +43,7 @@
 .contactFormInformationContainer p{
     font-size: 20px;
     font-weight: 400;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    line-height: 1.5;
+    @include DefaultTextStyle();
     letter-spacing: 0.007em;
     padding: 2rem 1rem;
     margin: 0 1rem;
@@ -60,7 +59,7 @@
 }
 
 .contactForm{
-    background: rgba(198, 198, 198, 0.3);
+    background: rgba(173, 173, 173, 0.3);
     border-radius: 1rem;
     flex-direction: column;
     justify-content: center;
@@ -73,18 +72,16 @@
 .contactForm label{
     font-size: 16px;
     font-weight: 400;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    line-height: 1.5;
+    @include DefaultTextStyle();
     letter-spacing: 0.005em;
     color: #1b1b1b;
     margin:1rem 0;
 }
 .contactForm input, .contactForm textarea{
+    @include DefaultTextStyle();
     margin: 1rem 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border:1px solid rgb(193, 193, 193);
     color: #1b1b1b;
-    line-height: 1.5;
     padding: 0.4em;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -102,8 +99,7 @@
     color: rgb(255, 255, 255);
     font-size: 16px;
     font-weight: 600;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    line-height: 1;
+    @include DefaultTextStyle();
     letter-spacing: 0.05em;
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
@@ -117,7 +113,5 @@
 }
 
 .submitForm:hover, .submitForm:active{
-    cursor: pointer;
-    background-color: rgb(44, 153, 139);
-    color: #fff;
+    @include DefaultButtonHover();
 }

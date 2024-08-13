@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import '../styling/footer.css';
+// Styling Imports
+import '../styling/footer.scss';
 
-const port : number = 3010;
+const PortNumber : string = process.env.PORT || '3010';
+const BASE_URL = `http://localhost:${PortNumber}`
 
 // Generates Current Year for trademark footer
 const GenerateCurrentYear = () => {
@@ -18,7 +20,7 @@ const GenerateCurrentYear = () => {
 
 const FetchTrademark = () => {
     const [tradeMarkName , setTrademarkname] = useState<string>("");
-    const url = `http://localhost:${port}/getTrademarkName`;
+    const url = `${BASE_URL}/getTrademarkName`;
     
     useEffect(() => {
         fetch(url, {
@@ -29,13 +31,9 @@ const FetchTrademark = () => {
                 return response.json();
             })
         .then((data) => {   
-            if(data){
-                setTrademarkname(data[0].TradeMarkName);
-            }
+            if(data){ setTrademarkname(data[0].TradeMarkName); }
         })
-        .catch((error) => {
-            console.log("FetchTrademark: " + error);
-        })
+        .catch((error) => {console.log("FetchTrademark: " + error); })
     },[url]);
 
     return(

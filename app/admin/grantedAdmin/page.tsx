@@ -5,21 +5,22 @@ import { useEffect, useState } from 'react'
 import Nav from '../../components/nav';
 import Footer from '../../components/footer';
 // Styling Import 
-import '../../styling/globals.css';
-import '../../styling/Admin/grantedAdmin/grantedAdmin.css'
+import '../../styling/globals.scss';
+import '../../styling/Admin/grantedAdmin/grantedAdmin.scss'
 import  "bootstrap/dist/css/bootstrap.min.css";
 
-export default function GrantedAdmin(){
+const PortNumber : string = process.env.PORT || '3010';
+const BASE_URL = `http://localhost:${PortNumber}`
 
-    // Port Number
-    const port : number = 3010;
+export default function GrantedAdmin(){
     const [tickets, setTickets] = useState<any[]>([]);
-    const [openTickets, setOpenTickets] = useState(0);
-    const [deletedTickets,setDeleteTicket] = useState(0);
+    const [openTickets, setOpenTickets] = useState<number>(0);
+    const [deletedTickets,setDeleteTicket] = useState<number>(0);
     
     // Fetch to get all tickets
     const GetTicket = () => {
-    const url = `http://localhost:${port}/retrieveTicket`;
+    window.localStorage.setItem('setDeleteTicket', deletedTickets.toString());
+    const url = `${BASE_URL}/retrieveTicket`;
         fetch(url, {
             method: 'GET'
         })
@@ -33,40 +34,40 @@ export default function GrantedAdmin(){
         .then((data) => {
             setTickets(data.Result);
             setOpenTickets(data.Result.length);
+            window.localStorage.setItem("openTicketLength", data.Result.length);
         })
-        .catch((error) => {
-            console.log(error);
-        })
+        .catch((error) => { console.log(error); })
     };
 
     // Deletes the tickets per id value
     const DeleteTicket = (id: number) => {
-    const url = `http://localhost:${port}/deleteTicket?id=${id}`;
+    const url = `${BASE_URL}/deleteTicket?id=${id}`;
         fetch(url, {
             method: "DELETE",
         })
         .then((response) => { 
-            if(response.ok){
-                return response.json();
-            } else{
+            if(!response.ok){
                 console.log("Error deleting record");
+                return;
+            } else{
+                return response.json();
             }
         })
         .then((data) => {
             if(data.success){
                 setDeleteTicket(prev => prev + 1);
+                window.localStorage.setItem('setDeleteTicket', deletedTickets.toString());
                 GetTicket();
             }
         })
-        .catch((error) => {
-            console.log(error);
-        });
+        .catch((error) => { console.log(error); });
     }
 
     // Renders the Tickets to the page
     useEffect(() => {
         GetTicket();
     },[]);
+
         return(
             <>
                 <Nav />
@@ -75,9 +76,10 @@ export default function GrantedAdmin(){
                         <h1 className='openTicketTitle'>Ticket Portal</h1>
                     </div>
                 </section>
-                <section className='p-4 my-5 mx-2 ticketSection'>
-                <h2 className='my-4 text-center openTicketText'>Current Open Tickets</h2>
-                <table className='table my-2'>
+                <section className='p-4 ticketSection'>
+                <h2 className='my-4 text-center p-4 openTicketText'>Current Open Tickets</h2>
+                {/* Current Open Ticket Table */}
+                <table className='table my-2 ticketContainer'>
                     <thead>
                         <tr>
                         <th scope="col">ID</th>
@@ -98,7 +100,7 @@ export default function GrantedAdmin(){
                                 <td>
                                     <button 
                                         type='button'
-                                        className='btn btn-danger'
+                                        className='btn btn-danger deleteButton'
                                         onClick={() => DeleteTicket(item.id)}>Delete
                                     </button>
                                 </td>
@@ -117,19 +119,19 @@ export default function GrantedAdmin(){
                 </table>
                 </section>
                 {/* Dashboard section */}
-                <section className='d-flex flex-column p-4 my-4 mx-auto w-50 rounded dashboardContainer'>
-                    <h3 className='text-center my-4 dashboardText'>Dashboard</h3>
-                    <div className='d-flex flex-row justify-content-around my-4 py-3 w-50 mx-auto'>
-                    <div className='card m-2'>
+                <section className='d-flex flex-column p-4  w-100 rounded dashboardContainer'>
+                    <h3 className='text-center my-4 p-4 dashboardText'>Dashboard</h3>
+                    <div className='d-flex flex-row justify-content-center my-4 py-3 w-50 mx-auto'>
+                    <div className='card m-2 dashboardCard openTicketCard'>
                         <div className='card-body'>
-                            <p className='card-title'>Open Tickets</p>
-                            <p className='card-text text-center'>{openTickets}</p>
+                            <p className='card-title dashboardFigureText'>Open Tickets</p>
+                            <p className='card-text text-center dashboardFigureTotal'>{openTickets}</p>
                         </div>
                     </div>
-                    <div className='card m-2'>
+                    <div className='card m-2 dashboardCard deletedTicketCard'>
                         <div className='card-body'>
-                            <p className="card-title">Deleted Tickets</p>
-                            <p className='card-text text-center'>{deletedTickets}</p>
+                            <p className="card-title dashboardFigureText">Deleted Tickets</p>
+                            <p className='card-text text-center dashboardFigureTotal'>{deletedTickets}</p>
                         </div>
                     </div>
                     </div>

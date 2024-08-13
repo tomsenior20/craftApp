@@ -1,11 +1,15 @@
-// Create client component
 'use client';
-// Import 
+// Import Modules
 import  "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from 'react';
-import '../styling/nav.css';
 import Link from 'next/link';
-import '../styling/globals.css';
+// CSS Styling Imports
+import '../styling/nav.scss';
+import '../styling/globals.scss';
+
+    // Create Port and Base URL 
+    const PortNumber : string = process.env.PORT || '3010';
+    const BASE_URL = `http://localhost:${PortNumber}`
 
     export default function Nav(){
         type Option = {
@@ -20,13 +24,11 @@ import '../styling/globals.css';
             {key: "Admin", value: "/admin"},
             {key: "Log Out", value: "/"}
         ];
-        // Port Number
-        const port : number = 3010;
 
         // #region Fetch Brand Name
         const [brand,setBrandName] = useState<string>("");
         const FetchBrandName = () => {
-            const url = `http://localhost:${port}/selectBrandName`;
+            const url = `${BASE_URL}/selectBrandName`;
 
             fetch(url, {
                method: "GET"
@@ -35,12 +37,8 @@ import '../styling/globals.css';
                 if(!response.ok){ console.log("Network is not okay")}
                 return response.json();
             })
-            .then((data) => {
-                setBrandName(data[0].BrandName);
-            })
-            .catch((error) => {
-                console.log("FetchBrandError: " + error);
-            })
+            .then((data) => { setBrandName(data[0].BrandName); })
+            .catch((error) => { console.log("FetchBrandError: " + error); })
         }
         // #endregion
 
@@ -54,7 +52,6 @@ import '../styling/globals.css';
                 }
 
                 FetchBrandName();
-
                 handleLoad();
 
                 return () => {

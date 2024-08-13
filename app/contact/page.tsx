@@ -2,8 +2,12 @@
 
 import Nav from "../components/nav";
 import Footer from "../components/footer";
-import '../styling/Contact/contact.css';
 import { useState } from "react";
+// Styling Import
+import '../styling/Contact/contact.scss';
+
+const PortNumber : string = process.env.PORT || '3010';
+const BASE_URL = `http://localhost:${PortNumber}`
 
 export default function Contact() {
     const port = 3010;
@@ -12,15 +16,15 @@ export default function Contact() {
     const [comment, setComment] = useState<string>("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault(); // Prevent default form submission behavior
+        e.preventDefault();
 
         // Validate form fields
         if (!name.trim() || !number.trim() || !comment.trim()) {
             alert("Please fill out all fields.");
-            return; // Exit the function if any field is empty
+            return;
         }
 
-        const url = `http://localhost:${port}/submitForm`;
+        const url = `${BASE_URL}/submitForm`;
 
         // Create the Post Data Object
         const postData = {
@@ -51,9 +55,7 @@ export default function Contact() {
             setNumber("");
             setComment("");
         })
-        .catch((error) => {
-            console.log("Error posting form: " + error);
-        });
+        .catch((error) => { console.log("Error posting form: " + error); });
     };
 
     return (

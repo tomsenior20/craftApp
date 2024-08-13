@@ -1,0 +1,61 @@
+@import '../../globals.scss';
+
+.mainSection {
+    background-color: var(--header-color);
+    padding: 2rem 1rem;
+    flex-direction: row;
+    min-height: 300px;
+}
+
+.ticketSection{
+    min-height: 400px;
+    box-sizing: border-box;
+}
+
+.dashboardContainer{
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+    box-shadow: 4px 5px 4px 3px rgb(231, 231, 231);
+}
+.openTicketTitle{
+    color: var(--header-color-text);
+    letter-spacing: 0.007em;
+    @include DefaultTextStyle();
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.openTicketText, .dashboardText{
+    @include DefaultTextStyle();
+    font-weight: 600;
+    font-size: 30px;
+    @include TextUnderline();
+}
+
+.dashboardFigureText,.dashboardFigureTotal{
+    @include DefaultTextStyle();
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px;
+    text-align: center;
+}
+
+.ticketContainer, .dashboardCard{
+    box-shadow: 1px 3px #efefef;
+}
+
+.deletedTicketCard{
+    background: rgb(242, 4, 4);
+    margin: 1rem;
+    min-width: 200px;
+}
+
+.openTicketCard{
+    background: rgb(14, 239, 14);
+    margin: 1rem;
+    min-width: 200px;
+}
+
+.deleteButton:hover, .deleteButton:active{
+    @include DefaultButtonHover();
+}

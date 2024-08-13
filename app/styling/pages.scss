@@ -1,3 +1,5 @@
+@import './globals.scss';
+
 /* #region First Section Styling  */
 .mainSection{
     background-color: var(--header-color);
@@ -31,21 +33,17 @@
 }
 
 .exploreHeaderContainer h1{
-    line-height: 1.5;
     padding-top: 20px;
     letter-spacing: 0.007em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 600;
-    margin: 1rem auto;
+    @include DefaultTextStyle();
     color:var(--header-color-text);
     font-size: 36px;
 }
 .exploreHeaderContainer p{
     margin: 1rem auto;
+    @include DefaultTextStyle();
     padding: 1rem;
-    line-height: 1.5;
     letter-spacing: 0.007em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
     font-size: 30px;
     color: var(--header-color-text);
@@ -64,7 +62,7 @@
     border-radius: 1rem;
     margin: 1rem auto;
     line-height: 1.5;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: var(----font-family);
     font-weight: bold;
     font-size: 16px;
     -webkit-border-radius: 1rem;
@@ -74,9 +72,7 @@
 }
 
 .exploreHeaderContainer button:hover, .exploreHeaderContainer button:active{
-    background-color: rgb(44, 153, 139);
-    color:#fff;
-    cursor: pointer;
+    @include DefaultButtonHover();
 }
 /* #endregion */
 
@@ -98,8 +94,7 @@
     text-align: center;
     margin: 3rem auto;
     padding: 2rem 1rem;
-    line-height: 1.5;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    @include DefaultTextStyle();
     font-weight: 500;
     font-size: 38px;
     text-decoration: underline;

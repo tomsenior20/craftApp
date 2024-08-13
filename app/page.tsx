@@ -2,8 +2,8 @@ import Nav from './components/nav';
 import Footer from './components/footer';
 
 import Image from 'next/image';
-import './styling/globals.css';
-import './styling/pages.css';
+import './styling/globals.scss';
+import './styling/pages.scss';
 
 interface Partnership{
     Name: string;

@@ -1,6 +1,6 @@
 'use client';
 
-import '../styling/globals.css';
+import '../styling/globals.scss';
 import  "bootstrap/dist/css/bootstrap.min.css";
 
 import { useRouter } from 'next/navigation';
