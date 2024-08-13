@@ -9,8 +9,7 @@ import '../../styling/globals.scss';
 import '../../styling/Admin/grantedAdmin/grantedAdmin.scss'
 import  "bootstrap/dist/css/bootstrap.min.css";
 
-const PortNumber : string = process.env.PORT || '3010';
-const BASE_URL = `http://localhost:${PortNumber}`
+import { fetchData, handleResponse } from '../../components/api';
 
 export default function GrantedAdmin(){
     const [tickets, setTickets] = useState<any[]>([]);
@@ -18,49 +17,42 @@ export default function GrantedAdmin(){
     const [deletedTickets,setDeleteTicket] = useState<number>(0);
     
     // Fetch to get all tickets
-    const GetTicket = () => {
+    const GetTicket = async () => {
     window.localStorage.setItem('setDeleteTicket', deletedTickets.toString());
-    const url = `${BASE_URL}/retrieveTicket`;
-        fetch(url, {
-            method: 'GET'
-        })
-        .then((response) => {
-            if(!response.ok){   
-                console.log("Error fetching data");
-            } else{
-                return response.json();
+        try{
+            const data = await fetchData('retrieveTicket', {
+                method: 'GET',
+            });
+            // Check Data Result
+            if(data && data.Result){
+                setTickets(data.Result);
+                setOpenTickets(data.Result.length);
+                window.localStorage.setItem("openTicketLength", data.Result.length);
             }
-        })
-        .then((data) => {
-            setTickets(data.Result);
-            setOpenTickets(data.Result.length);
-            window.localStorage.setItem("openTicketLength", data.Result.length);
-        })
-        .catch((error) => { console.log(error); })
+        }
+        catch(error){
+            console.log("Error fetching tickets " + error);
+        }
     };
 
     // Deletes the tickets per id value
-    const DeleteTicket = (id: number) => {
-    const url = `${BASE_URL}/deleteTicket?id=${id}`;
-        fetch(url, {
-            method: "DELETE",
-        })
-        .then((response) => { 
-            if(!response.ok){
-                console.log("Error deleting record");
-                return;
-            } else{
-                return response.json();
-            }
-        })
-        .then((data) => {
-            if(data.success){
+    const DeleteTicket = async (id: number) => {
+    try{
+            const data = await fetchData(`deleteTicket?id=${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            if(data && data.success){
                 setDeleteTicket(prev => prev + 1);
                 window.localStorage.setItem('setDeleteTicket', deletedTickets.toString());
                 GetTicket();
             }
-        })
-        .catch((error) => { console.log(error); });
+        }
+        catch(error){
+            console.log("Error deleting record: " + error);
+        }
     }
 
     // Renders the Tickets to the page

@@ -3,9 +3,7 @@
 import { useEffect, useState } from 'react';
 // Styling Imports
 import '../styling/footer.scss';
-
-const PortNumber : string = process.env.PORT || '3010';
-const BASE_URL = `http://localhost:${PortNumber}`
+import { fetchData } from './api';
 
 // Generates Current Year for trademark footer
 const GenerateCurrentYear = () => {
@@ -20,21 +18,24 @@ const GenerateCurrentYear = () => {
 
 const FetchTrademark = () => {
     const [tradeMarkName , setTrademarkname] = useState<string>("");
-    const url = `${BASE_URL}/getTrademarkName`;
+
     
     useEffect(() => {
-        fetch(url, {
-            method: "GET"
-        })
-        .then((response) => {
-            if(!response.ok){ console.log("Network is not okay")}
-                return response.json();
-            })
-        .then((data) => {   
-            if(data){ setTrademarkname(data[0].TradeMarkName); }
-        })
-        .catch((error) => {console.log("FetchTrademark: " + error); })
-    },[url]);
+        const getTradeMark = async () => {
+            try{
+                const data = await fetchData('getTrademarkName', {
+                    method: 'GET'
+                })
+                if(data && data.length > 0){ 
+                    setTrademarkname(data[0].TradeMarkName); }
+            }    
+            catch(error){
+                console.log("Error fetching trademark " + error);
+            }
+        }
+        // Calls the Async call
+        getTradeMark();
+    },[]);
 
     return(
         <p>Trademark: {tradeMarkName}</p>

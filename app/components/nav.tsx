@@ -6,10 +6,7 @@ import Link from 'next/link';
 // CSS Styling Imports
 import '../styling/nav.scss';
 import '../styling/globals.scss';
-
-    // Create Port and Base URL 
-    const PortNumber : string = process.env.PORT || '3010';
-    const BASE_URL = `http://localhost:${PortNumber}`
+import { fetchData } from "./api";
 
     export default function Nav(){
         type Option = {
@@ -27,19 +24,18 @@ import '../styling/globals.scss';
 
         // #region Fetch Brand Name
         const [brand,setBrandName] = useState<string>("");
-        const FetchBrandName = () => {
-            const url = `${BASE_URL}/selectBrandName`;
-
-            fetch(url, {
-               method: "GET"
+        const FetchBrandName = async () => {
+        try{
+            const data = await fetchData('selectBrandName', {
+                method: 'GET',
             })
-            .then((response) => {
-                if(!response.ok){ console.log("Network is not okay")}
-                return response.json();
-            })
-            .then((data) => { setBrandName(data[0].BrandName); })
-            .catch((error) => { console.log("FetchBrandError: " + error); })
+            if(data && data.length > 0){
+                setBrandName(data[0].BrandName);
+            }
         }
+        catch(error){
+            console.log("Error Fetching BrandName " + error);
+        }}
         // #endregion
 
         const GenerateOptions = ({options} : {options : Option[]}) => {
