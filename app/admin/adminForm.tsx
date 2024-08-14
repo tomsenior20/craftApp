@@ -5,6 +5,7 @@ import  "bootstrap/dist/css/bootstrap.min.css";
 
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
+import { fetchData } from '../components/api';
 
 type UsernameRecord = {
     Username : string;
@@ -16,28 +17,23 @@ type UsernameRecord = {
 export default function AdminForm(){
     const [usernameInput, setusernameInput] = useState<string>("");
     const [passwordInput, setPasswordInput] = useState<string>("");
-
     const router = useRouter();
 
     const SubmitForm = async (e : React.FormEvent<HTMLFormElement>) => {
-        // Port Number
-        const port : number = 3010;
         
         e.preventDefault();
         // Checks Valid Input Enteries
         if(usernameInput && passwordInput){
             const username : string = encodeURIComponent(usernameInput);
             const password : string  = encodeURIComponent(passwordInput);
-            // URL 
-            const url = `http://localhost:${port}/loginAdminForm?username=${username}&password=${password}`;
+
             try{
-                const response = await fetch(url, { method: 'GET' })
-                
-                if (!response.ok) {
-                    console.log("Response isn't okay"); 
-                }
-                
-                const data = await response.json();           
+                const data = await fetchData(`loginAdminForm?username=${username}&password=${password}`, { 
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });                         
                 if(data.result.length > 0 ) {
                     handleLogIn(data.result[0])
                 } else{
@@ -67,7 +63,6 @@ export default function AdminForm(){
     };
 
     const handleLogIn = (d : UsernameRecord) => {
-        console.log(d);
         router.push("/admin/grantedAdmin");
     }
 
