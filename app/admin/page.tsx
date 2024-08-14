@@ -16,7 +16,7 @@ export default function Admin() {
         <section id="ContactTitleSection"  className="ContactTitleSection d-flex flex-column" aria-label="ContactTitleSection">
             <HeaderSection/>
         </section>
-        <section id="formSection"  className="formSection p-3 d-flex my-4" aria-label="formSection">
+        <section id="formSection"  className="formSection d-flex" aria-label="formSection">
             <Form/>
         </section>
         <Footer/>

@@ -35,3 +35,8 @@ body,html{
   text-decoration-style: solid;
   -moz-text-decoration-style: solid;
 }
+
+@mixin DefaultHeaderColor{
+  background-color: var(--header-color);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 60% 100%, 0% 100%);
+}

@@ -2,8 +2,7 @@
 
 /* #region First Section Styling  */
 .mainSection{
-    background-color: var(--header-color);
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 60% 100%, 0% 100%);
+    @include DefaultHeaderColor();
     display: flex;
     padding: 3rem;
     min-height: 500px;
@@ -107,12 +106,12 @@
 .patnershipMainContainer{
     justify-content: space-evenly;
     margin: 2rem 0;
+    padding: 2rem;
 }
 .partneshipContainerImage{
     justify-content: center;
     height:100%;
     margin: 1rem;
-    padding: 2rem;
     background-color: rgba(253, 253, 253, 0.942);
     box-shadow: 1px 3px 12px #dbdada;
 }

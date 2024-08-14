@@ -9,7 +9,7 @@
 }
 
 .contactTitleSection{
-    background-color: var(--header-color);
+    @include DefaultHeaderColor();
 }
 /*  Contact Title */
 .contactPageTitle{
@@ -25,9 +25,9 @@
 /* first Section */
 .contactFormInformationContainer {
     width: 50%;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     justify-content: center;
 }
 
@@ -53,12 +53,13 @@
 /* Contact Form Section */
 .contactFormSection{
     position: relative;
-    padding: 2rem;
+    padding: 3rem;
     min-height: 500px;
     margin: 1rem 0;
 }
 
 .contactForm{
+    margin:1rem;
     background: rgba(173, 173, 173, 0.3);
     border-radius: 1rem;
     flex-direction: column;

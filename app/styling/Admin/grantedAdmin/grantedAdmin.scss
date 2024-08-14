@@ -1,7 +1,7 @@
 @import '../../globals.scss';
 
 .mainSection {
-    background-color: var(--header-color);
+    @include DefaultHeaderColor();
     padding: 2rem 1rem;
     flex-direction: row;
     min-height: 300px;
@@ -9,14 +9,20 @@
 
 .ticketSection{
     min-height: 400px;
+    padding: 2rem;
     box-sizing: border-box;
 }
 
 .dashboardContainer{
     background-color: rgb(255, 255, 255);
     padding: 2rem;
-    box-shadow: 4px 5px 4px 3px rgb(231, 231, 231);
 }
+
+.openTicketTextContainer, .ticketTableContainer{
+    padding: 2rem;
+    margin: 1rem ;
+}
+
 .openTicketTitle{
     color: var(--header-color-text);
     letter-spacing: 0.007em;
@@ -32,6 +38,11 @@
     @include TextUnderline();
 }
 
+.dashboardStatsContainer{
+    padding: 2rem;
+    margin:1rem 0;
+}
+
 .dashboardFigureText,.dashboardFigureTotal{
     @include DefaultTextStyle();
     font-size: 22px;
@@ -41,7 +52,7 @@
 }
 
 .ticketContainer, .dashboardCard{
-    box-shadow: 1px 3px #efefef;
+    box-shadow: 1px 3px #c9c9c9;
 }
 
 .deletedTicketCard{

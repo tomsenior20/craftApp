@@ -42,6 +42,7 @@ What things you need to install the software and how to install them.
 2) NPM 
 3) Bootstrap
 4) Next.js
+5) Typescript
 
 ### Installing
 

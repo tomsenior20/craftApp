@@ -10,9 +10,18 @@ import '../../styling/Admin/grantedAdmin/grantedAdmin.scss'
 import  "bootstrap/dist/css/bootstrap.min.css";
 
 import { fetchData, handleResponse } from '../../components/api';
+import AssigneeList from './fetchAssignee';
 
-export default function GrantedAdmin(){
-    const [tickets, setTickets] = useState<any[]>([]);
+type Ticket = {
+    id: number, 
+    Name: string,
+    ContactNumber: string,
+    Comment:string,
+}
+
+
+export default function GrantedAdmin() {
+    const [tickets, setTickets] = useState<Ticket[]>([]);
     const [openTickets, setOpenTickets] = useState<number>(0);
     const [deletedTickets,setDeleteTicket] = useState<number>(0);
     
@@ -53,7 +62,8 @@ export default function GrantedAdmin(){
         catch(error){
             console.log("Error deleting record: " + error);
         }
-    }
+    };
+
 
     // Renders the Tickets to the page
     useEffect(() => {
@@ -68,59 +78,59 @@ export default function GrantedAdmin(){
                         <h1 className='openTicketTitle'>Ticket Portal</h1>
                     </div>
                 </section>
-                <section className='p-4 ticketSection'>
-                <h2 className='my-4 text-center p-4 openTicketText'>Current Open Tickets</h2>
+                <section className='ticketSection'>
+                <div className='openTicketTextContainer'>
+                    <h2 className='my-4 text-center openTicketText'>Current Open Contact Tickets Tickets</h2>
+                </div>
                 {/* Current Open Ticket Table */}
+                <div className='ticketTableContainer'>
                 <table className='table my-2 ticketContainer'>
                     <thead>
                         <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Contact Number</th>
                         <th scope="col">Comment</th>
+                        <th scope='col'>Assignee</th>
                         <th scope='col'>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                     {tickets.length > 0 ? (
-                        tickets.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.id}</td>
-                                <td>{item.Name}</td>
-                                <td>{item.ContactNumber}</td>
-                                <td>{item.Comment}</td>
+                        tickets.map((ticket) => (
+                            <tr key={ticket.id} className='ticket'>
+                                <td>{ticket.Name}</td>
+                                <td>{ticket.ContactNumber}</td>
+                                <td>{ticket.Comment}</td>
+                                <AssigneeList/>
                                 <td>
                                     <button 
                                         type='button'
                                         className='btn btn-danger deleteButton'
-                                        onClick={() => DeleteTicket(item.id)}>Delete
+                                        onClick={() => DeleteTicket(ticket.id)}>Delete
                                     </button>
                                 </td>
                             </tr>
                     ))
                 ) : (
                     <tr>
-                        <td>No Tickets</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td colSpan={6}>No Tickets</td>
                     </tr>
                 )}
                 </tbody>
                 </table>
+                </div>
                 </section>
                 {/* Dashboard section */}
                 <section className='d-flex flex-column p-4  w-100 rounded dashboardContainer'>
                     <h3 className='text-center my-4 p-4 dashboardText'>Dashboard</h3>
-                    <div className='d-flex flex-row justify-content-center my-4 py-3 w-50 mx-auto'>
-                    <div className='card m-2 dashboardCard openTicketCard'>
+                    <div className='d-flex flex-row justify-content-center w-100 dashboardStatsContainer'>
+                    <div className='card dashboardCard openTicketCard'>
                         <div className='card-body'>
                             <p className='card-title dashboardFigureText'>Open Tickets</p>
                             <p className='card-text text-center dashboardFigureTotal'>{openTickets}</p>
                         </div>
                     </div>
-                    <div className='card m-2 dashboardCard deletedTicketCard'>
+                    <div className='card dashboardCard deletedTicketCard'>
                         <div className='card-body'>
                             <p className="card-title dashboardFigureText">Deleted Tickets</p>
                             <p className='card-text text-center dashboardFigureTotal'>{deletedTickets}</p>
