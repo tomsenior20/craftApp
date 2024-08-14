@@ -2,29 +2,29 @@
 
 import Nav from "../components/nav";
 import Footer from "../components/footer";
-import { useState } from "react";
+import { useState} from "react";
 // Styling Import
 import '../styling/Contact/contact.scss';
-
-const PortNumber : string = process.env.PORT || '3010';
-const BASE_URL = `http://localhost:${PortNumber}`
+import { fetchData } from "../components/api";
 
 export default function Contact() {
-    const port = 3010;
     const [name, setName] = useState<string>("");
     const [number, setNumber] = useState<string>("");
     const [comment, setComment] = useState<string>("");
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if(isSubmitting) return;
+        setIsSubmitting(true);
 
         // Validate form fields
         if (!name.trim() || !number.trim() || !comment.trim()) {
             alert("Please fill out all fields.");
+            setIsSubmitting(false);
             return;
         }
-
-        const url = `${BASE_URL}/submitForm`;
 
         // Create the Post Data Object
         const postData = {
@@ -33,29 +33,29 @@ export default function Contact() {
             comment
         };
 
-        // Post the Form
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postData)
-        })
-        .then((response) => {
-            if (!response.ok) {
-                console.log("Error submitting form " + response.statusText);
-            } else {
-                return response.json();
+        try{
+            
+            const data = await fetchData("submitForm", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(postData),
+            });
+            if(data){
+                alert(data.message);
+                // Reset form fields
+                setName("");
+                setNumber("");
+                setComment("");
             }
-        })
-        .then((data) => {
-            alert(data.message);
-            // Reset form fields
-            setName("");
-            setNumber("");
-            setComment("");
-        })
-        .catch((error) => { console.log("Error posting form: " + error); });
+        }
+        catch(error) { 
+            console.log("Error posting form: " + error); 
+        }
+        finally { 
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -119,5 +119,5 @@ export default function Contact() {
             </section>
             <Footer />
         </>
-    );
+    )
 }
