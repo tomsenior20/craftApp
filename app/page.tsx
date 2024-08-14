@@ -19,7 +19,7 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
   return (
     <>
       {PartnershipName.map((item,index) => (
-        <div className='partneshipContainerImage d-flex m-3' key={index}>
+        <div className='partneshipContainerImage d-flex m-3 card' key={index}>
           <Image src={`/${item.Name}.svg`} 
           alt={item.Name} 
           width={200} 
@@ -27,6 +27,9 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
           quality={100}
           className='rounded'
           aria-label={item.Name}/>
+          <div className='card-body'>
+            <h4 className='card-title'>{item.Name}</h4>
+          </div>
         </div>
       ))}
     </>
@@ -36,8 +39,8 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
 export default function Home() {
   const tradeMarkResult = {  Name: "Tom Senior" };
   const partnerships : Partnership[] = [
-    {Name: "stackoverflow"},
-    {Name: "github"}
+    {Name: "Stackoverflow"},
+    {Name: "Github"}
   ];
 
   const HeaderTitles : CompanyInformation = {
