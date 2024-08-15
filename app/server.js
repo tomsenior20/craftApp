@@ -39,10 +39,10 @@ function hashPassword(password) {
 
 function handleErrorResponse(reqURL) {
     console.log("Error: " + reqURL);
-    es.status(500).json({ error: "Error querying " + reqURL });
+    res.status(500).json({ error: "Error querying " + reqURL });
 }
 
-function checkReq(method) {
+function checkReq(req, res) {
     if (!req.body || !req.query) {
         return res.status(500).json({ error: "no data sent for " + method });
     }
@@ -52,7 +52,7 @@ function checkReq(method) {
 app.get("/selectBrandName", (req, res) => {
     const query = "select BrandName from SystemConfig";
     con.query(query, (error, success) => {
-        (error) ? handleErrorResponse(req.originalUrl) : res.json(success);
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.json(success);
     })
 })
 
@@ -60,13 +60,13 @@ app.get("/selectBrandName", (req, res) => {
 app.get("/getTrademarkName", (req, res) => {
     const query = "select TradeMarkName from SystemConfig";
     con.query(query, (error, success) => {
-        (error) ? handleErrorResponse(req.originalUrl) : res.status(200).json(success);
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json(success);
     })
 })
 
 
 app.post('/submitForm', (req, res) => {
-    checkReq(req.originalUrl);
+    checkReq(req);
     const { name, number, comment } = req.body;
     const query = "insert into ContactTickets(Name,ContactNumber,Comment) values(?,?,?)";
 
@@ -77,38 +77,38 @@ app.post('/submitForm', (req, res) => {
 
 // Submit Form (Admin Form)
 app.get('/loginAdminForm', (req, res) => {
-    checkReq(req.originalUrl);
+    checkReq(req);
     const { username, password } = req.query;
     const hashedPassword = hashPassword(password);
 
     const query = 'select username,password,admin from Users where username = ? and password = ?';
     con.query(query, [username, hashedPassword], (error, result) => {
-        (error) ? handleErrorResponse(req.originalUrl) : res.status(200).json({ type: 'success', message: 'Record retrieved', result });
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ type: 'success', message: 'Record retrieved', result });
     })
 });
 
 // Get All Tickets
 app.get("/retrieveTicket", (req, res) => {
-    checkReq(req.originalUrl);
+    checkReq(req);
     const query = 'select * from ContactTickets';
     con.query(query, (error, success) => {
-        (error) ? handleErrorResponse(req.originalUrl) : res.status(200).json({ Success: "Successfully got tickets", Result: success })
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ Success: "Successfully got tickets", Result: success })
     })
 })
 
 app.delete("/deleteTicket", (req, res) => {
-    checkReq(req.originalUrl);
+    checkReq(req);
     const id = req.query.id;
     const query = 'delete from ContactTickets where id = ?'
     con.query(query, [id], (error, success) => {
-        (error) ? handleErrorResponse(req.originalUrl) : res.status(200).json({ message: "Successfully deleted ticket", success });
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ message: "Successfully deleted ticket", success });
     })
 })
 
 app.get("/getAssigneeList", (req, res) => {
-    checkReq(req.originalUrl);
+    checkReq(req);
     const query = 'select name,id from AssignmentUsers';
     con.query(query, (error, result) => {
-        (error) ? handleErrorResponse(req.originalUrl) : res.status(200).json({ Success: "Successfully got tickets", result })
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ Success: "Successfully got tickets", result })
     })
 })

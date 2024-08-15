@@ -19,16 +19,17 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
   return (
     <>
       {PartnershipName.map((item,index) => (
-        <div className='partneshipContainerImage d-flex m-3 card' key={index}>
-          <Image src={`/${item.Name}.svg`} 
-          alt={item.Name} 
-          width={200} 
-          height={200}
-          quality={100}
-          className='rounded'
-          aria-label={item.Name}/>
+        <div className='partneshipContainerImage d-flex card' key={index}>
           <div className='card-body'>
-            <h4 className='card-title'>{item.Name}</h4>
+          <Image src={`/${item.Name}.svg`} 
+            alt={item.Name} 
+            width={100} 
+            height={100}
+            layout='responsive'
+            quality={100}
+            className='rounded'
+            aria-label={item.Name}/>
+            <h4 className='card-title my-2 p-2'>{item.Name}</h4>
           </div>
         </div>
       ))}
@@ -53,7 +54,7 @@ export default function Home() {
       {/* Navigation */}
       <Nav />
       {/* Main Section */}
-      <section className='mainSection flex-column flex-sm-row'>
+      <section className='mainSection flex-column container-fluid flex-sm-row'>
           <div className='exploreHeaderContainer w-100 my-2'>
             <h1 aria-label='headerTitle' className='text-center m-3'>{HeaderTitles.Title}</h1>
             <p aria-label='headerSubTitle' className='text-center'>{HeaderTitles.SubTitle}</p>

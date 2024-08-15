@@ -2,14 +2,12 @@
 
 .mainSection {
     @include DefaultHeaderColor();
-    padding: 2rem 1rem;
     flex-direction: row;
     min-height: 300px;
 }
 
 .ticketSection{
     min-height: 400px;
-    padding: 2rem;
     box-sizing: border-box;
 }
 
@@ -18,17 +16,13 @@
     padding: 2rem;
 }
 
-.openTicketTextContainer, .ticketTableContainer{
-    padding: 2rem;
-    margin: 1rem ;
-}
 
 .openTicketTitle{
     color: var(--header-color-text);
     letter-spacing: 0.007em;
     @include DefaultTextStyle();
-    font-weight: 600;
-    font-size: 36px;
+    font-weight: 700;
+    font-size: 44px;
 }
 
 .openTicketText, .dashboardText{
@@ -39,20 +33,29 @@
 }
 
 .dashboardStatsContainer{
-    padding: 2rem;
     margin:1rem 0;
 }
 
 .dashboardFigureText,.dashboardFigureTotal{
     @include DefaultTextStyle();
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 500;
     padding: 10px;
     text-align: center;
 }
 
+.ticketContainer, .openTicketTextContainer{
+    margin:4rem 0;
+}
+
 .ticketContainer, .dashboardCard{
     box-shadow: 1px 3px #c9c9c9;
+}
+
+.ticketContainer th {
+    font-weight: 500;
+    font-size: 16px;
+    @include DefaultTextStyle();
 }
 
 .deletedTicketCard{

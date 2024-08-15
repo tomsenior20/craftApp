@@ -27,7 +27,7 @@ export default function Assignee() {
     },[]);
 
         return(
-            <td>
+            <td className="col text-wrap">
                 <select name="assigneeSelect" id="assigneeSelect">
                     <option key="empty"> - </option>
                         {assignee.map((person) => (

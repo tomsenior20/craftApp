@@ -13,10 +13,10 @@ export default function Admin() {
         <>
         <Nav/>
         {/* Header Title Section */}
-        <section id="ContactTitleSection"  className="ContactTitleSection d-flex flex-column" aria-label="ContactTitleSection">
+        <section id="ContactTitleSection"  className="ContactTitleSection container-fluid d-flex mb-3 flex-column" aria-label="ContactTitleSection">
             <HeaderSection/>
         </section>
-        <section id="formSection"  className="formSection d-flex" aria-label="formSection">
+        <section id="formSection"  className="formSection d-flex container-fluid " aria-label="formSection">
             <Form/>
         </section>
         <Footer/>

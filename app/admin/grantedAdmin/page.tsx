@@ -73,36 +73,36 @@ export default function GrantedAdmin() {
         return(
             <>
                 <Nav />
-                <section className='mainSection d-flex w-100'>
+                <section className='mainSection d-flex container-fluid w-100'>
                     <div className='w-100 d-flex justify-content-center align-items-center'>
                         <h1 className='openTicketTitle'>Ticket Portal</h1>
                     </div>
                 </section>
-                <section className='ticketSection'>
-                <div className='openTicketTextContainer'>
+                <section className='ticketSection container-fluid'>
+                <div className='openTicketTextContainer container'>
                     <h2 className='my-4 text-center openTicketText'>Current Open Contact Tickets Tickets</h2>
                 </div>
                 {/* Current Open Ticket Table */}
-                <div className='ticketTableContainer'>
-                <table className='table my-2 ticketContainer'>
+                <div className='ticketTableContainer container my-4'>
+                <table className='table ticketContainer'>
                     <thead>
                         <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Contact Number</th>
-                        <th scope="col">Comment</th>
-                        <th scope='col'>Assignee</th>
-                        <th scope='col'>Delete</th>
+                        <th className="col text-wrap">Name</th>
+                        <th className="col text-wrap">Contact Number</th>
+                        <th className="col text-wrap">Comment</th>
+                        <th className='col text-wrap'>Assignee</th>
+                        <th className='col text-wrap' >Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                     {tickets.length > 0 ? (
                         tickets.map((ticket) => (
                             <tr key={ticket.id} className='ticket'>
-                                <td>{ticket.Name}</td>
-                                <td>{ticket.ContactNumber}</td>
-                                <td>{ticket.Comment}</td>
+                                <td className='col text-wrap'>{ticket.Name}</td>
+                                <td className='col text-wrap'>{ticket.ContactNumber}</td>
+                                <td className='col text-wrap'>{ticket.Comment}</td>
                                 <AssigneeList/>
-                                <td>
+                                <td className='col text-wrap'>
                                     <button 
                                         type='button'
                                         className='btn btn-danger deleteButton'
@@ -121,9 +121,9 @@ export default function GrantedAdmin() {
                 </div>
                 </section>
                 {/* Dashboard section */}
-                <section className='d-flex flex-column p-4  w-100 rounded dashboardContainer'>
+                <section className='d-flex flex-column p-4  w-100 rounded dashboardContainer container-fluid'>
                     <h3 className='text-center my-4 p-4 dashboardText'>Dashboard</h3>
-                    <div className='d-flex flex-row justify-content-center w-100 dashboardStatsContainer'>
+                    <div className='d-flex flex-sm-row flex-column justify-content-center w-100 dashboardStatsContainer container'>
                     <div className='card dashboardCard openTicketCard'>
                         <div className='card-body'>
                             <p className='card-title dashboardFigureText'>Open Tickets</p>

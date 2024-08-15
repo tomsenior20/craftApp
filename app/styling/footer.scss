@@ -10,28 +10,26 @@ footer {
 
 .footerNameContainer {
     width: 50%;
-    align-items: center;
 }
 
 .footerNameContainer p {
     @include DefaultTextStyle();
     letter-spacing: 0.007em;
-    margin: 1rem 2rem;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
+    margin: 0 1rem;
     color: var(--header-color-text);
 }
 
 .currentYearContainer {
     width: 50%;
-    align-items: center;
 }
 
 .currentYearContainer p {
     letter-spacing: 0.007em;
-    font-size: 18px;
+    font-size: 16px;
+    margin: 0 1rem;
     @include DefaultTextStyle();
-    margin: 1rem 2rem;
     font-weight: 500;
     color: var(--header-color-text);
 }

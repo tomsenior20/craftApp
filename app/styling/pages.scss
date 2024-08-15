@@ -4,7 +4,6 @@
 .mainSection{
     @include DefaultHeaderColor();
     display: flex;
-    padding: 3rem;
     min-height: 500px;
 }
 
@@ -35,7 +34,8 @@
     letter-spacing: 0.007em;
     @include DefaultTextStyle();
     color:var(--header-color-text);
-    font-size: 36px;
+    font-weight: 700;
+    font-size: 44px;
 }
 .exploreHeaderContainer p{
     margin: 1rem auto;
