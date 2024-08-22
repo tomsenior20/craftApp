@@ -4,9 +4,11 @@ import Footer from './components/footer';
 import Image from 'next/image';
 import './styling/globals.scss';
 import './styling/pages.scss';
+import  "bootstrap/dist/css/bootstrap.min.css";
 
 interface Partnership{
-    Name: string;
+    Name: string,
+    Desc: string
 }
 
 interface CompanyInformation{
@@ -20,7 +22,7 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
     <>
       {PartnershipName.map((item,index) => (
         <div className='partneshipContainerImage d-flex card' key={index}>
-          <div className='card-body'>
+          <div className='card-body d-flex flex-column h-100'>
           <Image src={`/${item.Name}.svg`} 
             alt={item.Name} 
             width={100} 
@@ -30,6 +32,7 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
             className='rounded'
             aria-label={item.Name}/>
             <h4 className='card-title my-2 p-2'>{item.Name}</h4>
+            <h5 className='card-text my-2 p-2 flex-grow-1'>{item.Desc}</h5>
           </div>
         </div>
       ))}
@@ -40,8 +43,8 @@ const GenerateParnterShips = ({PartnershipName}: {PartnershipName : Partnership[
 export default function Home() {
   const tradeMarkResult = {  Name: "Tom Senior" };
   const partnerships : Partnership[] = [
-    {Name: "Stackoverflow"},
-    {Name: "Github"}
+    {Name: "Stackoverflow", Desc: "This Partnership collobrates with Stackoverflow, providing help with all technology matters"},
+    {Name: "Github", Desc: "Providing a repositry to allow code to be kept and maintained, allowing full progression and growth"}
   ];
 
   const HeaderTitles : CompanyInformation = {

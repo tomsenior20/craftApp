@@ -109,10 +109,13 @@
     -o-border-radius: 1rem;
 }
 
-.formLabel{
-    min-width: 200px;
-}
-
 .submitForm:hover, .submitForm:active{
     @include DefaultButtonHover();
+}
+
+
+.formTitle{
+    color: var(--header-color-text);
+    @include DefaultTextStyle();
+    margin:2rem;  
 }

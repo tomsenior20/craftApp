@@ -71,11 +71,9 @@ export default function Contact() {
                     <h2>If you are wanting to contact us, please fill in the form</h2>
                     <p>All data is completed and handled confidentially</p>
                 </div>
-                <form className="contactForm w-100 d-flex p-2" aria-label="contactForm" onSubmit={handleSubmit}>
-                    <div className="input-group">
-                        <label htmlFor="nameInput" className="input-group-text formLabel">
-                            Contact Me:
-                        </label>
+                <form className="contactForm w-100 d-flex p-4 bg-dark shadow-lg" aria-label="contactForm" onSubmit={handleSubmit}>
+                    <h1 className="text-center formTitle">Contact Form</h1>
+                    <div className="form-floating rounded mb-3">
                         <input
                             type="text"
                             id="nameInput"
@@ -84,11 +82,9 @@ export default function Contact() {
                             onChange={(e) => setName(e.target.value)}
                             className="form-control"
                             aria-label="form Name entry" />
+                        <label htmlFor="nameInput" className="formLabel pt-3">Contact Me: </label>
                     </div>
-                    <div className="input-group">
-                        <label className="input-group-text formLabel" htmlFor="contactNumberText">
-                            Enter Contact Number:
-                        </label>
+                    <div className="form-floating rounded mb-3">
                         <input
                             type="number"
                             id="contactNumberText"
@@ -97,17 +93,16 @@ export default function Contact() {
                             placeholder="Enter Contact Number"
                             onChange={(e) => setNumber(e.target.value)}
                             aria-label="form number entry" />
+                        <label className="formLabel pt-3" htmlFor="contactNumberText">Enter Contact Number:</label>
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="formComment" className="input-group-text formLabel">
-                            Enter Comment:
-                        </label>
+                    <div className="form-floating rounded mb-3">
                         <textarea
                             id='formComment'
                             placeholder="Enter Comment"
                             className="form-control"
                             value={comment}
                             onChange={(e) => setComment(e.target.value)} />
+                        <label htmlFor="formComment" className="formLabel pt-3">Enter Comment:</label>
                     </div>
                     <button
                         id="submitForm"

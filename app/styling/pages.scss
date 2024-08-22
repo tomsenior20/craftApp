@@ -110,15 +110,22 @@
 }
 .partneshipContainerImage{
     justify-content: center;
-    height:100%;
+    flex-grow: 1;
     margin: 1rem;
+    min-height:400px;
+    max-width:300px;
     background-color: rgba(253, 253, 253, 0.942);
     box-shadow: 1px 3px 12px #dbdada;
 }
 
 .partneshipContainerImage img{
-    object-fit: cover;
     aspect-ratio: auto 2/4;
+    height:50% !important;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
 }
 
 /* #endregion */
