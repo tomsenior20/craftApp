@@ -1,75 +1,81 @@
 @import '../../globals.scss';
 
 .mainSection {
-    @include DefaultHeaderColor();
-    flex-direction: row;
-    min-height: 300px;
+  @include DefaultHeaderColor();
+  flex-direction: row;
+  min-height: 300px;
 }
 
-.ticketSection{
-    min-height: 400px;
-    box-sizing: border-box;
+.ticketSection {
+  min-height: 400px;
+  box-sizing: border-box;
 }
 
-.dashboardContainer{
-    background-color: rgb(255, 255, 255);
-    padding: 2rem;
+.dashboardContainer {
+  background-color: rgb(255, 255, 255);
+  padding: 2rem;
 }
 
-
-.openTicketTitle{
-    color: var(--header-color-text);
-    letter-spacing: 0.007em;
-    @include DefaultTextStyle();
-    font-weight: 700;
-    font-size: 44px;
+.openTicketTitle {
+  color: var(--header-color-text);
+  letter-spacing: 0.007em;
+  @include DefaultTextStyle();
+  font-weight: 700;
 }
 
-.openTicketText, .dashboardText{
-    @include DefaultTextStyle();
-    font-weight: 600;
-    font-size: 30px;
-    @include TextUnderline();
+.openTicketText,
+.dashboardText {
+  @include DefaultTextStyle();
+  font-weight: 600;
+  font-size: 32px;
+  @include TextUnderline();
 }
 
-.dashboardStatsContainer{
-    margin:1rem 0;
+.dashboardStatsContainer {
+  margin: 1rem 0;
 }
 
-.dashboardFigureText,.dashboardFigureTotal{
-    @include DefaultTextStyle();
-    font-size: 22px;
-    font-weight: 500;
-    padding: 10px;
-    text-align: center;
+.dashboardFigureText,
+.dashboardFigureTotal {
+  @include DefaultTextStyle();
+  font-size: 22px;
+  font-weight: 500;
+  padding: 10px;
+  text-align: center;
 }
 
-.ticketContainer, .openTicketTextContainer{
-    margin:4rem 0;
+.tableColumnHeader {
+  font-weight: 600;
+  font-size: 18px;
+  @include DefaultTextStyle();
 }
 
-.ticketContainer, .dashboardCard{
-    box-shadow: 1px 3px #c9c9c9;
+.ticketText {
+  font-weight: 400;
+  font-size: 16px;
+  @include DefaultTextStyle();
 }
 
-.ticketContainer th {
-    font-weight: 500;
-    font-size: 16px;
-    @include DefaultTextStyle();
+.deletedTicketCard {
+  background: rgb(242, 4, 4);
+  margin: 1rem;
+  min-width: 200px;
 }
 
-.deletedTicketCard{
-    background: rgb(242, 4, 4);
-    margin: 1rem;
-    min-width: 200px;
+.openTicketCard {
+  background: rgb(14, 239, 14);
+  margin: 1rem;
+  min-width: 200px;
 }
 
-.openTicketCard{
-    background: rgb(14, 239, 14);
-    margin: 1rem;
-    min-width: 200px;
+.deleteButton:hover,
+.deleteButton:active {
+  @include DefaultButtonHover();
 }
 
-.deleteButton:hover, .deleteButton:active{
-    @include DefaultButtonHover();
+.buttonTicket {
+  @includedefaulttextstyle ():;
+  width: 200px;
+  font-weight: bold;
+  font-size: 16px;
 }

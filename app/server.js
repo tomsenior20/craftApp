@@ -37,7 +37,7 @@ function hashPassword(password) {
     return crypto.createHash('sha256').update(password).digest('hex');
 }
 
-function handleErrorResponse(reqURL) {
+function handleErrorResponse(reqURL, res) {
     console.log("Error: " + reqURL);
     res.status(500).json({ error: "Error querying " + reqURL });
 }
@@ -105,9 +105,27 @@ app.delete("/deleteTicket", (req, res) => {
     })
 })
 
+app.post("/InsertIntoDeletedComments", (req, res) => {
+    checkReq(req);
+    const { id, Name, ContactNumber, Comment } = req.body;
+    const query = 'INSERT INTO DeletedTicket (id, Name, ContactNumber, Comment) values(?, ?, ?, ?)';
+
+    con.query(query, [id, Name, ContactNumber, Comment], (error, success) => {
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ message: "Successfully deleted ticket", success });
+    })
+})
+
 app.get("/getAssigneeList", (req, res) => {
     checkReq(req);
     const query = 'select name,id from AssignmentUsers';
+    con.query(query, (error, result) => {
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ Success: "Successfully got tickets", result })
+    })
+})
+
+app.get("/retrieveDeletedTickets", (req, res) => {
+    checkReq(req);
+    const query = 'select * from DeletedTicket';
     con.query(query, (error, result) => {
         (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ Success: "Successfully got tickets", result })
     })
