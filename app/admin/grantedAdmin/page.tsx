@@ -20,7 +20,7 @@ export default function GrantedAdmin() {
   // Renders the Tickets to the page
   useEffect(() => {
     GetTicket();
-  }, []);
+  }, [GetTicket]);
 
   return (
     <>
@@ -111,28 +111,6 @@ export default function GrantedAdmin() {
           </div>
         </div>
         <DeletedTickets />
-      </section>
-      {/* Dashboard section */}
-      <section className="d-flex flex-column p-4  w-100 rounded dashboardContainer container-fluid">
-        <h3 className="text-center my-4 p-4 dashboardText">Dashboard</h3>
-        <div className="d-flex flex-sm-row flex-column justify-content-center w-100 dashboardStatsContainer">
-          <div className="card dashboardCard openTicketCard rounded-3">
-            <div className="card-body">
-              <p className="card-title dashboardFigureText">Open Tickets</p>
-              <p className="card-text text-center dashboardFigureTotal">
-                {openTickets}
-              </p>
-            </div>
-          </div>
-          <div className="card dashboardCard deletedTicketCard rounded-3">
-            <div className="card-body">
-              <p className="card-title dashboardFigureText">Deleted Tickets</p>
-              <p className="card-text text-center dashboardFigureTotal">
-                {deletedTickets}
-              </p>
-            </div>
-          </div>
-        </div>
       </section>
       <Footer />
     </>
