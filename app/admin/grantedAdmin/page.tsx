@@ -30,15 +30,15 @@ export default function GrantedAdmin() {
           <h1 className="openTicketTitle">Ticket Portal</h1>
         </div>
       </section>
-      <section className="ticketSection container-fluid p-3 m-2">
-        <div className="openTicketTextContainer container">
-          <h2 className="my-4 p-2 text-center openTicketText">
-            Current Open Contact Tickets Tickets
+      <section className="ticketSection container-fluid p-3 m-2 d-flex flex-column">
+        <div className="openTicketTextContainer container my-4 p-2 ">
+          <h2 className="text-center openTicketText">
+            Current Open Contact Tickets
           </h2>
         </div>
         {/* Current Open Ticket Table */}
-        <div className="accordion ticketTableContainer container my-1">
-          <div className="accordion-item">
+        <div className="accordion ticketTableContainer container my-4 p-2">
+          <div className="accordion-item accordionDiv">
             <h2 className="accordion-header" id="headingOne">
               <button
                 className="accordion-button collapsed"
@@ -115,7 +115,7 @@ export default function GrantedAdmin() {
       {/* Dashboard section */}
       <section className="d-flex flex-column p-4  w-100 rounded dashboardContainer container-fluid">
         <h3 className="text-center my-4 p-4 dashboardText">Dashboard</h3>
-        <div className="d-flex flex-sm-row flex-column justify-content-center w-100 dashboardStatsContainer container">
+        <div className="d-flex flex-sm-row flex-column justify-content-center w-100 dashboardStatsContainer">
           <div className="card dashboardCard openTicketCard rounded-3">
             <div className="card-body">
               <p className="card-title dashboardFigureText">Open Tickets</p>

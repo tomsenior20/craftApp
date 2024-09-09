@@ -27,7 +27,7 @@
 .dashboardText {
   @include DefaultTextStyle();
   font-weight: 600;
-  font-size: 32px;
+  font-size: 36px;
   @include TextUnderline();
 }
 
@@ -60,10 +60,12 @@
   background: rgb(242, 4, 4);
   margin: 1rem;
   min-width: 200px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
 }
 
 .openTicketCard {
   background: rgb(14, 239, 14);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
   margin: 1rem;
   min-width: 200px;
 }
@@ -74,8 +76,17 @@
 }
 
 .buttonTicket {
-  @includedefaulttextstyle ():;
+  @include DefaultTextStyle();
   width: 200px;
   font-weight: bold;
   font-size: 16px;
+  color: black;
+}
+
+.accordionDiv {
+  box-shadow: 2px 2px 2px 2px rgba(185, 185, 185, 0.9);
+}
+
+.accordion-button {
+  background-color: rgba(245, 241, 241, 0.9);
 }

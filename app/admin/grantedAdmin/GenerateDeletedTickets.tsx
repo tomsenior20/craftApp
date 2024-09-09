@@ -26,8 +26,8 @@ export default function DeletedTickets() {
   }, [GetDeletedTickets]);
 
   return (
-    <div className="accordion container my-1" id="accordionExampleOne">
-      <div className="accordion-item">
+    <div className="accordion container my-4 p-2" id="accordionExampleOne">
+      <div className="accordion-item accordionDiv">
         <h2 className="accordion-header" id="headingTwo">
           <button
             className="accordion-button collapsed"
