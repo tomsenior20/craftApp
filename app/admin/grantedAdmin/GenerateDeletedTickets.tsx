@@ -23,7 +23,7 @@ export default function DeletedTickets() {
     };
 
     fetchTickets();
-  }, [GetDeletedTickets]);
+  }, [deletedTickets]);
 
   return (
     <div className="accordion container my-4 p-2" id="accordionExampleOne">
@@ -37,7 +37,7 @@ export default function DeletedTickets() {
             aria-expanded="false"
             aria-controls="collapseTwo"
           >
-            <span className="bg-danger p-2 mx-3 rounded buttonTicket">
+            <span className="bg-danger p-2 mx-3 rounded DeletebuttonTicket">
               {deletedTickets.length} - Deleted Tickets
             </span>
           </button>

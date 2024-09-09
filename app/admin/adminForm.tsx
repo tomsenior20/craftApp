@@ -74,7 +74,7 @@ export default function AdminForm() {
         aria-label="adminLogInForm"
       >
         <h1 className="text-center my-3 p-2 formText">Sign In </h1>
-        <div className="usernameContainer form-floating mb-3">
+        <div className="usernameContainer form-floating my-3">
           <input
             type="text"
             placeholder="Enter Username"
@@ -88,7 +88,7 @@ export default function AdminForm() {
             Enter Username
           </label>
         </div>
-        <div className="passwordContainer form-floating mb-3">
+        <div className="passwordContainer form-floating my-3">
           <input
             type={isChecked ? 'text' : 'password'}
             placeholder="Enter Password"

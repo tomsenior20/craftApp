@@ -1,135 +1,135 @@
 @import '../globals.scss';
 
 .ContactTitleSection {
-    @include DefaultHeaderColor();
-    position: relative;
-    min-height: 350px;
-    padding: 1rem;
-    justify-content: center;
+  @include DefaultHeaderColor();
+  position: relative;
+  min-height: 350px;
+  padding: 1rem;
+  justify-content: center;
 }
 
 .titlecontainer {
-    text-align: center;
-    padding: 1rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 .titlecontainer h1 {
-    font-size: 34px;
-    font-weight: 400;
-    @include DefaultTextStyle();
-    letter-spacing: 0.005em;
-    color: var(--header-color-text);
-    padding: 1rem;
+  font-size: 34px;
+  font-weight: 400;
+  @include DefaultTextStyle();
+  letter-spacing: 0.005em;
+  color: var(--header-color-text);
+  padding: 1rem;
 }
 
 .titlecontainer p {
-    font-size: 28px;
-    font-weight: 400;
-    @include DefaultTextStyle();
-    letter-spacing: 0.005em;
-    color: var(--header-color-text);
-    padding: 1rem;
+  font-size: 28px;
+  font-weight: 400;
+  @include DefaultTextStyle();
+  letter-spacing: 0.005em;
+  color: var(--header-color-text);
+  padding: 1rem;
 }
 
-
-.formSection{
-    justify-content: center;
-    margin: 3rem 0;
+.formSection {
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: 3rem auto;
 }
 
-.formText{
-    @include DefaultTextStyle();
-    color: var(--header-color-text);
-    margin: 2rem;
+.formText {
+  @include DefaultTextStyle();
+  color: var(--header-color-text);
+  margin: 2rem;
 }
 /* #region Admin Form styling */
-.adminLogInForm{
-    flex-direction: column;
-    padding: 1rem;
-    width: auto;
-    border-radius: 10px !important;
-    background: rgba(173, 173, 173, 0.3);
-    box-shadow: 0px 5px 13px rgba(210, 210, 210, 0.96);
-    -webkit-border-radius: 10px !important;
-    -moz-border-radius: 10px !important;
-    -ms-border-radius: 10px !important;
-    -o-border-radius: 10px !important;
+.adminLogInForm {
+  flex-direction: column;
+  padding: 1rem;
+  width: auto;
+  border-radius: 10px !important;
+  background: rgba(173, 173, 173, 0.3);
+  box-shadow: 0px 5px 13px rgba(210, 210, 210, 0.96);
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -ms-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
 }
-.usernameContainer, 
-.passwordContainer{
-    display: flex;
-    justify-content: center;
+.usernameContainer,
+.passwordContainer {
+  display: flex;
+  justify-content: center;
 }
 
-.usernameContainer input, 
+.usernameContainer input,
 .usernameContainer label,
 .passwordContainer input,
 .passwordContainer label {
-    font-size: 16px;
-    font-weight: 300;
-    @include DefaultTextStyle();
-    outline: none;
-    letter-spacing: 0.03em;
+  font-size: 16px;
+  font-weight: 300;
+  @include DefaultTextStyle();
+  outline: none;
+  letter-spacing: 0.03em;
 }
 
-.passwordToggleContainer{
-    padding: 1rem;
-    align-items: center;
-    flex-direction: row;
+.passwordToggleContainer {
+  padding: 1rem;
+  align-items: center;
+  flex-direction: row;
 }
 
-.passwordToggleContainer label{
-    margin: 0.2rem;
-    font-weight: 300;
-    font-size: 16px;
-    @include DefaultTextStyle();
-    letter-spacing: 0.03em;
+.passwordToggleContainer label {
+  margin: 0.2rem;
+  font-weight: 300;
+  font-size: 16px;
+  @include DefaultTextStyle();
+  letter-spacing: 0.03em;
 }
-.passwordToggleContainer input{
-    margin: 1rem !important;
-    font-size: 16px;
-    font-weight: 300;
-    @include DefaultTextStyle();
-    letter-spacing: 0.03em;
-    padding: 0.5rem;
-    height:20px;
-    width:20px;
+.passwordToggleContainer input {
+  margin: 1rem !important;
+  font-size: 16px;
+  font-weight: 300;
+  @include DefaultTextStyle();
+  letter-spacing: 0.03em;
+  padding: 0.5rem;
+  height: 20px;
+  width: 20px;
 }
 
-.passwordButtonContainer{
-    padding: 1rem;
-    margin: 1rem auto;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+.passwordButtonContainer {
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 .passwordButtonContainer button {
-    background-color: rgba(39, 115, 208, 0.984);
-    border: none;
-    color: rgb(255, 255, 255);
-    letter-spacing: 0.09em;
-    width: 200px;
-    height: 50px;
-    border-radius: 1rem;
-    margin: 1rem auto;
-    @include DefaultTextStyle();
-    font-weight: bold;
-    font-size: 16px;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    -o-border-radius: 1rem;
+  background-color: rgba(39, 115, 208, 0.984);
+  border: none;
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.09em;
+  width: 200px;
+  height: 50px;
+  border-radius: 1rem;
+  margin: 1rem auto;
+  @include DefaultTextStyle();
+  font-weight: bold;
+  font-size: 16px;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
 }
 
 .passwordButtonContainer button:hover,
 .passwordButtonContainer button:active {
-    @include DefaultButtonHover();
+  @include DefaultButtonHover();
 }
 
-.formCheckbox{
-    color: var(--header-color-text);
-    @include DefaultTextStyle();
+.formCheckbox {
+  color: var(--header-color-text);
+  @include DefaultTextStyle();
 }
-

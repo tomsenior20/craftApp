@@ -20,7 +20,7 @@ export default function GrantedAdmin() {
   // Renders the Tickets to the page
   useEffect(() => {
     GetTicket();
-  }, [GetTicket]);
+  }, []);
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function GrantedAdmin() {
           <h1 className="openTicketTitle">Ticket Portal</h1>
         </div>
       </section>
-      <section className="ticketSection container-fluid p-3 m-2 d-flex flex-column">
+      <section className="ticketSection container-fluid p-3 my-4 d-flex flex-column">
         <div className="openTicketTextContainer container my-4 p-2 ">
           <h2 className="text-center openTicketText">
             Current Open Contact Tickets
@@ -48,7 +48,7 @@ export default function GrantedAdmin() {
                 aria-expanded="false"
                 aria-controls="collapseOne"
               >
-                <span className="bg-success p-2 mx-3 rounded buttonTicket">
+                <span className="bg-success p-2 mx-3 rounded SuccessbuttonTicket">
                   {tickets.length} - Open Tickets
                 </span>
               </button>

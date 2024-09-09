@@ -1,19 +1,18 @@
-body,html{
-  margin:0;
-  padding:0;
+body,
+html {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   overflow: auto;
   min-height: 100vh;
   background-color: rgb(238, 238, 238) !important;
 }
 
-
-:root{
+:root {
   --header-color: #01043b;
   --header-color-text: #f0f0f0;
-  --font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  --font-family: 'Helvetica';
 }
-
 
 // Set Default Font & Line Height
 @mixin DefaultTextStyle() {
@@ -22,21 +21,13 @@ body,html{
 }
 
 // Button Hover Default Colour scheme
-@mixin DefaultButtonHover{
-    cursor: pointer;
-    background-color: rgb(44, 153, 139);
-    color: #fff;
+@mixin DefaultButtonHover {
+  cursor: pointer;
+  background-color: rgb(44, 153, 139);
+  color: #fff;
 }
 
-// Text Decoration
-@mixin TextUnderline{
-  text-decoration: underline;
-  text-underline-position: under;
-  text-decoration-style: solid;
-  -moz-text-decoration-style: solid;
-}
-
-@mixin DefaultHeaderColor{
+@mixin DefaultHeaderColor {
   background-color: var(--header-color);
   clip-path: polygon(0 0, 100% 0, 100% 90%, 60% 100%, 0% 100%);
 }
