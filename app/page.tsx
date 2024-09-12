@@ -84,7 +84,7 @@ export default function Home() {
             role="button"
             aria-label="exploreButton"
           >
-            Click
+            Explore Our Market
           </button>
         </div>
         <div className="headerImageContainer w-100 my-2">

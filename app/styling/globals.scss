@@ -4,12 +4,12 @@ html {
   padding: 0;
   box-sizing: border-box;
   overflow: auto;
+  font-size: 8px;
   min-height: 100vh;
   background-color: rgb(238, 238, 238) !important;
 }
 
 :root {
-  --header-color: #01043b;
   --header-color-text: #f0f0f0;
   --font-family: 'Helvetica';
 }
@@ -28,6 +28,10 @@ html {
 }
 
 @mixin DefaultHeaderColor {
-  background-color: var(--header-color);
+  background: linear-gradient(
+    to right,
+    rgba(2, 61, 254, 0.9) 65%,
+    rgb(3, 75, 200)
+  );
   clip-path: polygon(0 0, 100% 0, 100% 90%, 60% 100%, 0% 100%);
 }

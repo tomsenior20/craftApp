@@ -1,51 +1,57 @@
 @import './globals.scss';
 
-nav{
-    background-color: var(--header-color);
+nav {
+  background: linear-gradient(
+    to right,
+    rgba(2, 61, 254, 0.9) 65%,
+    rgb(3, 75, 200)
+  );
 }
 
-.navigationNameContainer{
-    width:48%;
-    padding: 1rem;
-    align-items: center;
-
+.navigationNameContainer {
+  width: 48%;
+  padding: 1.5rem;
+  align-items: center;
 }
 
-.navigationNameContainer p{
-    @include DefaultTextStyle();
-    font-weight: 400;
-    padding: 0.5rem 2rem;
-    margin:0;
-    color: var(--header-color-text);
+.navigationNameContainer p {
+  @include DefaultTextStyle();
+  font-weight: 400;
+  padding: 0.5rem 2rem;
+  margin: 0;
+  font-size: 4rem;
+  color: var(--header-color-text);
 }
 
-.navigationListContainer{
-    width: 52%;
-    justify-content: end;
-    padding: 1rem;
-    align-items: center;
+.navigationListContainer {
+  width: 52%;
+  justify-content: end;
+  padding: 1.5rem;
+  align-items: center;
 }
 
-.navigationListContainer ul{
-    display: inline-flex;
-    padding: 0;
-    margin: 0;
+.navigationListContainer ul {
+  display: inline-flex;
+  padding: 0;
+  margin: 0;
 }
 
 .navigationListContainer li a {
-    @include DefaultTextStyle();
-    margin:0.5rem 1rem;
-    color: var(--header-color-text);
+  @include DefaultTextStyle();
+  margin: 0.5rem;
+  font-size: 2.5rem;
+  color: var(--header-color-text);
 }
 
-.navigationListContainer li a:hover{
-    color: rgb(197, 197, 197);
-    text-decoration: underline;
-    text-underline-position: under;
-    text-decoration-thickness: 2px;
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
+.navigationListContainer li a:hover {
+  color: rgb(197, 197, 197);
+  margin: 0.5rem 1rem;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-thickness: 2px;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }

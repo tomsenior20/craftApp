@@ -1,35 +1,41 @@
-@import "./globals.scss";
+@import './globals.scss';
 
 footer {
-    padding: 1rem;
-    background-color: var(--header-color);
-    position: sticky;
-    top: 100%;
-    margin-top: 20px;
+  padding: 1rem;
+  background: linear-gradient(
+    to right,
+    rgba(2, 61, 254, 0.9) 65%,
+    rgb(3, 75, 200)
+  );
+  position: sticky;
+  top: 100%;
+  margin-top: 20px;
 }
 
 .footerNameContainer {
-    width: 50%;
+  width: 50%;
+  padding: 10px;
 }
 
 .footerNameContainer p {
-    @include DefaultTextStyle();
-    letter-spacing: 0.007em;
-    font-weight: 500;
-    font-size: 16px;
-    margin: 0 1rem;
-    color: var(--header-color-text);
+  @include DefaultTextStyle();
+  letter-spacing: 0.007em;
+  font-weight: 500;
+  font-size: 2rem;
+  margin: 0 1rem;
+  color: var(--header-color-text);
 }
 
 .currentYearContainer {
-    width: 50%;
+  width: 50%;
+  padding: 10px;
 }
 
 .currentYearContainer p {
-    letter-spacing: 0.007em;
-    font-size: 16px;
-    margin: 0 1rem;
-    @include DefaultTextStyle();
-    font-weight: 500;
-    color: var(--header-color-text);
+  letter-spacing: 0.007em;
+  font-size: 2rem;
+  margin: 0 1rem;
+  @include DefaultTextStyle();
+  font-weight: 500;
+  color: var(--header-color-text);
 }
