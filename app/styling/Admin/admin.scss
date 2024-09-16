@@ -35,12 +35,14 @@
   flex-direction: column;
   justify-content: center;
   width: 50%;
-  margin: 3rem auto;
+  margin: 100px auto;
 }
 
 .formText {
   @include DefaultTextStyle();
-  color: var(--header-color-text);
+  color: var(--color-text);
+  font-size: 600;
+  font-size: 3rem;
   margin: 2rem;
 }
 /* #region Admin Form styling */
@@ -49,7 +51,11 @@
   padding: 1rem;
   width: auto;
   border-radius: 10px !important;
-  background: rgba(173, 173, 173, 0.3);
+  background: linear-gradient(
+    to right,
+    rgba(203, 203, 203, 0.986) 70%,
+    rgba(225, 225, 225, 0.9)
+  );
   box-shadow: 0px 5px 13px rgba(210, 210, 210, 0.96);
   -webkit-border-radius: 10px !important;
   -moz-border-radius: 10px !important;
@@ -81,8 +87,8 @@
 
 .passwordToggleContainer label {
   margin: 0.2rem;
-  font-weight: 300;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 2rem;
   @include DefaultTextStyle();
   letter-spacing: 0.03em;
 }
@@ -130,6 +136,5 @@
 }
 
 .formCheckbox {
-  color: var(--header-color-text);
-  @include DefaultTextStyle();
+  color: var(--color-text);
 }

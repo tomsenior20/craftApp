@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { fetchData } from '../components/api';
+import SaveAuditLog from '../components/auditLog';
 
 type UsernameRecord = {
   Username: string;
@@ -37,7 +38,12 @@ export default function AdminForm() {
         );
         if (data.result.length > 0) {
           handleLogIn(data.result[0]);
+          // Creates audit
+          SaveAuditLog(username, 'Successfull Log In Attempt');
         } else {
+          // Audit Log for Unsuccessful Login
+          SaveAuditLog(username, 'Unsuccessful Log in Attempt');
+
           alert("User Doesn't exsist");
         }
       } catch (error) {
@@ -48,6 +54,7 @@ export default function AdminForm() {
         setPasswordInput('');
       }
     } else {
+      SaveAuditLog('', 'No Details, Attempt');
       alert('Please enter username or password');
       // Reset Inputs
       setusernameInput('');
