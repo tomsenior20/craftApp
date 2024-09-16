@@ -34,7 +34,8 @@
 .formSection {
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  width: 30%;
+  height: 50vh;
   margin: 100px auto;
 }
 
@@ -62,21 +63,18 @@
   -ms-border-radius: 10px !important;
   -o-border-radius: 10px !important;
 }
-.usernameContainer,
-.passwordContainer {
-  display: flex;
-  justify-content: center;
-}
 
 .usernameContainer input,
 .usernameContainer label,
-.passwordContainer input,
-.passwordContainer label {
-  font-size: 16px;
-  font-weight: 300;
-  @include DefaultTextStyle();
-  outline: none;
-  letter-spacing: 0.03em;
+.passwordContainer label,
+.passwordContainer input {
+  font-size: 2rem;
+  color: var(--color-text);
+}
+
+.usernameContainer input,
+.passwordContainer input {
+  height: calc(2rem + 1.5rem + 25px) !important;
 }
 
 .passwordToggleContainer {

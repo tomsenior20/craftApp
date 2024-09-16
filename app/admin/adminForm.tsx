@@ -43,7 +43,6 @@ export default function AdminForm() {
         } else {
           // Audit Log for Unsuccessful Login
           SaveAuditLog(username, 'Unsuccessful Log in Attempt');
-
           alert("User Doesn't exsist");
         }
       } catch (error) {
@@ -84,21 +83,21 @@ export default function AdminForm() {
         <div className="usernameContainer form-floating my-3">
           <input
             type="text"
-            placeholder="Enter Username"
+            placeholder=""
             onChange={(e) => setusernameInput(e.target.value)}
             id="usernameInput"
             className="form-control"
             value={usernameInput}
             role="textbox"
           />
-          <label className="text-dark pt-3" htmlFor="usernameInput">
+          <label className="" htmlFor="usernameInput">
             Enter Username
           </label>
         </div>
         <div className="passwordContainer form-floating my-3">
           <input
             type={isChecked ? 'text' : 'password'}
-            placeholder="Enter Password"
+            placeholder=""
             className="form-control"
             value={passwordInput}
             id="passwordInput"

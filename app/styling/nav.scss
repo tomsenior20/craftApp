@@ -43,15 +43,16 @@ nav {
   color: var(--header-color-text);
 }
 
-.navigationListContainer li a:hover {
-  color: rgb(197, 197, 197);
-  margin: 0.5rem 1rem;
+.navigationListContainer li a:hover,
+.navigationListContainer li a:active {
+  color: rgb(224, 220, 220);
+  margin: 0.5rem 1.5rem;
   text-decoration: underline;
   text-underline-position: under;
   text-decoration-thickness: 2px;
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
+  transform: scale(1.1);
+  -webkit-transform: scale(1.12);
+  -moz-transform: scale(1.12);
+  -ms-transform: scale(1.12);
+  -o-transform: scale(1.12);
 }
