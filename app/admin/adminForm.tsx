@@ -17,12 +17,13 @@ type UsernameRecord = {
 export default function AdminForm() {
   const [usernameInput, setusernameInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
+  const regex = /^[a-zA-Z]+$/;
   const router = useRouter();
 
   const SubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Checks Valid Input Enteries
-    if (usernameInput && passwordInput) {
+    if (usernameInput.match(regex) && passwordInput.match(regex)) {
       const username: string = encodeURIComponent(usernameInput);
       const password: string = encodeURIComponent(passwordInput);
 
@@ -53,8 +54,8 @@ export default function AdminForm() {
         setPasswordInput('');
       }
     } else {
-      SaveAuditLog('', 'No Details, Attempt');
-      alert('Please enter username or password');
+      SaveAuditLog('', "Username or password doesn't match standards");
+      alert("Username or password doesn't match standards");
       // Reset Inputs
       setusernameInput('');
       setPasswordInput('');
