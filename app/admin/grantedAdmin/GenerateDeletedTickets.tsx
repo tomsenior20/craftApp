@@ -23,7 +23,7 @@ export default function DeletedTickets() {
     };
 
     fetchTickets();
-  }, [GetDeletedTickets]);
+  }, []);
 
   return (
     <div className="accordion container my-4 p-2" id="accordionExampleOne">

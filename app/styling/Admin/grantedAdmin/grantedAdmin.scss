@@ -98,3 +98,13 @@
 .accordion-button {
   background-color: rgba(245, 241, 241, 0.9);
 }
+
+#assignOptions {
+  @include DefaultTextStyle();
+  font-size: 16px !important;
+}
+
+#optionDropdown button {
+  @include DefaultTextStyle();
+  font-size: 16px;
+}

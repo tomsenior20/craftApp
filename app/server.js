@@ -43,11 +43,10 @@ function handleErrorResponse(reqURL, res) {
 }
 
 function checkReq(req, res) {
-    if (!req.body || !req.query) {
-        return res.status(500).json({ error: "no data sent for " + method });
+    if (!req.body) {
+        return res.status(400).json({ error: "No data sent" });
     }
 }
-
 // Select Brand Name for nav
 app.get("/selectBrandName", (req, res) => {
     const query = "select BrandName from SystemConfig";
@@ -130,3 +129,12 @@ app.get("/retrieveDeletedTickets", (req, res) => {
         (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ Success: "Successfully got tickets", result })
     })
 })
+
+app.post("/InsertAuditLog", (req, res) => {
+    checkReq(req, res);
+    const { username, attempt_date, action } = req.body;
+    const query = 'INSERT INTO audit_log (username, attempt_date, action) values(?, ? , ?)';
+    con.query(query, [username, attempt_date, action], (error, success) => {
+        (error) ? handleErrorResponse(req.originalUrl, res, error) : res.status(200).json({ message: "Successfully inserted audit", success });
+    });
+});

@@ -12,7 +12,7 @@ type Ticket = {
 };
 
 // Handle Data Shared function
-const handleResponse = (response: any) => {
+export const handleResponse = (response: any) => {
   if (!response.ok) {
     console.log('Error Processing fetch');
     response
@@ -23,16 +23,18 @@ const handleResponse = (response: any) => {
 };
 
 // Handle Data Shared Function
-const fetchData = async (endpoint: string, options = {}) => {
+export const fetchData = async (endpoint: string, options = {}) => {
   try {
-    const response = await fetch(`${BASE_URL}/${endpoint}`, options);
+    const response = await fetch(`${BASE_URL}/${endpoint}`, {
+      ...options
+    });
     return handleResponse(response);
   } catch (error) {
     console.log('Fetch Error ' + error);
   }
 };
 
-function ApiCalls() {
+export const ApiCalls = () => {
   // Fetch to get all tickets
   const [deletedTickets, setDeleteTicket] = useState<number>(0);
   const [openTickets, setOpenTickets] = useState<number>(0);
@@ -56,6 +58,33 @@ function ApiCalls() {
     }
   };
 
+  const InsertAuditLog = async (username: string, action: string) => {
+    const attempt_date = format_attempt_date(new Date());
+    try {
+      const data = await fetchData(`InsertAuditLog`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          attempt_date,
+          action
+        })
+      });
+      if (data && data.success) {
+        return data;
+      }
+    } catch (error) {
+      console.log('Failed to insert audit log', error);
+    }
+  };
+
+  const format_attempt_date = (date: Date) => {
+    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} 
+            ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  };
+
   const InsertTicketToDeleted = async (
     id: number,
     Name: string,
@@ -76,7 +105,7 @@ function ApiCalls() {
         })
       });
       if (data && data.success) {
-        return data.json();
+        return data;
       }
     } catch (error) {
       console.log('Error deleting record: ' + error);
@@ -128,11 +157,10 @@ function ApiCalls() {
     DeleteTicket,
     tickets,
     openTickets,
+    InsertAuditLog,
     deletedTickets,
     InsertTicketToDeleted,
     GetDeletedTickets,
     listDeletedTickets
   };
-}
-
-export { fetchData, handleResponse, ApiCalls };
+};

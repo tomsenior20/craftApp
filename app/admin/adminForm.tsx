@@ -5,8 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { fetchData } from '../components/api';
-import SaveAuditLog from '../components/auditLog';
+import { fetchData, ApiCalls } from '../components/api';
 
 type UsernameRecord = {
   Username: string;
@@ -19,6 +18,7 @@ export default function AdminForm() {
   const [passwordInput, setPasswordInput] = useState<string>('');
   const regex = /^[a-zA-Z]+$/;
   const router = useRouter();
+  const { InsertAuditLog } = ApiCalls();
 
   const SubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,7 +26,6 @@ export default function AdminForm() {
     if (usernameInput.match(regex) && passwordInput.match(regex)) {
       const username: string = encodeURIComponent(usernameInput);
       const password: string = encodeURIComponent(passwordInput);
-
       try {
         const data = await fetchData(
           `loginAdminForm?username=${username}&password=${password}`,
@@ -39,11 +38,9 @@ export default function AdminForm() {
         );
         if (data.result.length > 0) {
           handleLogIn(data.result[0]);
-          // Creates audit
-          SaveAuditLog(username, 'Successfull Log In Attempt');
+          await InsertAuditLog(username, 'Successfull Log In Attempt');
         } else {
-          // Audit Log for Unsuccessful Login
-          SaveAuditLog(username, 'Unsuccessful Log in Attempt');
+          await InsertAuditLog(username, 'Unsuccessful Log in Attempt');
           alert("User Doesn't exsist");
         }
       } catch (error) {
@@ -54,7 +51,10 @@ export default function AdminForm() {
         setPasswordInput('');
       }
     } else {
-      SaveAuditLog('', "Username or password doesn't match standards");
+      await InsertAuditLog(
+        usernameInput,
+        "Username or password doesn't match standards"
+      );
       alert("Username or password doesn't match standards");
       // Reset Inputs
       setusernameInput('');

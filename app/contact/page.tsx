@@ -6,7 +6,6 @@ import { useState } from 'react';
 // Styling Import
 import '../styling/Contact/contact.scss';
 import { fetchData } from '../components/api';
-import SaveAuditLog from '../components/auditLog';
 
 export default function Contact() {
   const [name, setName] = useState<string>('');
@@ -28,7 +27,6 @@ export default function Contact() {
 
     // Validate form fields
     if (!name.trim() || !number.trim() || !comment.trim()) {
-      SaveAuditLog('', 'Attempt Form submit, however empty form');
       alert('Please fill out all fields.');
       setIsSubmitting(false);
       return;
@@ -52,7 +50,6 @@ export default function Contact() {
       if (data) {
         alert(data.message);
         // Creates Successful Audit
-        SaveAuditLog('', 'Contact Form was submitted');
         // Reset form fields
         setName('');
         setNumber('');

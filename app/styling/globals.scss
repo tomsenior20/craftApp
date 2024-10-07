@@ -17,8 +17,8 @@ html {
 
 // Set Default Font & Line Height
 @mixin DefaultTextStyle() {
-  font-family: var(--font-family);
-  line-height: 1.5;
+  font-family: var(--font-family) !important;
+  line-height: 1.5 !important;
 }
 
 // Button Hover Default Colour scheme

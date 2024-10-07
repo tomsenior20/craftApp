@@ -17,7 +17,6 @@ import DeletedTickets from './GenerateDeletedTickets';
 export default function GrantedAdmin() {
   const { GetTicket, tickets, openTickets, deletedTickets } = ApiCalls();
 
-  // Renders the Tickets to the page
   useEffect(() => {
     GetTicket();
   }, []);
@@ -59,7 +58,7 @@ export default function GrantedAdmin() {
               aria-labelledby="headingOne"
               data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body bg-light">
+              <div className="accordion-body bg-light" id="openTicketContainer">
                 <table className="table table-light ticketContainer rounded-3">
                   <thead>
                     <tr>
