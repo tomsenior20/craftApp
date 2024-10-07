@@ -21,6 +21,48 @@ export default function GrantedAdmin() {
     GetTicket();
   }, []);
 
+  const GenerateColumnNames = () => {
+    const Col = ['NAME', 'CONTACT NUMBER', 'COMMENT', 'ASSIGNEE', 'DELETE'];
+    return (
+      <tr>
+        {Col.map((item, index) => (
+          <th
+            key={index}
+            className="col text-wrap font-weight-bold tableColumnHeader"
+          >
+            {item}
+          </th>
+        ))}
+      </tr>
+    );
+  };
+
+  const GenerateTickets = () => {
+    return (
+      <tbody>
+        {tickets.length > 0 ? (
+          tickets.map((ticket) => (
+            <tr key={ticket.id} className="ticket my-2 p-2">
+              <td className="col text-wrap ticketText">{ticket.Name}</td>
+              <td className="col text-wrap ticketText">
+                {ticket.ContactNumber}
+              </td>
+              <td className="col text-wrap ticketText">{ticket.Comment}</td>
+              <AssigneeList />
+              <td className="col text-wrap ticketText">
+                <FormOptions ticketID={ticket.id} record={ticket} />
+              </td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan={6}>No Tickets</td>
+          </tr>
+        )}
+      </tbody>
+    );
+  };
+
   return (
     <>
       <Nav />
@@ -61,49 +103,11 @@ export default function GrantedAdmin() {
               <div className="accordion-body bg-light" id="openTicketContainer">
                 <table className="table table-light ticketContainer rounded-3">
                   <thead>
-                    <tr>
-                      <th className="col text-wrap font-weight-bold tableColumnHeader">
-                        NAME
-                      </th>
-                      <th className="col text-wrap font-weight-bold tableColumnHeader">
-                        CONTACT NUMBER
-                      </th>
-                      <th className="col text-wrap font-weight-bold tableColumnHeader">
-                        COMMENT
-                      </th>
-                      <th className="col text-wrap font-weight-bold tableColumnHeader">
-                        ASSIGNEE
-                      </th>
-                      <th className="col text-wrap font-weight-bold tableColumnHeader">
-                        DELETE
-                      </th>
-                    </tr>
+                    {/* Generate Column Names */}
+                    <GenerateColumnNames />
                   </thead>
-                  <tbody>
-                    {tickets.length > 0 ? (
-                      tickets.map((ticket) => (
-                        <tr key={ticket.id} className="ticket my-2 p-2">
-                          <td className="col text-wrap ticketText">
-                            {ticket.Name}
-                          </td>
-                          <td className="col text-wrap ticketText">
-                            {ticket.ContactNumber}
-                          </td>
-                          <td className="col text-wrap ticketText">
-                            {ticket.Comment}
-                          </td>
-                          <AssigneeList />
-                          <td className="col text-wrap ticketText">
-                            <FormOptions ticketID={ticket.id} record={ticket} />
-                          </td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={6}>No Tickets</td>
-                      </tr>
-                    )}
-                  </tbody>
+                  {/* Generate All Ticket Functionality */}
+                  <GenerateTickets />
                 </table>
               </div>
             </div>

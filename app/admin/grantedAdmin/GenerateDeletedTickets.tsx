@@ -25,6 +25,35 @@ export default function DeletedTickets() {
     fetchTickets();
   }, []);
 
+  const GenerateColumnNames = () => {
+    const Columns = ['NAME', 'CONTACT NUMBER', 'COMMENT'];
+    return (
+      <tr>
+        {Columns.map((col, index) => (
+          <th key={index} className="col text-wrap tableColumnHeader">
+            {col}
+          </th>
+        ))}
+        ;
+      </tr>
+    );
+  };
+
+  const GenerateDeletedticket = () => {
+    return (
+      <>
+        {deletedTickets.map((ticket, index) => (
+          <tr key={ticket.id}>
+            <td className=" ticketText">{ticket.Name}</td>
+            <td className=" ticketText">{ticket.ContactNumber}</td>
+            <td className=" ticketText">{ticket.Comment}</td>
+          </tr>
+        ))}
+        ;
+      </>
+    );
+  };
+
   return (
     <div className="accordion container my-4 p-2" id="accordionExampleOne">
       <div className="accordion-item accordionDiv">
@@ -51,23 +80,11 @@ export default function DeletedTickets() {
           <div className="accordion-body bg-light">
             <table className="table table-light ticketContainer rounded-3">
               <thead>
-                <tr>
-                  <th className="col text-wrap tableColumnHeader">NAME</th>
-                  <th className="col text-wrap tableColumnHeader">
-                    CONTACT NUMBER
-                  </th>
-                  <th className="col text-wrap tableColumnHeader">COMMENT</th>
-                </tr>
+                <GenerateColumnNames />
               </thead>
               <tbody>
                 {deletedTickets.length > 0 ? (
-                  deletedTickets.map((ticket) => (
-                    <tr key={ticket.id}>
-                      <td className=" ticketText">{ticket.Name}</td>
-                      <td className=" ticketText">{ticket.ContactNumber}</td>
-                      <td className=" ticketText">{ticket.Comment}</td>
-                    </tr>
-                  ))
+                  <GenerateDeletedticket />
                 ) : (
                   <tr>
                     <td colSpan={3}>No Tickets Present</td>

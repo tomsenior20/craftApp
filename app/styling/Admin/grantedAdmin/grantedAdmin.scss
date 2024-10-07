@@ -21,13 +21,14 @@
   letter-spacing: 0.007em;
   @include DefaultTextStyle();
   font-weight: 700;
+  font-size: 5rem;
 }
 
 .openTicketText,
 .dashboardText {
   @include DefaultTextStyle();
   font-weight: 600;
-  font-size: 36px;
+  font-size: 4rem;
 }
 
 .dashboardStatsContainer {
@@ -37,7 +38,7 @@
 .dashboardFigureText,
 .dashboardFigureTotal {
   @include DefaultTextStyle();
-  font-size: 22px;
+  font-size: 3rem;
   font-weight: 500;
   padding: 10px;
   text-align: center;
@@ -45,7 +46,7 @@
 
 .tableColumnHeader {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 2rem;
   @include DefaultTextStyle();
 }
 
@@ -79,15 +80,15 @@
   @include DefaultTextStyle();
   width: 200px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 2rem;
   color: black;
 }
 .DeletebuttonTicket {
-  background-color: rgb(242, 45, 6) !important;
+  background-color: rgb(242, 45, 2) !important;
   @include DefaultTextStyle();
   width: 200px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 2rem;
   color: black;
 }
 
@@ -99,12 +100,8 @@
   background-color: rgba(245, 241, 241, 0.9);
 }
 
-#assignOptions {
-  @include DefaultTextStyle();
-  font-size: 16px !important;
-}
-
+#assignOptions,
 #optionDropdown button {
   @include DefaultTextStyle();
-  font-size: 16px;
+  font-size: 2rem !important;
 }
