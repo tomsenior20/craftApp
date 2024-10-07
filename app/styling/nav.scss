@@ -55,4 +55,9 @@ nav {
   -moz-transform: scale(1.12);
   -ms-transform: scale(1.12);
   -o-transform: scale(1.12);
+  transition: all 30 ease-in;
+  -webkit-transition: all 30 ease-in;
+  -moz-transition: all 30 ease-in;
+  -ms-transition: all 30 ease-in;
+  -o-transition: all 30 ease-in;
 }

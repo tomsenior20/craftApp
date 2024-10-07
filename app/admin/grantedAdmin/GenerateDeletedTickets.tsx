@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -18,8 +19,12 @@ export default function DeletedTickets() {
   // Fetch tickets on component mount
   useEffect(() => {
     const fetchTickets = async () => {
-      const tickets = await GetDeletedTickets();
-      setDeletedTickets(tickets);
+      try {
+        const tickets = await GetDeletedTickets();
+        setDeletedTickets(tickets);
+      } catch (error) {
+        console.error('Failed to fetch deleted tickets', error);
+      }
     };
 
     fetchTickets();
@@ -30,26 +35,34 @@ export default function DeletedTickets() {
     return (
       <tr>
         {Columns.map((col, index) => (
-          <th key={index} className="col text-wrap tableColumnHeader">
+          <th
+            key={index}
+            className="col text-wrap tableColumnHeader"
+            scope="col"
+          >
             {col}
           </th>
         ))}
-        ;
       </tr>
     );
   };
 
-  const GenerateDeletedticket = () => {
+  const GenerateDeletedTicket = () => {
     return (
       <>
-        {deletedTickets.map((ticket, index) => (
-          <tr key={ticket.id}>
-            <td className=" ticketText">{ticket.Name}</td>
-            <td className=" ticketText">{ticket.ContactNumber}</td>
-            <td className=" ticketText">{ticket.Comment}</td>
+        {deletedTickets.length > 0 ? (
+          deletedTickets.map((ticket) => (
+            <tr key={ticket.id}>
+              <td className="ticketText">{ticket.Name}</td>
+              <td className="ticketText">{ticket.ContactNumber}</td>
+              <td className="ticketText">{ticket.Comment}</td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan={3}>No Tickets Present</td>
           </tr>
-        ))}
-        ;
+        )}
       </>
     );
   };
@@ -83,13 +96,7 @@ export default function DeletedTickets() {
                 <GenerateColumnNames />
               </thead>
               <tbody>
-                {deletedTickets.length > 0 ? (
-                  <GenerateDeletedticket />
-                ) : (
-                  <tr>
-                    <td colSpan={3}>No Tickets Present</td>
-                  </tr>
-                )}
+                <GenerateDeletedTicket />
               </tbody>
             </table>
           </div>
