@@ -26,8 +26,9 @@ export default function Assignee() {
     fetchAssignee();
   }, []);
 
-  return (
-    <td className="col text-wrap">
+  // Generate Options JSX
+  const generateAssigneeOptions = () => {
+    return (
       <select
         name="assigneeSelect"
         className="form-select ticketText"
@@ -40,6 +41,8 @@ export default function Assignee() {
           </option>
         ))}
       </select>
-    </td>
-  );
+    );
+  };
+
+  return <td className="col text-wrap">{generateAssigneeOptions()}</td>;
 }
