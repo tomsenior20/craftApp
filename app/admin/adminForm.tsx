@@ -20,6 +20,12 @@ export default function AdminForm() {
   const router = useRouter();
   const { InsertAuditLog } = ApiCalls();
 
+  // Resets the form inputs
+  const resetFormInputs = () => {
+    setusernameInput('');
+    setPasswordInput('');
+  };
+
   const SubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Checks Valid Input Enteries
@@ -40,25 +46,20 @@ export default function AdminForm() {
           handleLogIn(data.result[0]);
           await InsertAuditLog(username, 'Successfull Log In Attempt');
         } else {
-          await InsertAuditLog(username, 'Unsuccessful Log in Attempt');
-          alert("User Doesn't exsist");
+          await InsertAuditLog(username, 'User or password is invalid');
+          alert('User or password is invalid');
         }
       } catch (error) {
         console.log('Error ' + error);
       } finally {
         // Reset Inputs
-        setusernameInput('');
-        setPasswordInput('');
+        resetFormInputs();
       }
     } else {
-      await InsertAuditLog(
-        usernameInput,
-        "Username or password doesn't match standards"
-      );
-      alert("Username or password doesn't match standards");
+      await InsertAuditLog(usernameInput, 'One or More Inputs are empty');
+      alert('One or More Inputs are empty');
       // Reset Inputs
-      setusernameInput('');
-      setPasswordInput('');
+      resetFormInputs();
     }
   };
 
