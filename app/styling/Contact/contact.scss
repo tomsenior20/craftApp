@@ -59,36 +59,26 @@
 
 .contactForm {
   margin: 1rem;
+  height: auto;
   background: linear-gradient(
     to right,
     rgba(203, 203, 203, 0.986) 70%,
     rgba(225, 225, 225, 0.9)
   );
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .contactForm label {
-  font-size: 16px;
-  font-weight: 400;
   @include DefaultTextStyle();
-  letter-spacing: 0.005em;
-  color: #1b1b1b;
+  font-size: 2rem;
 }
+
 .contactForm input,
 .contactForm textarea {
   @include DefaultTextStyle();
-  font-weight: 400;
   font-size: 2rem;
-  margin: 1rem 0;
-  border: 1px solid rgb(193, 193, 193);
-  color: #1b1b1b;
-  padding: 0.4em;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  height: calc(3.5rem + 35px) !important;
 }
 
 .submitForm {
@@ -120,6 +110,7 @@
   @include DefaultTextStyle();
   font-weight: 600;
   font-size: 3rem;
+  padding: 10px;
   line-height: 1.5;
   margin: 2rem;
 }

@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 import { useState } from 'react';
 // Styling Import
 import '../styling/Contact/contact.scss';
-import { fetchData } from '../components/api';
+import { fetchData, ApiCalls } from '../components/api';
 
 export default function Contact() {
   const [name, setName] = useState<string>('');
@@ -19,6 +19,15 @@ export default function Contact() {
     comment: string;
   };
 
+  const { InsertAuditLog } = ApiCalls();
+
+  const resetInputFields = () => {
+    // Reset form fields
+    setName('');
+    setNumber('');
+    setComment('');
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -28,6 +37,7 @@ export default function Contact() {
     // Validate form fields
     if (!name.trim() || !number.trim() || !comment.trim()) {
       alert('Please fill out all fields.');
+      await InsertAuditLog('', 'Please fill out all fields.');
       setIsSubmitting(false);
       return;
     }
@@ -49,11 +59,7 @@ export default function Contact() {
       });
       if (data) {
         alert(data.message);
-        // Creates Successful Audit
-        // Reset form fields
-        setName('');
-        setNumber('');
-        setComment('');
+        resetInputFields;
       }
     } catch (error) {
       console.log('Error posting form: ' + error);
@@ -96,7 +102,7 @@ export default function Contact() {
               className="form-control"
               aria-label="form Name entry"
             />
-            <label htmlFor="nameInput" className="formLabel pt-3">
+            <label htmlFor="nameInput" className="formLabel">
               Contact Me:{' '}
             </label>
           </div>
@@ -110,7 +116,7 @@ export default function Contact() {
               onChange={(e) => setNumber(e.target.value)}
               aria-label="form number entry"
             />
-            <label className="formLabel pt-3" htmlFor="contactNumberText">
+            <label className="formLabel" htmlFor="contactNumberText">
               Enter Contact Number:
             </label>
           </div>
@@ -122,7 +128,7 @@ export default function Contact() {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-            <label htmlFor="formComment" className="formLabel pt-3">
+            <label htmlFor="formComment" className="formLabel">
               Enter Comment:
             </label>
           </div>
