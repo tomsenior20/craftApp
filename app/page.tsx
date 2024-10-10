@@ -98,6 +98,14 @@ export default function Home() {
           />
         </div>
       </section>
+      {/* General Purpose of website */}
+      <div className="container-fluid exploreContainer">
+        <h3>Why is Producity Growth?</h3>
+        <p>
+          Sign into our portal to explore how centralizing tickets and options
+          boosts productivity
+        </p>
+      </div>
       {/* Partnerships */}
       <div className="partnershipContainer">
         <div className="partnershipTitleContainer">
