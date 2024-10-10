@@ -8,9 +8,8 @@ import { useRouter } from 'next/navigation';
 import { fetchData, ApiCalls } from '../components/api';
 import { Alert } from '../components/alertModal';
 
-type UsernameRecord = {
+type UserData = {
   Username: string;
-  Password: string;
   Admin: number;
 };
 
@@ -90,7 +89,11 @@ export default function AdminForm() {
     setIsChecked(e.target.checked);
   };
 
-  const handleLogIn = (d: UsernameRecord) => {
+  const handleLogIn = (userData: UserData) => {
+    // Sets the local userid,admin to local storage for furture usage.
+    localStorage.setItem('userID', userData.Username);
+    localStorage.setItem('admin', userData.Admin.toString());
+    // Redirects to alternative page is successful
     router.push('/admin/grantedAdmin');
   };
 

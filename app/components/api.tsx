@@ -153,8 +153,14 @@ export const ApiCalls = () => {
         }
       );
       if (data.result.length > 0) {
+        // Constructs new object with Username, Admin ~ removed password
+        const userData = {
+          Username: data.result[0].username,
+          Admin: data.result[0].admin
+        };
+        // Checks the param for success, and handle the front end function for success
         if (typeof successFunction === 'function') {
-          successFunction();
+          successFunction(userData);
         }
         await InsertAuditLog(username, 'Successfull Log In Attempt');
       }
