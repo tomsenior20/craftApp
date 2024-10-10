@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { fetchData, ApiCalls } from '../components/api';
+import { Alert } from '../components/alertModal';
 
 type UsernameRecord = {
   Username: string;
@@ -16,6 +17,10 @@ type UsernameRecord = {
 export default function AdminForm() {
   const [usernameInput, setusernameInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
+  const [showAlert, setShowAlert] = useState<boolean>(false); // State for alert visibility
+  const [alertMessage, setAlertMessage] = useState<string>('');
+  const [type, setType] = useState<'success' | 'error'>('success');
+
   const regex = /^[a-zA-Z]+$/;
   const router = useRouter();
   const { InsertAuditLog } = ApiCalls();
@@ -24,6 +29,24 @@ export default function AdminForm() {
   const resetFormInputs = () => {
     setusernameInput('');
     setPasswordInput('');
+  };
+
+  const toggleAlertVisibilityAndMessage = (
+    show: boolean,
+    message: string,
+    type: 'success' | 'error'
+  ) => {
+    setShowAlert(show);
+    setAlertMessage(message);
+    setType(type);
+  };
+
+  const handleClose = () => {
+    setShowAlert(false);
+    setTimeout(() => {
+      setShowAlert(false);
+      setAlertMessage('');
+    }, 1000);
   };
 
   const SubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,18 +70,24 @@ export default function AdminForm() {
           await InsertAuditLog(username, 'Successfull Log In Attempt');
         } else {
           await InsertAuditLog(username, 'User or password is invalid');
-          alert('User or password is invalid');
+          toggleAlertVisibilityAndMessage(
+            true,
+            'User or password is invalid',
+            'error'
+          );
         }
       } catch (error) {
         console.log('Error ' + error);
       } finally {
-        // Reset Inputs
         resetFormInputs();
       }
     } else {
       await InsertAuditLog(usernameInput, 'One or More Inputs are empty');
-      alert('One or More Inputs are empty');
-      // Reset Inputs
+      toggleAlertVisibilityAndMessage(
+        true,
+        'One or More Inputs are empty',
+        'error'
+      );
       resetFormInputs();
     }
   };
@@ -75,6 +104,12 @@ export default function AdminForm() {
 
   return (
     <>
+      <Alert
+        type={type}
+        message={alertMessage}
+        isVisible={showAlert}
+        onClose={handleClose}
+      />
       <form
         id="adminLogInForm"
         onSubmit={(e) => SubmitForm(e)}

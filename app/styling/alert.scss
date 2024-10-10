@@ -1,0 +1,71 @@
+@import './globals.scss';
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000;
+}
+
+.modal-container {
+  background-color: white;
+  box-shadow: 1px 1px black;
+  padding: 20px;
+  border-radius: 8px;
+  height: 300px;
+  margin: auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// Alter Text alterations
+.modal-backdrop h2 {
+  @include DefaultTextStyle();
+  font-size: 4rem;
+}
+
+.modal-backdrop p {
+  @include DefaultTextStyle();
+  font-size: 2rem;
+}
+
+// Alert Button
+.closeAlertButton {
+  margin: 20px auto;
+  width: 150px;
+  height: 50px;
+  border-radius: 1rem !important;
+  @include DefaultTextStyle();
+  font-size: 1.5rem;
+}
+
+/// Border per type of error
+.modal-success {
+  border-left: 5px solid green;
+}
+.modal-error {
+  border-left: 5px solid red;
+}
+
+.modal-close-button {
+  margin-top: 15px;
+  padding: 8px 12px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.modal-close-button:hover {
+  background-color: #555;
+}
