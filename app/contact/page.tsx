@@ -59,7 +59,7 @@ export default function Contact() {
       });
       if (data) {
         alert(data.message);
-        resetInputFields;
+        resetInputFields();
       }
     } catch (error) {
       console.log('Error posting form: ' + error);

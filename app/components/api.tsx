@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import handleLogIn from '../admin/adminForm';
 
 const PortNumber: string = process.env.PORT || '3010';
 const BASE_URL = `http://localhost:${PortNumber}`;
@@ -136,6 +137,32 @@ export const ApiCalls = () => {
     }
   };
 
+  const LogInFormAttempt = async (
+    username: string,
+    password: string,
+    successFunction: Function
+  ) => {
+    try {
+      const data = await fetchData(
+        `loginAdminForm?username=${username}&password=${password}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      if (data.result.length > 0) {
+        if (typeof successFunction === 'function') {
+          successFunction();
+        }
+        await InsertAuditLog(username, 'Successfull Log In Attempt');
+      }
+    } catch (error) {
+      console.log('Error ' + error);
+    }
+  };
+
   const GetDeletedTickets = async () => {
     try {
       const data = await fetchData('retrieveDeletedTickets', {
@@ -161,6 +188,7 @@ export const ApiCalls = () => {
     deletedTickets,
     InsertTicketToDeleted,
     GetDeletedTickets,
-    listDeletedTickets
+    listDeletedTickets,
+    LogInFormAttempt
   };
 };

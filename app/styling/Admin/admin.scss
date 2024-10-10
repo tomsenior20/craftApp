@@ -34,7 +34,7 @@
 .formSection {
   flex-direction: column;
   @include DefaultAlignCenter();
-  width: 30%;
+  width: 100%;
   height: 50vh;
   margin: 100px auto;
 }
@@ -48,7 +48,7 @@
 }
 /* #region Admin Form styling */
 .adminLogInForm {
-  width: 100%;
+  width: 45%;
   flex-direction: column;
   padding: 1rem;
   margin: auto;

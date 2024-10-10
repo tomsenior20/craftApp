@@ -23,7 +23,7 @@ export default function AdminForm() {
 
   const regex = /^[a-zA-Z]+$/;
   const router = useRouter();
-  const { InsertAuditLog } = ApiCalls();
+  const { InsertAuditLog, LogInFormAttempt } = ApiCalls();
 
   // Resets the form inputs
   const resetFormInputs = () => {
@@ -51,31 +51,23 @@ export default function AdminForm() {
 
   const SubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Checks Valid Input Enteries
+
+    if (!usernameInput.match(regex) && !passwordInput.match(regex)) {
+      await InsertAuditLog('', 'User or password is invalid');
+      toggleAlertVisibilityAndMessage(
+        true,
+        'User or password is invalid',
+        'error'
+      );
+      return;
+    }
+
     if (usernameInput.match(regex) && passwordInput.match(regex)) {
+      // Checks Valid Input Enteries
       const username: string = encodeURIComponent(usernameInput);
       const password: string = encodeURIComponent(passwordInput);
       try {
-        const data = await fetchData(
-          `loginAdminForm?username=${username}&password=${password}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
-        );
-        if (data.result.length > 0) {
-          handleLogIn(data.result[0]);
-          await InsertAuditLog(username, 'Successfull Log In Attempt');
-        } else {
-          await InsertAuditLog(username, 'User or password is invalid');
-          toggleAlertVisibilityAndMessage(
-            true,
-            'User or password is invalid',
-            'error'
-          );
-        }
+        await LogInFormAttempt(username, password, handleLogIn);
       } catch (error) {
         console.log('Error ' + error);
       } finally {
