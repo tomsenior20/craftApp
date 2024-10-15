@@ -53,9 +53,15 @@ export default function DeletedTickets() {
         {deletedTickets.length > 0 ? (
           deletedTickets.map((ticket) => (
             <tr key={ticket.id}>
-              <td className="ticketText">{ticket.Name}</td>
-              <td className="ticketText">{ticket.ContactNumber}</td>
-              <td className="ticketText">{ticket.Comment}</td>
+              <td className="ticketText" id="ticketName">
+                {ticket.Name}
+              </td>
+              <td className="ticketText" id="ticketContactNumber">
+                {ticket.ContactNumber}
+              </td>
+              <td className="ticketText" id="ticketComment">
+                {ticket.Comment}
+              </td>
             </tr>
           ))
         ) : (

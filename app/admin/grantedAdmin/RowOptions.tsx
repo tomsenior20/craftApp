@@ -17,10 +17,18 @@ interface Record {
   Comment: string;
 }
 
+interface ArchiveProps {
+  Name: string;
+  ContactNumber: number;
+  Comment: string;
+  Asignee: string;
+}
+
 export default function RowOptions({ ticketID, record }: Number) {
-  const { DeleteTicket, InsertTicketToDeleted } = ApiCalls();
+  const { DeleteTicket, InsertTicketToDeleted, ArchiveTicket } = ApiCalls();
   const [show, setShow] = useState(false);
   const [dropdownHeight, setDropdownHeight] = useState('0px');
+  const [assignee, setCurrentAssignee] = useState<string>('~');
 
   const AddToDeletedTable = async () => {
     try {
@@ -45,21 +53,43 @@ export default function RowOptions({ ticketID, record }: Number) {
     }
   };
 
+  const archiveTicket = async () => {
+    const User: ArchiveProps = {
+      Name: record.Name,
+      ContactNumber: parseInt(record.ContactNumber),
+      Comment: record.Comment,
+      Asignee: assignee
+    };
+    try {
+      await ArchiveTicket(
+        User.Name,
+        User.ContactNumber,
+        User.Comment,
+        User.Asignee
+      );
+      window.location.reload();
+    } catch (error) {
+      console.log('failed to archive ticket' + error);
+    }
+  };
+
   const handleToggle = (isOpen: boolean) => {
     setShow(isOpen);
     const documents = document.getElementById('openTicketContainer');
     if (documents) {
       if (isOpen) {
-        const currentHeight = documents.clientHeight; // Get current height in pixels
-        // Get current height and add 200px
-        documents.style.height = `${currentHeight + 50}px`; // Add 200px to the current height
+        const currentHeight = documents.clientHeight;
+        documents.style.height = `${currentHeight + 50}px`;
       } else {
-        const currentHeight = documents.clientHeight; // Get current height in pixels
-        // Get current height and add 200px
-        documents.style.height = `${currentHeight - 50}px`; // Add 200px to the current height
+        const currentHeight = documents.clientHeight;
+        documents.style.height = `${currentHeight - 50}px`;
       }
     }
   };
+
+  useEffect(() => {
+    setCurrentAssignee('~');
+  }, []);
 
   return (
     <Dropdown id="optionDropdown" show={show} onToggle={handleToggle}>
@@ -67,13 +97,14 @@ export default function RowOptions({ ticketID, record }: Number) {
         variant="primary"
         id="dropdown-basic"
         className="form-select form-select-lg"
+        value={assignee}
       >
         Options
       </Dropdown.Toggle>
 
       <Dropdown.Menu className="w-100" id="assignOptions">
         <Dropdown.Item onClick={() => deleteAction()}>Delete</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Archive</Dropdown.Item>
+        <Dropdown.Item onClick={() => archiveTicket()}>Archive</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchData } from '../../components/api';
 
 export default function Assignee() {
@@ -19,12 +19,12 @@ export default function Assignee() {
           setAssignee(data.result);
         }
       } catch (error) {
-        console.log('Error generating Assignee');
+        console.log('Error generating Assignee:', error);
       }
     };
 
     fetchAssignee();
-  }, []);
+  }, []); // Ensure this runs only on component mount
 
   // Generate Options JSX
   const generateAssigneeOptions = () => {
@@ -34,7 +34,7 @@ export default function Assignee() {
         className="form-select ticketText"
         id="assigneeSelect"
       >
-        <option key="empty"> - </option>
+        <option value="~">~ Select an Asignee ~</option>
         {assignee.map((person) => (
           <option key={person.id} value={person.name}>
             {person.name}

@@ -137,6 +137,32 @@ export const ApiCalls = () => {
     }
   };
 
+  const ArchiveTicket = async (
+    Name: string,
+    ContactNumber: number,
+    Comment: string,
+    Asignee: string
+  ) => {
+    try {
+      const data = await fetchData(
+        `archiveTicket?Name=${Name}?ContactNumber=${ContactNumber}?Comment=${Comment}?Asignee=${Asignee}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      if (data && data.success) {
+        setTickets((prevTickets) =>
+          prevTickets.filter((ticket) => ticket.Name !== Name)
+        );
+      }
+    } catch (error) {
+      console.log('Error archiving file ', error);
+    }
+  };
+
   const LogInFormAttempt = async (
     username: string,
     password: string,
@@ -195,6 +221,7 @@ export const ApiCalls = () => {
     InsertTicketToDeleted,
     GetDeletedTickets,
     listDeletedTickets,
-    LogInFormAttempt
+    LogInFormAttempt,
+    ArchiveTicket
   };
 };
