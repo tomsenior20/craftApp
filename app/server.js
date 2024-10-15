@@ -141,9 +141,11 @@ app.post("/InsertAuditLog", (req, res) => {
 
 app.post("/archiveTicket", (req, res) => {
     checkReq(req, res);
-    const { Name, ContactNumber, Comment, Asignee } = req.body;
-    const query = "INSERT INTO ArchivedTickets (Name,ContactNumber, Comment,Asigneee) values(?,?,?,?)";
-    con.query(query, [Name, ContactNumber, Comment, Asignee], (error, success) => {
+    const { Name, ContactNumber, Comment, Assignee } = req.body;
+    const contactNumberInt = parseInt(ContactNumber, 10);
+
+    const query = "INSERT INTO ArchivedTickets (Name,ContactNumber, Comment,Asignee) values(?,?,?,?)";
+    con.query(query, [Name, contactNumberInt, Comment, Assignee], (error, success) => {
         (error) ? handleErrorResponse(req.originalUrl, res, error) : res.status(200).json({ message: "Successfully Archived Ticket", success });
     })
 })

@@ -21,7 +21,7 @@ interface ArchiveProps {
   Name: string;
   ContactNumber: number;
   Comment: string;
-  Asignee: string;
+  Assignee: string;
 }
 
 export default function RowOptions({ ticketID, record }: Number) {
@@ -54,20 +54,29 @@ export default function RowOptions({ ticketID, record }: Number) {
   };
 
   const archiveTicket = async () => {
+    if (!record.ContactNumber) {
+      console.log('Contact Number is null');
+      return;
+    }
+
+    if (isNaN(parseInt(record.ContactNumber, 10))) {
+      console.log('ContactNumber is not a valid number:', record.ContactNumber);
+      return;
+    }
+
     const User: ArchiveProps = {
       Name: record.Name,
-      ContactNumber: parseInt(record.ContactNumber),
+      ContactNumber: parseInt(record.ContactNumber, 10),
       Comment: record.Comment,
-      Asignee: assignee
+      Assignee: assignee
     };
     try {
       await ArchiveTicket(
         User.Name,
         User.ContactNumber,
         User.Comment,
-        User.Asignee
+        User.Assignee
       );
-      window.location.reload();
     } catch (error) {
       console.log('failed to archive ticket' + error);
     }

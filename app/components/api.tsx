@@ -13,14 +13,12 @@ type Ticket = {
 };
 
 // Handle Data Shared function
-export const handleResponse = (response: any) => {
+export const handleResponse = async (response: Response) => {
   if (!response.ok) {
-    console.log('Error Processing fetch');
-    response
-      .status(500)
-      .json({ error: 'An error occurred while retrieving deleted tickets.' });
+    // Throw an error if the response status is not okay
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
-  return response.json();
+  return response.json(); // Parse the response as JSON
 };
 
 // Handle Data Shared Function
@@ -29,7 +27,7 @@ export const fetchData = async (endpoint: string, options = {}) => {
     const response = await fetch(`${BASE_URL}/${endpoint}`, {
       ...options
     });
-    return handleResponse(response);
+    return await handleResponse(response);
   } catch (error) {
     console.log('Fetch Error ' + error);
   }
@@ -141,18 +139,21 @@ export const ApiCalls = () => {
     Name: string,
     ContactNumber: number,
     Comment: string,
-    Asignee: string
+    Assignee: string
   ) => {
     try {
-      const data = await fetchData(
-        `archiveTicket?Name=${Name}?ContactNumber=${ContactNumber}?Comment=${Comment}?Asignee=${Asignee}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-      );
+      const data = await fetchData(`archiveTicket`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          Name,
+          ContactNumber,
+          Comment,
+          Assignee
+        })
+      });
       if (data && data.success) {
         setTickets((prevTickets) =>
           prevTickets.filter((ticket) => ticket.Name !== Name)
