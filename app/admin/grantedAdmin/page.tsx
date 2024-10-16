@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 // Component Import
 import Nav from '../../components/nav';
 import Footer from '../../components/footer';
 // Styling Import
 import '../../styling/globals.scss';
 import '../../styling/Admin/grantedAdmin/grantedAdmin.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 // Components Impport
 import { ApiCalls } from '../../components/api';
@@ -17,16 +17,20 @@ import AssigneeList from './fetchAssignee';
 import DeletedTickets from './GenerateDeletedTickets';
 
 export default function GrantedAdmin() {
-  const { GetTicket, tickets, openTickets, deletedTickets } = ApiCalls();
+  const { GetTicket, tickets } = ApiCalls();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await GetTicket();
+        console.log();
       } catch (error) {
         console.log('Error fetching tickets', error);
       }
     };
+
+    // const bootstrap = require('bootstrap/dist/js/bootstrap.bundle.min');
+
     fetchData();
   }, [GetTicket]);
 

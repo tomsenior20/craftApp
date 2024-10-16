@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styling/Admin/grantedAdmin/grantedAdmin.scss';
 import '../../styling/globals.scss';
-import { Dropdown } from 'react-bootstrap/esm';
+import { Dropdown } from 'react-bootstrap';
 import { ApiCalls } from '@/app/components/api';
 
 interface Number {
@@ -96,18 +96,6 @@ export default function RowOptions({ ticketID, record }: Number) {
 
   const handleToggle = (isOpen: boolean) => {
     setShow(isOpen);
-    if (typeof window !== 'undefined') {
-      const documents = document.getElementById('openTicketContainer');
-      if (documents) {
-        if (isOpen) {
-          const currentHeight = documents.clientHeight;
-          documents.style.height = `${currentHeight + 50}px`;
-        } else {
-          const currentHeight = documents.clientHeight;
-          documents.style.height = `${currentHeight - 50}px`;
-        }
-      }
-    }
   };
 
   useEffect(() => {

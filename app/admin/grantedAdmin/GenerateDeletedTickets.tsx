@@ -1,9 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-
 import { ApiCalls } from '@/app/components/api';
+import Script from 'next/script';
 
 interface Ticket {
   Name: string;
@@ -15,6 +14,7 @@ interface Ticket {
 export default function DeletedTickets() {
   const { GetDeletedTickets } = ApiCalls();
   const [deletedTickets, setDeletedTickets] = useState<Ticket[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   // Fetch tickets on component mount
   useEffect(() => {
@@ -24,6 +24,7 @@ export default function DeletedTickets() {
         setDeletedTickets(tickets);
       } catch (error) {
         console.error('Failed to fetch deleted tickets', error);
+        setError('Failed to fetch deleted tickets. Please try again.');
       }
     };
 
@@ -97,6 +98,7 @@ export default function DeletedTickets() {
           data-bs-parent="#accordionExampleOne"
         >
           <div className="accordion-body bg-light">
+            {error && <div className="alert alert-danger">{error}</div>}
             <table className="table table-light ticketContainer rounded-3">
               <thead>
                 <GenerateColumnNames />
@@ -108,6 +110,10 @@ export default function DeletedTickets() {
           </div>
         </div>
       </div>
+      <Script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        strategy="lazyOnload"
+      />
     </div>
   );
 }
