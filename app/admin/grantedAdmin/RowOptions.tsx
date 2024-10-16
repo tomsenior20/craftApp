@@ -96,14 +96,16 @@ export default function RowOptions({ ticketID, record }: Number) {
 
   const handleToggle = (isOpen: boolean) => {
     setShow(isOpen);
-    const documents = document.getElementById('openTicketContainer');
-    if (documents) {
-      if (isOpen) {
-        const currentHeight = documents.clientHeight;
-        documents.style.height = `${currentHeight + 50}px`;
-      } else {
-        const currentHeight = documents.clientHeight;
-        documents.style.height = `${currentHeight - 50}px`;
+    if (typeof window !== 'undefined') {
+      const documents = document.getElementById('openTicketContainer');
+      if (documents) {
+        if (isOpen) {
+          const currentHeight = documents.clientHeight;
+          documents.style.height = `${currentHeight + 50}px`;
+        } else {
+          const currentHeight = documents.clientHeight;
+          documents.style.height = `${currentHeight - 50}px`;
+        }
       }
     }
   };
