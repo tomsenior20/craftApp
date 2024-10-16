@@ -1,34 +1,47 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-// Component Import
 import Nav from '../../components/nav';
 import Footer from '../../components/footer';
-// Styling Import
 import '../../styling/globals.scss';
 import '../../styling/Admin/grantedAdmin/grantedAdmin.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-
-// Components Impport
 import { ApiCalls } from '../../components/api';
 import FormOptions from './RowOptions';
 import AssigneeList from './fetchAssignee';
 import DeletedTickets from './GenerateDeletedTickets';
 
-export default function GrantedAdmin() {
-  const { GetTicket, tickets, openTickets, deletedTickets } = ApiCalls();
+export async function getServerSideProps() {
+  const { GetTicket } = ApiCalls();
+  let initialTickets = [];
+  try {
+    initialTickets = await GetTicket(); // Fetch tickets server-side
+  } catch (error) {
+    console.log('Error fetching tickets', error);
+  }
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       await GetTicket();
-  //     } catch (error) {
-  //       console.log('Error fetching tickets', error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [GetTicket]);
+  return {
+    props: {
+      initialTickets // Pass the tickets as props
+    }
+  };
+}
+
+export default function GrantedAdmin({ initialTickets }) {
+  const [tickets, setTickets] = useState(initialTickets);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedTickets = await GetTicket();
+        setTickets(fetchedTickets);
+      } catch (error) {
+        console.log('Error fetching tickets', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const GenerateColumnNames = () => {
     const Col = ['NAME', 'CONTACT NUMBER', 'COMMENT', 'ASSIGNEE', 'DELETE'];
@@ -86,7 +99,6 @@ export default function GrantedAdmin() {
             Current Open Contact Tickets
           </h2>
         </div>
-        {/* Current Open Ticket Table */}
         <div className="accordion ticketTableContainer container my-4 p-2">
           <div className="accordion-item accordionDiv">
             <h2 className="accordion-header" id="headingOne">
@@ -112,10 +124,8 @@ export default function GrantedAdmin() {
               <div className="accordion-body bg-light" id="openTicketContainer">
                 <table className="table table-light ticketContainer rounded-3">
                   <thead>
-                    {/* Generate Column Names */}
                     <GenerateColumnNames />
                   </thead>
-                  {/* Generate All Ticket Functionality */}
                   <GenerateTickets />
                 </table>
               </div>
