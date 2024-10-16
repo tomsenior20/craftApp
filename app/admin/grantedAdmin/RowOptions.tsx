@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styling/Admin/grantedAdmin/grantedAdmin.scss';
 import '../../styling/globals.scss';
 import { Dropdown } from 'react-bootstrap/esm';
-import { fetchData, ApiCalls } from '@/app/components/api';
+import { ApiCalls } from '@/app/components/api';
 
 interface Number {
   ticketID: number;
