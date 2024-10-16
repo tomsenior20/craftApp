@@ -8,8 +8,6 @@ const crypto = require('crypto');
 
 // Check if we are in development mode
 const dev = process.env.NODE_ENV !== "production";
-const nextApp = next({ dev });
-const handle = nextApp.getRequestHandler();
 
 const app = express();
 const port = process.env.PORT || 8989;
@@ -195,17 +193,4 @@ app.get('/getSettings', async (req, res) => {
     } catch (error) {
         return handleErrorResponse(req.originalUrl, res, error);
     }
-});
-
-// Handle Next.js pages and API requests
-app.all('*', (req, res) => {
-    return handle(req, res);
-});
-
-// Start the Next.js app
-nextApp.prepare().then(() => {
-    app.listen(port, (err) => {
-        if (err) throw err;
-        console.log(`Server running at http://localhost:${port}`);
-    });
 });
