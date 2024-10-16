@@ -194,3 +194,7 @@ app.get('/getSettings', async (req, res) => {
         return handleErrorResponse(req.originalUrl, res, error);
     }
 });
+
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
