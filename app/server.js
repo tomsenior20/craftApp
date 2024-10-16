@@ -8,7 +8,7 @@ const cors = require("cors");
 const { error } = require('console');
 
 const app = express();
-const port = process.env.PORT || 3010;
+const port = process.env.PORT;
 
 app.get("/", (req, res) => {
     res.send("welcome");
