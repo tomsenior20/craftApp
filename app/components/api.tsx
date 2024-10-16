@@ -41,7 +41,9 @@ export const ApiCalls = () => {
   const [listDeletedTickets, setDeletedTickets] = useState<Ticket[]>([]);
 
   const GetTicket = async () => {
-    window.localStorage.setItem('setDeleteTicket', deletedTickets.toString());
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('setDeleteTicket', deletedTickets.toString());
+    }
     try {
       const data = await fetchData('retrieveTicket', {
         method: 'GET'
@@ -50,7 +52,9 @@ export const ApiCalls = () => {
       if (data && data.Result) {
         setTickets(data.Result);
         setOpenTickets(data.Result.length);
-        window.localStorage.setItem('openTicketLength', data.Result.length);
+        if (typeof window !== 'undefined') {
+          window.localStorage.setItem('openTicketLength', data.Result.length);
+        }
       }
     } catch (error) {
       console.log('Error fetching tickets ' + error);
