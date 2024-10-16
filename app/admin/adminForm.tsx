@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { fetchData, ApiCalls } from '../components/api';
+import { ApiCalls } from '../components/api';
 import { Alert } from '../components/alertModal';
 
 type UserData = {
