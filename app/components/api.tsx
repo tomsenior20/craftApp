@@ -201,10 +201,10 @@ export const ApiCalls = () => {
         method: 'GET'
       });
       // Check Data Result
-      if (data && data.result) {
-        setDeletedTickets(data.result);
-        setDeleteTicket(data.result.length);
-        return data.result;
+      if (data && data.results) {
+        setDeletedTickets(data.resuls);
+        setDeleteTicket(data.results.length);
+        return data.results;
       }
     } catch (error) {
       console.log('Error fetching tickets ' + error);
