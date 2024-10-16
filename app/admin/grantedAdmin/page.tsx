@@ -19,16 +19,16 @@ import DeletedTickets from './GenerateDeletedTickets';
 export default function GrantedAdmin() {
   const { GetTicket, tickets, openTickets, deletedTickets } = ApiCalls();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await GetTicket();
-      } catch (error) {
-        console.log('Error fetching tickets', error);
-      }
-    };
-    fetchData();
-  }, [GetTicket]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       await GetTicket();
+  //     } catch (error) {
+  //       console.log('Error fetching tickets', error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [GetTicket]);
 
   const GenerateColumnNames = () => {
     const Col = ['NAME', 'CONTACT NUMBER', 'COMMENT', 'ASSIGNEE', 'DELETE'];
