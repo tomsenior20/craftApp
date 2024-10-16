@@ -9,16 +9,25 @@ import '../../styling/globals.scss';
 import '../../styling/Admin/grantedAdmin/grantedAdmin.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 // Components Impport
 import { ApiCalls } from '../../components/api';
 import FormOptions from './RowOptions';
 import AssigneeList from './fetchAssignee';
 import DeletedTickets from './GenerateDeletedTickets';
+
 export default function GrantedAdmin() {
   const { GetTicket, tickets, openTickets, deletedTickets } = ApiCalls();
 
   useEffect(() => {
-    GetTicket();
+    const fetchData = async () => {
+      try {
+        await GetTicket();
+      } catch (error) {
+        console.log('Error fetching tickets', error);
+      }
+    };
+    fetchData();
   }, [GetTicket]);
 
   const GenerateColumnNames = () => {
