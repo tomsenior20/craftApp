@@ -7,8 +7,16 @@ const crypto = require('crypto');
 const cors = require("cors");
 const { error } = require('console');
 
+const dev = process.env.NODE_ENV !== "production"; // Determine if in development mode
+const server = next({ dev });
+const handle = app.getRequestHandler();
+
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 8989;
+
+app.all('*', (req, res) => {
+    return handle(req, res);
+});
 
 app.get("/", (req, res) => {
     res.send("welcome");
