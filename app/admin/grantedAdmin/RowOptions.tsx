@@ -24,12 +24,22 @@ interface ArchiveProps {
   Assignee: string;
 }
 
-export default function RowOptions({ ticketID, record }: Number) {
-  const { DeleteTicket, InsertTicketToDeleted, ArchiveTicket } = ApiCalls();
-  const [show, setShow] = useState(false);
-  const [dropdownHeight, setDropdownHeight] = useState('0px');
-  const [assignee, setCurrentAssignee] = useState<string>('~');
+interface Priv {
+  Code: string;
+  Active: number;
+}
 
+export default function RowOptions({ ticketID, record }: Number) {
+  const {
+    DeleteTicket,
+    InsertTicketToDeleted,
+    ArchiveTicket,
+    RetrieveSetting
+  } = ApiCalls();
+  const [show, setShow] = useState(false);
+  const [assignee, setCurrentAssignee] = useState<string>('~');
+  const [Privilege, setPrivilege] = useState<Priv>();
+  // Delete Table Method, upon clicking delete
   const AddToDeletedTable = async () => {
     try {
       await InsertTicketToDeleted(
@@ -43,6 +53,7 @@ export default function RowOptions({ ticketID, record }: Number) {
     }
   };
 
+  // Delete Click Method
   const deleteAction = async () => {
     try {
       await AddToDeletedTable();
@@ -53,6 +64,7 @@ export default function RowOptions({ ticketID, record }: Number) {
     }
   };
 
+  // Archive Ticket Function
   const archiveTicket = async () => {
     if (!record.ContactNumber) {
       console.log('Contact Number is null');
@@ -98,6 +110,17 @@ export default function RowOptions({ ticketID, record }: Number) {
 
   useEffect(() => {
     setCurrentAssignee('~');
+
+    const GetPrivilege = async (Code: string) => {
+      try {
+        const result = await RetrieveSetting(Code);
+      } catch (error: any) {
+        console.log('Error getting privilege:', error);
+        throw error;
+      }
+    };
+
+    GetPrivilege('Admin');
   }, []);
 
   return (
@@ -113,7 +136,9 @@ export default function RowOptions({ ticketID, record }: Number) {
 
       <Dropdown.Menu className="w-100" id="assignOptions">
         <Dropdown.Item onClick={() => deleteAction()}>Delete</Dropdown.Item>
-        <Dropdown.Item onClick={() => archiveTicket()}>Archive</Dropdown.Item>
+        {Privilege && Privilege.Active === 0 ? (
+          <Dropdown.Item onClick={() => archiveTicket()}>Archive</Dropdown.Item>
+        ) : null}
       </Dropdown.Menu>
     </Dropdown>
   );

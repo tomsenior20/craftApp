@@ -212,7 +212,22 @@ export const ApiCalls = () => {
     }
   };
 
+  const RetrieveSetting = async (Code: string) => {
+    try {
+      const data = await fetchData(`getSettings?Code=${Code}`, {
+        method: 'GET'
+      });
+      // Check Data Result
+      if (data && data.result) {
+        return data.result;
+      }
+    } catch (error) {
+      console.log('Error Fetching Setting ' + error);
+    }
+  };
+
   return {
+    RetrieveSetting,
     GetTicket,
     DeleteTicket,
     tickets,

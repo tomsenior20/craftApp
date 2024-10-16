@@ -149,3 +149,13 @@ app.post("/archiveTicket", (req, res) => {
         (error) ? handleErrorResponse(req.originalUrl, res, error) : res.status(200).json({ message: "Successfully Archived Ticket", success });
     })
 })
+
+
+app.get('/getSettings', (req, res) => {
+    checkReq(req, res);
+    const { Code } = req.query;
+    const query = 'SELECT Code,Active FROM SETTINGS WHERE Code = ? LIMIT 1';
+    con.query(query, [Code], (error, result) => {
+        (error) ? handleErrorResponse(req.originalUrl, res) : res.status(200).json({ Success: "Successfully got tickets", result })
+    })
+})
