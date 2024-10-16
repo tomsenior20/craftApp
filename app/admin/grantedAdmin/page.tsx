@@ -19,7 +19,7 @@ export default function GrantedAdmin() {
 
   useEffect(() => {
     GetTicket();
-  }, []);
+  }, [GetTicket]);
 
   const GenerateColumnNames = () => {
     const Col = ['NAME', 'CONTACT NUMBER', 'COMMENT', 'ASSIGNEE', 'DELETE'];
