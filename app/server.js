@@ -18,7 +18,7 @@ app.use(express.json());
 
 // Create a connection pool for MySQL Database
 const pool = mysql.createPool({
-    host: "localhost",
+    host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE_NAME
@@ -197,4 +197,11 @@ app.get('/getSettings', async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
+});
+
+process.on('SIGTERM', () => {
+    console.log('SIGTERM signal received: closing HTTP server');
+    server.close(() => {
+        console.log('HTTP server closed');
+    });
 });
