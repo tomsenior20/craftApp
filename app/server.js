@@ -195,13 +195,33 @@ app.get('/getSettings', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
 
+
 process.on('SIGTERM', () => {
     console.log('SIGTERM signal received: closing HTTP server');
-    server.close(() => {
-        console.log('HTTP server closed');
-    });
+    if (server) {
+        server.close(() => {
+            console.log('HTTP server closed');
+            process.exit(0);
+        });
+    } else {
+        console.log('Server is not initialized.');
+        process.exit(1);
+    }
+});
+
+process.on('SIGINT', () => {
+    console.log('SIGINT signal received: closing HTTP server');
+    if (server) {
+        server.close(() => {
+            console.log('HTTP server closed');
+            process.exit(0);
+        });
+    } else {
+        console.log('Server is not initialized.');
+        process.exit(1);
+    }
 });

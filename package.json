@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "server": "node app/server.js",
-    "build": "next build",
-    "start": "concurrently \"npm run dev\" \"npm run server\"",
+    "build": " next build",
+    "start": "node app/server.js",
     "lint": "next lint",
     "test": "jest"
   },
