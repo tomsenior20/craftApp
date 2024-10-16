@@ -8,7 +8,6 @@ const cors = require("cors");
 const { error } = require('console');
 
 const dev = process.env.NODE_ENV !== "production"; // Determine if in development mode
-const server = next({ dev });
 const handle = app.getRequestHandler();
 
 const app = express();
