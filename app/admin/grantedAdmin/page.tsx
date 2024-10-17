@@ -32,7 +32,7 @@ export default function GrantedAdmin() {
     // const bootstrap = require('bootstrap/dist/js/bootstrap.bundle.min');
 
     fetchData();
-  }, [GetTicket]);
+  }, []);
 
   const GenerateColumnNames = () => {
     const Col = ['NAME', 'CONTACT NUMBER', 'COMMENT', 'ASSIGNEE', 'DELETE'];

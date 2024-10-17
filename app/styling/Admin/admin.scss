@@ -138,3 +138,9 @@
 .formCheckbox {
   color: var(--color-text);
 }
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .adminLogInForm {
+    width: 90% !important;
+  }
+}

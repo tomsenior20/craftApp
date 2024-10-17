@@ -217,8 +217,8 @@ export const ApiCalls = () => {
         method: 'GET'
       });
       // Check Data Result
-      if (data && data.result) {
-        return data.result;
+      if (data && data.results) {
+        return data.results;
       }
     } catch (error) {
       console.log('Error Fetching Setting ' + error);

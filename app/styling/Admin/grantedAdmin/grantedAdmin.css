@@ -142,4 +142,10 @@ html {
   line-height: 1.5 !important;
   font-size: 2rem !important;
 }
+
+@media screen and (min-width: 300px) and (max-width: 600px) {
+  .mainSection {
+    min-height: 500px !important;
+  }
+}
 /*# sourceMappingURL=grantedAdmin.css.map */

@@ -38,7 +38,7 @@ export default function RowOptions({ ticketID, record }: Number) {
   } = ApiCalls();
   const [show, setShow] = useState(false);
   const [assignee, setCurrentAssignee] = useState<string>('~');
-  const [Privilege, setPrivilege] = useState<Priv>();
+  const [AdminPrivilege, setAdminPrivilege] = useState<Priv | null>(null);
   // Delete Table Method, upon clicking delete
   const AddToDeletedTable = async () => {
     try {
@@ -104,6 +104,7 @@ export default function RowOptions({ ticketID, record }: Number) {
     const GetPrivilege = async (Code: string) => {
       try {
         const result = await RetrieveSetting(Code);
+        setAdminPrivilege(result[0]);
       } catch (error: any) {
         console.log('Error getting privilege:', error);
         throw error;
@@ -126,7 +127,7 @@ export default function RowOptions({ ticketID, record }: Number) {
 
       <Dropdown.Menu className="w-100" id="assignOptions">
         <Dropdown.Item onClick={() => deleteAction()}>Delete</Dropdown.Item>
-        {Privilege && Privilege.Active === 0 ? (
+        {AdminPrivilege && AdminPrivilege.Active === 0 ? (
           <Dropdown.Item onClick={() => archiveTicket()}>Archive</Dropdown.Item>
         ) : null}
       </Dropdown.Menu>
