@@ -4,7 +4,7 @@
 .mainSection {
   @include DefaultHeaderColor();
   display: flex;
-  min-height: 600px;
+  min-height: 750px;
 }
 
 .headerImageContainer {
@@ -115,7 +115,7 @@
 .partneshipContainerImage {
   justify-content: center;
   flex-grow: 1;
-  margin: 1rem;
+  margin: 2rem auto;
   min-height: 400px;
   max-width: 300px;
   background-color: rgba(238, 238, 238, 0.92);
