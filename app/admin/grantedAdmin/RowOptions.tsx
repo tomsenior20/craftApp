@@ -53,6 +53,21 @@ export default function RowOptions({ ticketID, record }: Number) {
     }
   };
 
+  // Function to adjust the height of ticketTableContainer based on whether toggle is open or not
+  const adjustContainerHeight = (isShow: boolean) => {
+    const ticketTableContainer = document.getElementById('openTicketContainer');
+    if (ticketTableContainer) {
+      ticketTableContainer.style.height = isShow
+        ? 'calc(200px + 1rem)'
+        : 'calc(100% - 1rem)';
+    }
+  };
+
+  // Adjust height when show state changes
+  useEffect(() => {
+    adjustContainerHeight(show);
+  }, [show]);
+
   // Delete Click Method
   const deleteAction = async () => {
     try {
@@ -94,7 +109,7 @@ export default function RowOptions({ ticketID, record }: Number) {
     }
   };
 
-  const handleToggle = (isOpen: boolean) => {
+  const handleToggle = (isOpen: boolean, event: any) => {
     setShow(isOpen);
   };
 
@@ -117,7 +132,7 @@ export default function RowOptions({ ticketID, record }: Number) {
   return (
     <Dropdown id="optionDropdown" show={show} onToggle={handleToggle}>
       <Dropdown.Toggle
-        variant="primary"
+        variant=""
         id="dropdown-basic"
         className="form-select form-select-lg"
         value={assignee}

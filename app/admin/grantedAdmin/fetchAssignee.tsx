@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { fetchData } from '../../components/api';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Dropdown } from 'react-bootstrap';
 
 export default function Assignee() {
-  type Assignee = {
+  interface Assignee {
     name: string;
     id: number;
-  };
+  }
 
   const [assignee, setAssignee] = useState<Assignee[]>([]);
+  const [show, setShow] = useState(false);
+  const optionsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const fetchAssignee = async () => {
@@ -15,8 +19,8 @@ export default function Assignee() {
         const data = await fetchData('getAssigneeList', {
           method: 'GET'
         });
-        if (data && data.result.length > 0) {
-          setAssignee(data.result);
+        if (data && Array.isArray(data.results)) {
+          setAssignee(data.results);
         }
       } catch (error) {
         console.log('Error generating Assignee:', error);
@@ -24,23 +28,51 @@ export default function Assignee() {
     };
 
     fetchAssignee();
-  }, []); // Ensure this runs only on component mount
+  }, []);
+
+  // Function to adjust the height of ticketTableContainer based on whether toggle is open or not
+  const adjustContainerHeight = (isShow: boolean) => {
+    const optionsHeight = optionsRef.current?.clientHeight;
+    console.log(optionsHeight);
+    const ticketTableContainer = document.getElementById('openTicketContainer');
+    if (ticketTableContainer) {
+      ticketTableContainer.style.height = isShow
+        ? `calc(${optionsHeight}px + 150px)`
+        : 'calc(100% - 150px)';
+    }
+  };
+
+  useEffect(() => {
+    adjustContainerHeight(show);
+  }, [show]);
+
+  const handleDropdownToggle = (isOpen: boolean) => {
+    setShow(isOpen);
+    adjustContainerHeight(isOpen);
+  };
 
   // Generate Options JSX
   const generateAssigneeOptions = () => {
     return (
-      <select
-        name="assigneeSelect"
-        className="form-select ticketText"
-        id="assigneeSelect"
+      <Dropdown
+        id="optionDropdown"
+        show={show}
+        onToggle={handleDropdownToggle}
+        className="light"
       >
-        <option value="~">~ Select an Asignee ~</option>
-        {assignee.map((person) => (
-          <option key={person.id} value={person.name}>
-            {person.name}
-          </option>
-        ))}
-      </select>
+        <Dropdown.Toggle
+          variant=""
+          id="dropdown-basic"
+          className="form-select form-select-lg text-break"
+        >
+          Select Assignee
+        </Dropdown.Toggle>
+        <Dropdown.Menu ref={optionsRef} className="w-100" id="assignOptions">
+          {assignee.map((people) => (
+            <Dropdown.Item key={people.id}>{people.name}</Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
     );
   };
 

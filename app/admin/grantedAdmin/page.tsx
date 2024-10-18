@@ -7,8 +7,6 @@ import Footer from '../../components/footer';
 // Styling Import
 import '../../styling/globals.scss';
 import '../../styling/Admin/grantedAdmin/grantedAdmin.scss';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 // Components Impport
 import { ApiCalls } from '../../components/api';
@@ -35,7 +33,7 @@ export default function GrantedAdmin() {
   }, []);
 
   const GenerateColumnNames = () => {
-    const Col = ['NAME', 'CONTACT NUMBER', 'COMMENT', 'ASSIGNEE', 'DELETE'];
+    const Col = ['NAME', 'NUMBER', 'COMMENT', 'ASSIGNEE', 'DELETE'];
     return (
       <tr>
         {Col.map((item, index) => (
@@ -56,13 +54,17 @@ export default function GrantedAdmin() {
         {tickets.length > 0 ? (
           tickets.map((ticket) => (
             <tr key={ticket.id} className="ticket my-2 p-2">
-              <td className="col text-wrap ticketText">{ticket.Name}</td>
-              <td className="col text-wrap ticketText">
+              <td className="col-2 text-wrap ticketText text-break">
+                {ticket.Name}
+              </td>
+              <td className="col-2 text-wrap ticketText text-break">
                 {ticket.ContactNumber}
               </td>
-              <td className="col text-wrap ticketText">{ticket.Comment}</td>
+              <td className="col-4 text-wrap ticketText text-break">
+                {ticket.Comment}
+              </td>
               <AssigneeList />
-              <td className="col text-wrap ticketText">
+              <td className="col-4 text-wrap ticketText text-break">
                 <FormOptions ticketID={ticket.id} record={ticket} />
               </td>
             </tr>

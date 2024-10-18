@@ -79,7 +79,7 @@ html {
 
 .ticketText {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 2rem !important;
   font-family: var(--font-family) !important;
   line-height: 1.5 !important;
 }
@@ -141,6 +141,26 @@ html {
   font-family: var(--font-family) !important;
   line-height: 1.5 !important;
   font-size: 2rem !important;
+}
+
+#optionDropdown {
+  background-color: rgba(215, 215, 215, 0.9) !important;
+}
+
+.form-select {
+  text-align: start;
+}
+
+.form-select::after {
+  display: none;
+}
+
+.selectText,
+.optionSelectText {
+  font-family: var(--font-family) !important;
+  line-height: 1.5 !important;
+  font-weight: 600;
+  font-size: 1.5rem !important;
 }
 
 @media screen and (min-width: 300px) and (max-width: 600px) {
