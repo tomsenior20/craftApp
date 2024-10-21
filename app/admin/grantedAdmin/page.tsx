@@ -13,6 +13,7 @@ import { ApiCalls } from '../../components/api';
 import FormOptions from './RowOptions';
 import AssigneeList from './fetchAssignee';
 import DeletedTickets from './GenerateDeletedTickets';
+import ArchiveTicket from './GenerateArchivedTickets';
 
 export default function GrantedAdmin() {
   const { GetTicket, tickets } = ApiCalls();
@@ -26,8 +27,6 @@ export default function GrantedAdmin() {
         console.log('Error fetching tickets', error);
       }
     };
-
-    // const bootstrap = require('bootstrap/dist/js/bootstrap.bundle.min');
 
     fetchData();
   }, []);
@@ -129,6 +128,7 @@ export default function GrantedAdmin() {
           </div>
         </div>
         <DeletedTickets />
+        <ArchiveTicket />
       </section>
       <Footer />
     </>

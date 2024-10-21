@@ -75,6 +75,7 @@
   @include DefaultButtonHover();
 }
 
+// #region TicketDisplayColours
 .SuccessbuttonTicket {
   background-color: rgb(27, 250, 27) !important;
   @include DefaultTextStyle();
@@ -91,6 +92,24 @@
   font-size: 2rem;
   color: black;
 }
+
+.ArchiveButtonText {
+  background-color: rgb(197, 202, 199) !important;
+  @include DefaultTextStyle();
+  width: 200px;
+  font-weight: bold;
+  font-size: 2rem;
+  color: black;
+}
+
+.noAdminText {
+  @include DefaultTextStyle();
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+// #endregion TicketDisplayColours
 
 .accordionDiv {
   box-shadow: 2px 2px 2px 2px rgba(185, 185, 185, 0.9);
@@ -124,8 +143,10 @@
   font-size: 1.5rem !important;
 }
 
+// #region media Query Section
 @media screen and (min-width: 300px) and (max-width: 600px) {
   .mainSection {
     min-height: 500px !important;
   }
 }
+// #endregion media Query Section

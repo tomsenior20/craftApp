@@ -3,7 +3,7 @@ import { useState } from 'react';
 import handleLogIn from '../admin/adminForm';
 
 const PortNumber: string = process.env.PORT || '3010';
-const BASE_URL = `http://localhost:${PortNumber}`;
+const BASE_URL = `http://${process.env.NEXT_PUBLIC_APP}:${PortNumber}`;
 
 type Ticket = {
   id: number;
@@ -225,7 +225,22 @@ export const ApiCalls = () => {
     }
   };
 
+  const GetArchiveTickets = async () => {
+    try {
+      const data = await fetchData(`getArchiveTicket`, {
+        method: 'GET'
+      });
+      // Check Data Result
+      if (data && data.results) {
+        return data.results;
+      }
+    } catch (error) {
+      console.log('Error fetching Archived tickets:', error);
+    }
+  };
+
   return {
+    GetArchiveTickets,
     RetrieveSetting,
     GetTicket,
     DeleteTicket,

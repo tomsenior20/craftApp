@@ -33,7 +33,6 @@ export default function Assignee() {
   // Function to adjust the height of ticketTableContainer based on whether toggle is open or not
   const adjustContainerHeight = (isShow: boolean) => {
     const optionsHeight = optionsRef.current?.clientHeight;
-    console.log(optionsHeight);
     const ticketTableContainer = document.getElementById('openTicketContainer');
     if (ticketTableContainer) {
       ticketTableContainer.style.height = isShow

@@ -22,7 +22,7 @@ export default function DeletedTickets() {
       try {
         const tickets = await GetDeletedTickets();
         setDeletedTickets(Array.isArray(tickets) ? tickets : []);
-      } catch (error) {
+      } catch (error: any) {
         console.error('Failed to fetch deleted tickets', error);
         setError('Failed to fetch deleted tickets. Please try again.');
       }
