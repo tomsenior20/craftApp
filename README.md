@@ -1,9 +1,4 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
-</p>
-
-<h3 align="center">Craft App</h3>
+<h3 align="center">Self Service Website ~ Ticket System</h3>
 
 <div align="center">
 
@@ -16,53 +11,50 @@
 
 ---
 
-<p align="center"> 
-  This project is to demonstrate my Typescript abilities, allowing for a full CRUD application alongside allowing for my skills to be shown.
-    <br> 
-</p>
-
-## 📝 Table of Contents
-
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [Authors](#authors)
-
+<h1>This applicaton has been designed as a full service solution, for everyday users and professsionals </h1>
+<h2>Allowing users to log new tickets, whilst professionals to maintain and see all tickets</h2>
 
 ## 🧐 About <a name = "about"></a>
 
-This project is to allow the end user, to create a contact form which will be submited to the database. Futhermore, it allows admins to go onto the admin page and see active,deleted tickets whilst being able to delete them from there system.
+This project reflects currrent systems within workforce architecture, this solution allows a fully condensed solution allowing users to control how there workforce works. It allows for deletion and archiving of tickets, whilst being able to select the assignee of the new tickets.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them.
 
-1) Node JS 
-2) NPM 
-3) Bootstrap
-4) Next.js
-5) Typescript
+1. Node JS
+2. NPM
+3. Bootstrap
+4. Next.js
+5. Typescript
 
 ### Installing
 
-1) To run the project 
+1. To run the project
 
 - npm run start
 
 ## 🎈 Usage <a name="usage"></a>
 
-1) You can view all the open ticket.
-2) If your an admin, you can delete tickets
-3) Open dashboard of open and deleted tickets.
-4) Can create a contact form and submit.
+# Admin User ~ Should be able to perform following scenario:
+
+1. See Open Tickets.
+2. See Deleted Tickets.
+3. Archive & Delete Tickets.
+4. See Archived Tickets.
+
+# Non Admin User ~ Should be able to perform following scenario:
+
+1. See Open Tickets.
+2. See Deleted Tickets.
+3. Delete Tickets.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
 ## ✍️ Authors <a name = "authors"></a>
+
 - [@tomsenior20](https://github.com/tomsenior20) - Idea & work
