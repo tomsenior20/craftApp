@@ -1,4 +1,4 @@
-name: "Ticket Solution CI CD";
+name: "Ticket Solution CI CD"
 
 on:
   push:
