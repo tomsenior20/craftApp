@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS ArchivedTickets;
 CREATE TABLE ArchivedTickets(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     Name TEXT,
     ContactNumber INTEGER, 
     Comment TEXT,
@@ -9,13 +9,13 @@ CREATE TABLE ArchivedTickets(
 
 DROP TABLE IF EXISTS AssignmentUsers;
 CREATE TABLE AssignmentUsers(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     name TEXT
 );
 
 DROP TABLE IF EXISTS audit_log;
 CREATE TABLE audit_log(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     username TEXT,
     attempt_date DATETIME,
     action TEXT
@@ -23,7 +23,7 @@ CREATE TABLE audit_log(
 
 DROP TABLE IF EXISTS ContactTickets;
 CREATE TABLE ContactTickets(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     Name TEXT,
     ContactNumber INTEGER, 
     Comment TEXT
@@ -31,7 +31,7 @@ CREATE TABLE ContactTickets(
 
 DROP TABLE IF EXISTS DeletedTicket;
 CREATE TABLE DeletedTicket(
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    id INTEGER PRIMARY KEY, 
     Name TEXT,
     ContactNumber TEXT,
     Comment TEXT
@@ -39,7 +39,7 @@ CREATE TABLE DeletedTicket(
 
 DROP TABLE IF EXISTS Settings;
 CREATE TABLE Settings(
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    id INTEGER PRIMARY KEY, 
     Code TEXT,
     Active INTEGER, 
     Description TEXT
@@ -47,14 +47,14 @@ CREATE TABLE Settings(
 
 DROP TABLE IF EXISTS SystemConfig;
 CREATE TABLE SystemConfig(
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    id INTEGER PRIMARY KEY, 
     BrandName TEXT,
     TradeMarkName TEXT
 );
 
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users(
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    id INTEGER PRIMARY KEY, 
     username TEXT,
     password TEXT,
     admin INTEGER
