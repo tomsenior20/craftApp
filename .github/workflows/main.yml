@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       # Checks out repositry
@@ -16,7 +16,7 @@ jobs:
 
       # Configure Node Versionk
       - name: Configured node.js
-        uses: actions:/setup-node@v3
+        uses: actions/setup-node@v3
         with: 
           node-version: '18.17.1'
     
