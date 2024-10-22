@@ -104,6 +104,7 @@ export default function RowOptions({ ticketID, record }: Number) {
         User.Comment,
         User.Assignee
       );
+      window.location.reload();
     } catch (error) {
       console.log('failed to archive ticket' + error);
     }
@@ -119,7 +120,7 @@ export default function RowOptions({ ticketID, record }: Number) {
     const GetPrivilege = async (Code: string) => {
       try {
         const result = await RetrieveSetting(Code);
-        setAdminPrivilege(result[0]);
+        setAdminPrivilege(result);
       } catch (error: any) {
         console.log('Error getting privilege:', error);
         throw error;

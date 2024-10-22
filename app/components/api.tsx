@@ -119,7 +119,7 @@ export const ApiCalls = () => {
           'Content-Type': 'application/json'
         }
       });
-      if (data && data.success) {
+      if (data) {
         setDeleteTicket((prev) => prev + 1);
         setTickets((prevTickets) =>
           prevTickets.filter((ticket) => ticket.id !== id)
@@ -178,11 +178,11 @@ export const ApiCalls = () => {
           }
         }
       );
-      if (data.result.length > 0) {
+      if (data.result) {
         // Constructs new object with Username, Admin ~ removed password
         const userData = {
-          Username: data.result[0].username,
-          Admin: data.result[0].admin
+          Username: data.result.username,
+          Admin: data.result.admin
         };
         // Checks the param for success, and handle the front end function for success
         if (typeof successFunction === 'function') {
