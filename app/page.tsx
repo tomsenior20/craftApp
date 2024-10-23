@@ -7,6 +7,8 @@ import Image from 'next/image';
 import './styling/globals.scss';
 import './styling/pages.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 interface Partnership {
   Name: string;
@@ -49,7 +51,8 @@ const GenerateParnterShips = ({
 };
 
 export default function Home() {
-  const tradeMarkResult = { Name: 'Tom Senior' };
+  const router = useRouter();
+
   const partnerships: Partnership[] = [
     {
       Name: 'Stackoverflow',
@@ -64,6 +67,10 @@ export default function Home() {
   const HeaderTitles: CompanyInformation = {
     Title: 'Market Leaders within the craft market',
     SubTitle: 'Explore More....'
+  };
+
+  const ExploreToAdminLogin = () => {
+    router.push('./admin');
   };
 
   return (
@@ -84,6 +91,7 @@ export default function Home() {
             id="exploreButton"
             type="button"
             role="button"
+            onClick={ExploreToAdminLogin}
             aria-label="exploreButton"
           >
             Explore Our Market
