@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-// Styling Imports
 import '../styling/footer.scss';
-import { fetchData } from './api';
+import { ApiCalls, fetchData } from './api';
 
 // Generates Current Year for trademark footer
 const GenerateCurrentYear = () => {
@@ -18,16 +17,12 @@ const GenerateCurrentYear = () => {
 
 const FetchTrademark = () => {
   const [tradeMarkName, setTrademarkname] = useState<string>('');
-
+  const { FetchTradeMark } = ApiCalls();
   useEffect(() => {
     const getTradeMark = async () => {
       try {
-        const data = await fetchData('getTrademarkName', {
-          method: 'GET'
-        });
-        if (data && data.length > 0) {
-          setTrademarkname(data[0].TradeMarkName);
-        }
+        const result = await FetchTradeMark();
+        setTrademarkname(result[0].TradeMarkName);
       } catch (error) {
         console.log('Error fetching trademark ' + error);
       }

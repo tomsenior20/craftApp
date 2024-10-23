@@ -239,7 +239,35 @@ export const ApiCalls = () => {
     }
   };
 
+  const FetchTradeMark = async () => {
+    try {
+      const data = await fetchData('getTrademarkName', {
+        method: 'GET'
+      });
+      if (data && data.length > 0) {
+        return data;
+      }
+    } catch (error) {
+      console.log('Error fetching trademark ' + error);
+    }
+  };
+
+  const FetchBrandName = async () => {
+    try {
+      const data = await fetchData('selectBrandName', {
+        method: 'GET'
+      });
+      if (data && data.length > 0) {
+        return data;
+      }
+    } catch (error) {
+      console.log('Error Fetching BrandName ' + error);
+    }
+  };
+
   return {
+    FetchBrandName,
+    FetchTradeMark,
     GetArchiveTickets,
     RetrieveSetting,
     GetTicket,

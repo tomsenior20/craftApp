@@ -6,7 +6,7 @@ import Link from 'next/link';
 // CSS Styling Imports
 import '../styling/nav.scss';
 import '../styling/globals.scss';
-import { fetchData } from './api';
+import { ApiCalls, fetchData } from './api';
 
 export default function Nav() {
   type Option = {
@@ -21,24 +21,20 @@ export default function Nav() {
     { key: 'Log Out', value: '/' }
   ];
 
-  // #region Fetch Brand Name
   const [brand, setBrandName] = useState<string>('');
-  const FetchBrandName = async () => {
-    try {
-      const data = await fetchData('selectBrandName', {
-        method: 'GET'
-      });
-      if (data && data.length > 0) {
-        setBrandName(data[0].BrandName);
-      }
-    } catch (error) {
-      console.log('Error Fetching BrandName ' + error);
-    }
-  };
-  // #endregion
 
   const GenerateOptions = ({ options }: { options: Option[] }) => {
     const [currentPage, setCurrentPage] = useState<string>('');
+    const { FetchBrandName } = ApiCalls();
+
+    const FetchBrand = async () => {
+      try {
+        const result = await FetchBrandName();
+        setBrandName(result[0].BrandName);
+      } catch (error) {
+        console.log('Error Fetching BrandName ' + error);
+      }
+    };
 
     useEffect(() => {
       const handleLoad = () => {
@@ -48,7 +44,7 @@ export default function Nav() {
           : console.log('Window Path is null');
       };
 
-      FetchBrandName();
+      FetchBrand();
       handleLoad();
 
       return () => {
