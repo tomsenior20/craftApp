@@ -26,7 +26,7 @@ export default function Nav() {
   const GenerateOptions = ({ options }: { options: Option[] }) => {
     const [currentPage, setCurrentPage] = useState<string>('');
     const { FetchBrandName } = ApiCalls();
-
+    // Fetch API Call for Brand name
     const FetchBrand = async () => {
       try {
         const result = await FetchBrandName();

@@ -16,7 +16,7 @@
 
 .headerImageContainer img {
   aspect-ratio: 5 / 4;
-  width: 50%;
+  // width: 50%;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s;
@@ -25,6 +25,7 @@
 .exploreHeaderContainer {
   font-size: 16px;
   display: flex;
+  flex-grow: 2;
   flex-direction: column;
   padding: 25px;
   justify-content: center;

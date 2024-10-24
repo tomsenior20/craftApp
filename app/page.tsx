@@ -79,7 +79,7 @@ export default function Home() {
       <Nav />
       {/* Main Section */}
       <section className="mainSection flex-column container-fluid flex-sm-row">
-        <div className="exploreHeaderContainer w-100 my-2">
+        <div className="exploreHeaderContainer my-2">
           <h1 aria-label="headerTitle" className="text-center m-3">
             {HeaderTitles.Title}
           </h1>
@@ -97,14 +97,18 @@ export default function Home() {
             Explore Our Market
           </button>
         </div>
-        <div className="headerImageContainer w-100 my-2">
+        <div className="headerImageContainer my-2">
           <Image
             src="/Jamaica.jpg"
             alt="headerImage"
             className="rounded img-fluid m-3"
             aria-label="headerImage"
-            width={200}
-            height={200}
+            quality={75}
+            priority={true}
+            loading="eager"
+            layout="intrinsic"
+            width={400}
+            height={400}
           />
         </div>
       </section>

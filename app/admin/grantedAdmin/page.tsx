@@ -16,13 +16,12 @@ import DeletedTickets from './GenerateDeletedTickets';
 import ArchiveTicket from './GenerateArchivedTickets';
 
 export default function GrantedAdmin() {
-  const { GetTicket, tickets } = ApiCalls();
+  const { GetTicket, tickets, AssigneeAndContactTicket } = ApiCalls();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await GetTicket();
-        console.log();
       } catch (error) {
         console.log('Error fetching tickets', error);
       }
@@ -53,7 +52,7 @@ export default function GrantedAdmin() {
         {tickets.length > 0 ? (
           tickets.map((ticket) => (
             <tr key={ticket.id} className="ticket my-2 p-2">
-              <td className="col-2 text-wrap ticketText text-break">
+              <td className="col-2 text-wrap ticketText openTicketName text-break">
                 {ticket.Name}
               </td>
               <td className="col-2 text-wrap ticketText text-break">
@@ -62,7 +61,7 @@ export default function GrantedAdmin() {
               <td className="col-4 text-wrap ticketText text-break">
                 {ticket.Comment}
               </td>
-              <AssigneeList />
+              <AssigneeList id={ticket.id} Name={ticket.Name} />
               <td className="col-4 text-wrap ticketText text-break">
                 <FormOptions ticketID={ticket.id} record={ticket} />
               </td>

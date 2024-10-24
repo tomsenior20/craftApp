@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import handleLogIn from '../admin/adminForm';
+import { METHODS } from 'http';
+import { json } from 'stream/consumers';
 
 const PortNumber: string = process.env.PORT || '3010';
 const BASE_URL = `http://${process.env.NEXT_PUBLIC_APP}:${PortNumber}`;
@@ -10,6 +12,14 @@ type Ticket = {
   Name: string;
   ContactNumber: string;
   Comment: string;
+};
+
+type AssignedTicket = {
+  id: number;
+  Name: string;
+  ContactNumber: string;
+  Comment: string;
+  AssignedTo: string;
 };
 
 // Handle Data Shared function
@@ -38,6 +48,7 @@ export const ApiCalls = () => {
   const [deletedTickets, setDeleteTicket] = useState<number>(0);
   const [openTickets, setOpenTickets] = useState<number>(0);
   const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [assignedTicket, setAssignedTickets] = useState<AssignedTicket[]>([]);
   const [listDeletedTickets, setDeletedTickets] = useState<Ticket[]>([]);
 
   const GetTicket = async () => {
@@ -265,7 +276,43 @@ export const ApiCalls = () => {
     }
   };
 
+  const InsertAssignee = async (name: string, AssignedTo: string) => {
+    try {
+      const data = await fetchData('AllocateAssignee', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          AssignedTo
+        })
+      });
+      if (data) {
+        return data;
+      }
+    } catch (error: any) {
+      console.log('Inserting Assignee Error', error);
+    }
+  };
+
+  const AssigneeAndContactTicket = async (Name: string) => {
+    try {
+      const data = await fetchData(`getContactAndAssignee?Name=${Name}`, {
+        method: 'GET'
+      });
+      if (data) {
+        setAssignedTickets(data);
+        return data;
+      }
+    } catch (error: any) {
+      console.log('Error getting assingee and Contact Tickets', error);
+    }
+  };
+
   return {
+    AssigneeAndContactTicket,
+    InsertAssignee,
     FetchBrandName,
     FetchTradeMark,
     GetArchiveTickets,

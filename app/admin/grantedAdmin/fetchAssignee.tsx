@@ -1,36 +1,47 @@
+'use client';
+
 import React, { useEffect, useState, useRef } from 'react';
 import { fetchData } from '../../components/api';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown } from 'react-bootstrap';
+import { ApiCalls } from '../../components/api';
 
-export default function Assignee() {
+interface ticketDetails {
+  id: number;
+  Name: string;
+}
+
+export default function Assignee({ id: id, Name: Name }: ticketDetails) {
   interface Assignee {
     name: string;
     id: number;
   }
 
   const [assignee, setAssignee] = useState<Assignee[]>([]);
+  const { InsertAssignee, AssigneeAndContactTicket } = ApiCalls();
+  const [assigneeSelected, setAssigneeSelected] = useState<string[]>([]);
+  const [showDropdown, setShowDropDown] = useState<boolean>(true);
   const [show, setShow] = useState(false);
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const fetchAssignee = async () => {
-      try {
-        const data = await fetchData('getAssigneeList', {
-          method: 'GET'
-        });
-        if (data && Array.isArray(data.results)) {
-          setAssignee(data.results);
-        }
-      } catch (error) {
-        console.log('Error generating Assignee:', error);
+  const fetchAssignee = async () => {
+    try {
+      const data = await fetchData('getAssigneeList', {
+        method: 'GET'
+      });
+      if (data && Array.isArray(data.results)) {
+        setAssignee(data.results);
       }
-    };
+    } catch (error) {
+      console.log('Error fetching assignees:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchAssignee();
+    checkAssignee();
   }, []);
 
-  // Function to adjust the height of ticketTableContainer based on whether toggle is open or not
   const adjustContainerHeight = (isShow: boolean) => {
     const optionsHeight = optionsRef.current?.clientHeight;
     const ticketTableContainer = document.getElementById('openTicketContainer');
@@ -50,7 +61,22 @@ export default function Assignee() {
     adjustContainerHeight(isOpen);
   };
 
-  // Generate Options JSX
+  const SelectAssignee = async (name: string) => {
+    await InsertAssignee(Name, name);
+  };
+
+  const checkAssignee = async () => {
+    try {
+      const a = await AssigneeAndContactTicket(Name);
+      if (a.results) {
+        setAssigneeSelected([a.results.AssignedTo]);
+        setShowDropDown(false);
+      }
+    } catch (error) {
+      console.log('Error checking Assignee:', error);
+    }
+  };
+
   const generateAssigneeOptions = () => {
     return (
       <Dropdown
@@ -68,12 +94,25 @@ export default function Assignee() {
         </Dropdown.Toggle>
         <Dropdown.Menu ref={optionsRef} className="w-100" id="assignOptions">
           {assignee.map((people) => (
-            <Dropdown.Item key={people.id}>{people.name}</Dropdown.Item>
+            <Dropdown.Item
+              key={people.id}
+              onClick={() => SelectAssignee(people.name)}
+            >
+              {people.name}
+            </Dropdown.Item>
           ))}
         </Dropdown.Menu>
       </Dropdown>
     );
   };
 
-  return <td className="col text-wrap">{generateAssigneeOptions()}</td>;
+  return (
+    <td className="col text-wrap">
+      {showDropdown ? (
+        generateAssigneeOptions()
+      ) : (
+        <span>{assigneeSelected.length > 0 ? assigneeSelected : null}</span>
+      )}
+    </td>
+  );
 }

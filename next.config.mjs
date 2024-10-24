@@ -7,9 +7,6 @@ const nextConfig = {
     sassOptions: {
         includePaths: ['./styling'],
     },
-    experimental: {
-        appDir: true,
-    },
 };
 
 export default nextConfig;

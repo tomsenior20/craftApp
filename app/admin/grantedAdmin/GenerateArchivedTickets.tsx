@@ -31,7 +31,6 @@ export default function GenerateArchiveTickets() {
     const AdminSettingRetrieval = async () => {
       try {
         const adminPrivilege = await RetrieveSetting('Admin');
-        console.log(adminPrivilege);
         setAdminPriv(adminPrivilege ? adminPrivilege.Active : 1);
       } catch (error: any) {
         console.log('GetArchiveTicket error:', error);
