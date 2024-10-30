@@ -23,3 +23,7 @@ jobs:
       # Set up npm dependences
       - name: set up npm
         run: npm install
+
+      # Run Unit Tests
+      - name: Run Unit-Tests
+        run: npm test
