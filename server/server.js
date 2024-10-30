@@ -107,7 +107,7 @@ app.get('/loginAdminForm', async (req, res) => {
     checkReq(req, res);
     const { username, password } = req.query;
     const hashedPassword = hashPassword(password);
-    const query = 'SELECT username, password, admin FROM Users WHERE username = ? AND password = ?';
+    const query = 'SELECT * FROM Users WHERE username = ? AND password = ?';
     try {
         db.get(query, [username, hashedPassword], (error, result) => {
             if (!error) {
@@ -118,6 +118,37 @@ app.get('/loginAdminForm', async (req, res) => {
         return handleErrorResponse(req.originalUrl, res, error);
     }
 });
+
+app.get('/checkLocked', async (req, res) => {
+    checkReq(req, res);
+    const { username } = req.query;
+    const query = 'SELECT locked FROM Users WHERE username = ?';
+    try {
+        db.get(query, [username], (error, result) => {
+            if (!error) {
+                res.status(200).json({ type: 'success', message: 'Record retrieved', result });
+            }
+        })
+    } catch (error) {
+        return handleErrorResponse(req.originalUrl, res, error);
+    }
+});
+
+app.post('/lockAccount', async (req, res) => {
+    checkReq(req, res)
+    const query = 'UPDATE Users SET locked = 1 WHERE username = ?';
+    const { username } = req.body;
+    try {
+        db.run(query, [username], (error, results) => {
+            if (!error) {
+                res.status(200).json({ message: "Successfully deleted ticket", results });
+            }
+        })
+    }
+    catch (error) {
+        console.log("Error locking account", error);
+    }
+})
 
 // Get All Tickets
 app.get("/retrieveTicket", async (req, res) => {

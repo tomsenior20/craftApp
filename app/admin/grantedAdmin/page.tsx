@@ -85,7 +85,7 @@ export default function GrantedAdmin() {
         </div>
       </section>
       <section className="ticketSection container-fluid p-3 my-4 d-flex flex-column">
-        <div className="openTicketTextContainer container my-4 p-2 ">
+        <div className="openTicketTextContainer container p-2 ">
           <h2 className="text-center openTicketText">
             Current Open Contact Tickets
           </h2>

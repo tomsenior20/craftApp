@@ -57,7 +57,8 @@ CREATE TABLE Users(
     id INTEGER PRIMARY KEY, 
     username TEXT,
     password TEXT,
-    admin INTEGER
+    admin INTEGER, 
+    locked INTEGER
 );
 
 

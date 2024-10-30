@@ -111,7 +111,11 @@ export default function Assignee({ id: id, Name: Name }: ticketDetails) {
       {showDropdown ? (
         generateAssigneeOptions()
       ) : (
-        <span>{assigneeSelected.length > 0 ? assigneeSelected : null}</span>
+        <div className="assignedUserTextContainer">
+          <p className="assignedUserText">
+            {assigneeSelected.length > 0 ? assigneeSelected : null}
+          </p>
+        </div>
       )}
     </td>
   );

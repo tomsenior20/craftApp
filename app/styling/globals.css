@@ -1,0 +1,18 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: auto;
+  font-size: 8px;
+  min-height: 100vh;
+  background-color: #eeeeee !important;
+}
+
+:root {
+  --header-color-text: #f0f0f0;
+  --color-text: #000000;
+  --font-family: 'Helvetica';
+}
+/*# sourceMappingURL=globals.css.map */

@@ -15,14 +15,17 @@ type UserData = {
 
 export default function AdminForm() {
   const [usernameInput, setusernameInput] = useState<string>('');
+  const [invalidAttempt, setInvalidAttempt] = useState<number>(0);
   const [passwordInput, setPasswordInput] = useState<string>('');
-  const [showAlert, setShowAlert] = useState<boolean>(false); // State for alert visibility
+  const [showAlert, setShowAlert] = useState<boolean>(false);
   const [alertMessage, setAlertMessage] = useState<string>('');
   const [type, setType] = useState<'success' | 'error'>('success');
+  const [accountLocked, setAccountLocked] = useState<number>(0);
 
   const regex = /^[a-zA-Z]+$/;
   const router = useRouter();
-  const { InsertAuditLog, LogInFormAttempt } = ApiCalls();
+  const { InsertAuditLog, LogInFormAttempt, LockAccount, CheckIfLocked } =
+    ApiCalls();
 
   // Resets the form inputs
   const resetFormInputs = () => {
@@ -58,7 +61,16 @@ export default function AdminForm() {
         'User or password is invalid',
         'error'
       );
+      handleLogInAttempt();
       return;
+    }
+
+    const getLockedStatus = await CheckIfLocked(usernameInput);
+    // Check if the getLockedStatus exists
+    if (getLockedStatus.result) {
+      await setAccountLocked(getLockedStatus.result.locked);
+    } else {
+      setAccountLocked(0);
     }
 
     if (usernameInput.match(regex) && passwordInput.match(regex)) {
@@ -66,7 +78,14 @@ export default function AdminForm() {
       const username: string = encodeURIComponent(usernameInput);
       const password: string = encodeURIComponent(passwordInput);
       try {
-        await LogInFormAttempt(username, password, handleLogIn);
+        await LogInFormAttempt(
+          username,
+          password,
+          accountLocked,
+          handleLogIn,
+          failedLogIn,
+          handleLocked
+        );
       } catch (error) {
         console.log('Error ' + error);
       } finally {
@@ -79,8 +98,26 @@ export default function AdminForm() {
         'One or More Inputs are empty',
         'error'
       );
+
+      handleLogInAttempt();
       resetFormInputs();
     }
+  };
+
+  const handleLogInAttempt = () => {
+    setInvalidAttempt((prevCount) => {
+      const newCount = prevCount + 1;
+      // Check if over,equal to 3, then lock account
+      if (newCount >= 3) {
+        toggleAlertVisibilityAndMessage(
+          true,
+          'Account is locked contact administrator',
+          'error'
+        );
+      }
+      return newCount;
+    });
+    return;
   };
 
   // Checkbox functionality
@@ -89,12 +126,40 @@ export default function AdminForm() {
     setIsChecked(e.target.checked);
   };
 
+  // Handle Locked Response
+  const handleLocked = () => {
+    toggleAlertVisibilityAndMessage(
+      true,
+      'Account is locked, contact admin',
+      'error'
+    );
+  };
+
   const handleLogIn = (userData: UserData) => {
+    setInvalidAttempt(0);
     // Sets the local userid,admin to local storage for furture usage.
     localStorage.setItem('userID', userData.Username);
     localStorage.setItem('admin', userData.Admin.toString());
     // Redirects to alternative page is successful
     router.push('/admin/grantedAdmin');
+  };
+
+  const failedLogIn = async (username: string) => {
+    handleLogInAttempt();
+    toggleAlertVisibilityAndMessage(
+      true,
+      'Invalid Username or password',
+      'error'
+    );
+    if (invalidAttempt >= 3) {
+      try {
+        // Lock account, reset attempt number
+        await LockAccount(username);
+        await setInvalidAttempt(0);
+      } catch (error: any) {
+        console.log('Error locking account attempt', error);
+      }
+    }
   };
 
   return (

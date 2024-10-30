@@ -4,7 +4,7 @@ import handleLogIn from '../admin/adminForm';
 import { METHODS } from 'http';
 import { json } from 'stream/consumers';
 
-const PortNumber: string = process.env.PORT || '3010';
+const PortNumber: string = process.env.PORT ?? '3010';
 const BASE_URL = `http://${process.env.NEXT_PUBLIC_APP}:${PortNumber}`;
 
 type Ticket = {
@@ -177,11 +177,75 @@ export const ApiCalls = () => {
   const LogInFormAttempt = async (
     username: string,
     password: string,
-    successFunction: Function
+    lockedAccount: number,
+    successFunction: Function,
+    failedLogIn: Function,
+    handleLockedAccount: Function
   ) => {
     try {
+      // Dont try to log in if account is already locked
+      if (lockedAccount === 0) {
+        const data = await fetchData(
+          `loginAdminForm?username=${username}&password=${password}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        );
+        if (data.result) {
+          // Constructs new object with Username, Admin ~ removed passwords
+          const userData = {
+            Username: data.result.username,
+            Admin: data.result.admin,
+            Lockedout: data.result.locked
+          };
+          if (
+            typeof successFunction === 'function' &&
+            userData.Lockedout !== 1
+          ) {
+            successFunction(userData);
+            // Handles if account is locked == 1 ( locked )
+          }
+          await InsertAuditLog(username, 'Successfull Log In Attempt');
+        } else {
+          // Handles Invalid Credentials etc
+          failedLogIn(username);
+          await InsertAuditLog(username, 'Attempted Log In Attempt');
+        }
+      } else {
+        handleLockedAccount();
+        await InsertAuditLog(username, 'Handled Locked Account Attempt');
+      }
+    } catch (error) {
+      console.log('Error ' + error);
+    }
+  };
+
+  const LockAccount = async (username: string) => {
+    try {
+      const data = await fetchData('lockAccount', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username
+        })
+      });
+      if (data) {
+        return data;
+      }
+    } catch (error: any) {
+      console.log('Error Locking Account', error);
+    }
+  };
+
+  const CheckIfLocked = async (username: string) => {
+    try {
       const data = await fetchData(
-        `loginAdminForm?username=${username}&password=${password}`,
+        `checkLocked?username=${encodeURIComponent(username)}`,
         {
           method: 'GET',
           headers: {
@@ -189,20 +253,11 @@ export const ApiCalls = () => {
           }
         }
       );
-      if (data.result) {
-        // Constructs new object with Username, Admin ~ removed password
-        const userData = {
-          Username: data.result.username,
-          Admin: data.result.admin
-        };
-        // Checks the param for success, and handle the front end function for success
-        if (typeof successFunction === 'function') {
-          successFunction(userData);
-        }
-        await InsertAuditLog(username, 'Successfull Log In Attempt');
+      if (data) {
+        return data;
       }
     } catch (error) {
-      console.log('Error ' + error);
+      console.log('Error checking locked account', error);
     }
   };
 
@@ -311,6 +366,8 @@ export const ApiCalls = () => {
   };
 
   return {
+    CheckIfLocked,
+    LockAccount,
     AssigneeAndContactTicket,
     InsertAssignee,
     FetchBrandName,
