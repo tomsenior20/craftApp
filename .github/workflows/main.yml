@@ -22,15 +22,9 @@ jobs:
 
       # Set up npm dependencies
       - name: Configure npm
-        run: npm install
-        run: npm i next react react-dom
-        run: npm i dotenv
-        run: npm i sqlite3
-        run: npm i --save-dev typescript
-        run: npm i --save-dev @types/react @types/react-dom
-        run: npm i express
-        run: npm i cors
-        run: npm i helmet
+        run: |
+          npm install next react react-dom next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom
+          express cors helmet
 
       # Run Build
       - name: Run NPM Build for optimised build
