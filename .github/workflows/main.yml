@@ -20,9 +20,17 @@ jobs:
         with:
           node-version: '18.17.1'
 
-      # Set up npm dependences
+      # Set up npm dependencies
       - name: Configure npm
         run: npm install
+        run: npm i next react react-dom
+        run: npm i dotenv
+        run: npm i sqlite3
+        run: npm i --save-dev typescript
+        run: npm i --save-dev @types/react @types/react-dom
+        run: npm i express
+        run: npm i cors
+        run: npm i helmet
 
       # Run Build
       - name: Run NPM Build for optimised build
