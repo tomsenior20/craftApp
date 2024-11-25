@@ -18,6 +18,19 @@
 
 This project reflects currrent systems within workforce architecture, this solution allows a fully condensed solution allowing users to control how there workforce works. It allows for deletion and archiving of tickets, whilst being able to select the assignee of the new tickets.
 
+## Things to note
+
+### Pulling the code branch
+Upon pulling the code down there will be a requirement for an .env file to be created for the following:
+    1: PORT ( number )
+    2: SQLLite_DB_PATH ( Location path to where the DB Is )
+    3: NEXT_PUBLIC_APP ( set to localhost)
+
+you will need this inside of the server folder, alongside having on in the public directory.
+
+### Password Creation for users.
+1) Requires SHA256 Format in HEX
+
 ### Prerequisites
 
 What things you need to install the software and how to install them.
