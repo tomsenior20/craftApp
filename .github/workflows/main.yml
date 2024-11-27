@@ -25,10 +25,19 @@ jobs:
         run: |
           npm install next react react-dom next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet
 
+      # Run Unit Tests
+      - name: Run Unit-Tests
+        run: npm test
+
+      # Run Vulnerabilities coverage
+      - name: "Checking for Vulnerabilities"
+        run: npm audit
+
       # Run Build
       - name: Run NPM Build for optimised build
         run: npm run build
 
-      # Run Unit Tests
-      - name: Run Unit-Tests
-        run: npm test
+
+      # Build Docker Image
+      - name: "Construct Docker Image";
+        run: docker build -t craftApp:latest
