@@ -84,10 +84,10 @@ jobs:
       - name: Construct Docker Image
         # run: docker build --no-cache -t craftapp:latest -f Dockerfile .
         run: |
-          docker build -t tomsenior29/craftapp:latest:${{ github.sha }} .
+          docker build -t tomsenior98/craftapp:latest:${{ github.sha }} .
 
       # Push Docker Image
       - name: Push Docker Image
         run: | 
-          docker push tomsenior29/craftapp:latest:${{ github.sha }}
+          docker push tomsenior98/craftapp:latest:${{ github.sha }}
         
