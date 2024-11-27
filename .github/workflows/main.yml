@@ -70,6 +70,24 @@ jobs:
       # Check out the repository again in the deploy job
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log into Docker
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
       # Build Docker Image
       - name: Construct Docker Image
-        run: docker build --no-cache -t craftapp:latest -f Dockerfile .
+        # run: docker build --no-cache -t craftapp:latest -f Dockerfile .
+        run: |
+          docker build -t tomsenior29/craftapp:latest:${{ github.sha }} .
+
+      # Push Docker Image
+      - name: Push Docker Image
+        run: | 
+          docker push tomsenior29/craftapp:latest:${{ github.sha }}
+        
