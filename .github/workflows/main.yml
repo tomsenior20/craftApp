@@ -89,5 +89,6 @@ jobs:
       # Push Docker Image
       - name: Push Docker Image
         run: | 
-          docker push tomsenior98/craftapp:latest:${{ github.sha }}
+            docker push tomsenior98/craftapp:latest
+            docker push tomsenior98/craftapp:${{ github.sha }}
         
