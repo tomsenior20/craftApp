@@ -59,7 +59,7 @@ jobs:
       # Build the project
       - name: Build project
         run: npm run build
-        working-directory: ./craftApp
+        working-directory: ./
 
   deploy:
     needs: build
