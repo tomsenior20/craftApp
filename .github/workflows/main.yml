@@ -6,38 +6,54 @@ on:
       - main
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
-
+    # Steps for setup
     steps:
       # Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v3
-
       # Configure Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.17.1'
-
-      # Install npm dependencies
+       # Install npm dependencies
       - name: Install npm dependencies
         run: |
           npm install next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet
 
+  test:
+    runs-on: ubuntu-latest
+    needs: setup
+    # Steps for test
+    steps:
       # Run Unit Tests
       - name: Run Unit Tests
         run: npm test
 
-      # Check for vulnerabilities
+  audit:
+    runs-on: ubuntu-latest
+    needs: setup
+    # Steps for test
+    steps:
+       # Check for vulnerabilities
       - name: Check for Vulnerabilities
         run: npm audit
 
+  build:
+    needs: [audit, test]
+    runs-on: ubuntu-latest
+    steps:
       # Build the project
       - name: Build project
         if: success()
         run: npm run build
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       # Build Docker Image
       - name: Construct Docker Image
         run: docker build -t craftapp:latest -f Dockerfile .
