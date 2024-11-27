@@ -55,9 +55,8 @@ jobs:
     steps:
       # Build the project
       - name: Build project
-        if: success()
         run: npm run build
-        working-directory: ./
+        working-directory: ./craftApp
 
   deploy:
     needs: build
