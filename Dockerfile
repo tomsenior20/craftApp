@@ -6,7 +6,7 @@ COPY package*.json ./
 COPY ./app ./app
 COPY ./server ./server
 COPY ./.env ./server/.env
-COPY ./.env ./.env
+COPY .env ./
 # Install project dependencies
 RUN npm install
 # Copy the rest of your application code
