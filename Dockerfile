@@ -1,20 +1,31 @@
 FROM node:latest
-# Work Directory
+
+# Set Working Directory
 WORKDIR /app
+
 # Copy package.json and package-lock.json (if available)
 COPY package*.json ./
-COPY ./app ./app
-# Copy Server Dir files, .env file.
-COPY ./server ./server
-COPY ./server/.env ./server/.env
-COPY ./.env ./.env
+
 # Install project dependencies
 RUN npm install
-# Copy the rest of your application code
+
+# Copy the application files
+COPY ./app ./app
+COPY ./server ./server
+
+# Copy the external .env file to the root of the container
+COPY .env ./
+
+# Copy the internal .env file from the server directory
+COPY ./server/.env ./server/.env
+
+# Copy any additional files if necessary
 COPY . .
-# If you need to run the build command (if using something like create-react-app)
+
+# Build the application
 RUN npm run build
-# Expose the port your app runs on
+
+# Expose the required ports your application runs on
 EXPOSE 3000 3010
 
 # Command to run your application
