@@ -1,4 +1,4 @@
-name: 'Ticket Solution CI CD'
+name: 'Ticket Solution CI/CD'
 
 on:
   push:
@@ -10,34 +10,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks out repositry
-      - name: Checks out resposity
+      # Check out the repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Configure Node Versionk
-      - name: Configure node.js
+      # Configure Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.17.1'
 
-      # Set up npm dependencies
-      - name: Configure npm
+      # Install npm dependencies
+      - name: Install npm dependencies
         run: |
-          npm install next react react-dom next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet
+          npm install next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet
 
       # Run Unit Tests
-      - name: Run Unit-Tests
+      - name: Run Unit Tests
         run: npm test
 
-      # Run Vulnerabilities coverage
-      - name: "Checking for Vulnerabilities"
+      # Check for vulnerabilities
+      - name: Check for Vulnerabilities
         run: npm audit
 
-      # Run Build
-      - name: Run NPM Build for optimised build
+      # Build the project
+      - name: Build project
         if: success()
         run: npm run build
 
+      # Check parent directory contents for debugging
+      - name: Check parent directory
+        run: ls -la ..
+
       # Build Docker Image
-      - name: "Construct Docker Image"
-        run: docker build -t craftapp:latest -f Dockerfile .
+      - name: Construct Docker Image
+        run: docker build -t craftapp:latest -f ../Dockerfile ..
