@@ -4,9 +4,10 @@ WORKDIR /app
 # Copy package.json and package-lock.json (if available)
 COPY package*.json ./
 COPY ./app ./app
+# Copy Server Dir files, .env file.
 COPY ./server ./server
 COPY ./server/.env ./server/.env
-COPY .env ./
+COPY ./.env ./.env
 # Install project dependencies
 RUN npm install
 # Copy the rest of your application code
