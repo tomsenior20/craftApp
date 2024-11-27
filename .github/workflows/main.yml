@@ -35,9 +35,9 @@ jobs:
 
       # Run Build
       - name: Run NPM Build for optimised build
+        if: success()
         run: npm run build
-
 
       # Build Docker Image
       - name: "Construct Docker Image"
-        run: docker build -t craftApp:latest .
+        run: docker build -t craftapp:latest .
