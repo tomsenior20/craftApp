@@ -10,8 +10,6 @@ RUN npm install
 
 # Copy all project files, including the .env files
 COPY . .
-COPY .env ./           
-COPY server/.env ./server
 
 # Build the front-end (Next.js app located in the root)
 RUN npm run build
