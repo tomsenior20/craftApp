@@ -14,7 +14,7 @@ COPY ./app ./app
 COPY ./server ./server
 
 # Copy the external .env file to the root of the container
-COPY .env ./
+COPY ./.env ./.env
 
 # Copy the internal .env file from the server directory
 COPY ./server/.env ./server/.env
