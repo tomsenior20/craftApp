@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY ./app ./app
 COPY ./server ./server
-COPY ./.env ./server/.env
+COPY ./server/.env ./server/.env
 COPY .env ./
 # Install project dependencies
 RUN npm install
