@@ -1,27 +1,23 @@
 FROM node:latest
 
-# Set the Working Directory to your desired location
-# Here we're setting it to /app
+# Set working directory to /app (root of your project)
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if available)
+# Copy package files and install dependencies
 COPY package*.json ./
-
-# Install project dependencies
+RUN npm install --global concurrently
 RUN npm install
 
-# Copy all relevant application files and directories
-COPY ./app ./app
-COPY ./public ./public
-COPY ./server ./server
-COPY ./.env ./
-COPY ./server/.env ./server/.env 
+# Copy all project files, including the .env files
+COPY . .
+COPY .env ./           
+COPY server/.env ./server
 
-# Build the application (if applicable)
+# Build the front-end (Next.js app located in the root)
 RUN npm run build
 
-# Expose the required ports your application runs on
+# Expose both ports (3000 for front-end, 3010 for the server)
 EXPOSE 3000 3010
 
-# Command to run your application
-CMD ["sh", "-c", "node server/server.js & npm --prefix ./app run dev"]
+# Run both the front-end (Next.js) and the back-end (server.js) concurrently
+CMD ["concurrently", "\"node server/server.js\"", "\"npm run dev\""]
