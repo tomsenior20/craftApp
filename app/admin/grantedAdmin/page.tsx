@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // Component Import
 import Nav from '../../components/nav';
 import Footer from '../../components/footer';
@@ -17,10 +17,15 @@ import ArchiveTicket from './GenerateArchivedTickets';
 
 export default function GrantedAdmin() {
   const { GetTicket, tickets, AssigneeAndContactTicket } = ApiCalls();
-
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
   
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const userID = localStorage.getItem('userID');
+      setIsUserAuthenticated(userID !== null); // true if userID exists
+    }
+
     const fetchData = async () => {
       try {
         await GetTicket();
@@ -47,10 +52,6 @@ export default function GrantedAdmin() {
       </tr>
     );
   };
-
-  const isAuthenticated = () => {
-    return localStorage.getItem('userID') !== null;
-  }
 
   const GenerateTickets = () => {
     return (
@@ -82,7 +83,7 @@ export default function GrantedAdmin() {
     );
   };
 
-  if(!isAuthenticated()) {
+  if(!isUserAuthenticated) {
     return(
       <div className='d-flex justify-content-center flex-column align-items-center errorContainer'>
         <h1 className='m-4'>Access Denied to this page.</h1>
