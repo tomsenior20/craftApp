@@ -40,4 +40,4 @@ jobs:
 
       # Build Docker Image
       - name: "Construct Docker Image"
-        run: docker build -t craftapp:latest -f ../Dockerfile .
+        run: docker build -t craftapp:latest -f ../../Dockerfile ../../
