@@ -72,4 +72,4 @@ jobs:
         uses: actions/checkout@v3
       # Build Docker Image
       - name: Construct Docker Image
-        run: docker build -t craftapp:latest -f Dockerfile .
+        run: docker build --no-cache -t craftapp:latest -f Dockerfile .
