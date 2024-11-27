@@ -18,6 +18,8 @@ import ArchiveTicket from './GenerateArchivedTickets';
 export default function GrantedAdmin() {
   const { GetTicket, tickets, AssigneeAndContactTicket } = ApiCalls();
 
+  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,6 +47,10 @@ export default function GrantedAdmin() {
       </tr>
     );
   };
+
+  const isAuthenticated = () => {
+    return localStorage.getItem('userID') !== null;
+  }
 
   const GenerateTickets = () => {
     return (
@@ -75,6 +81,15 @@ export default function GrantedAdmin() {
       </tbody>
     );
   };
+
+  if(!isAuthenticated()) {
+    return(
+      <div className='d-flex justify-content-center flex-column align-items-center errorContainer'>
+        <h1 className='m-4'>Access Denied to this page.</h1>
+        <h2 className='m-4'>Please click the back button</h2>
+      </div>
+    )
+  }
 
   return (
     <>

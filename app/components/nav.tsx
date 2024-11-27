@@ -14,6 +14,7 @@ export default function Nav() {
     value: string;
   };
 
+  // Generate key value pairs for options
   const Options: Option[] = [
     { key: 'Home', value: '/' },
     { key: 'Contact', value: '/contact' },
@@ -53,19 +54,27 @@ export default function Nav() {
       };
     }, []);
 
+    // Handles the log out
+    const handleLogOut = () => {
+      if(typeof window !== 'undefined'){
+        return localStorage.removeItem('userID');
+      }
+      return false;
+    }
+
     return (
       <ul>
         {options.map((item, index) =>
           currentPage === '/admin/grantedAdmin' && item.key === 'Log Out' ? (
             <li key={index} className="d-flex justify-content-around">
-              <Link href={item.value} className="nav-link">
+              <Link href={item.value} className="nav-link" onClick={handleLogOut}>
                 {item.key}
               </Link>
             </li>
           ) : currentPage !== '/admin/grantedAdmin' &&
             item.key !== 'Log Out' ? (
             <li key={index} className="d-flex justify-content-around">
-              <Link href={item.value} className="nav-link">
+              <Link href={item.value} className="nav-link" id={item.value}>
                 {item.key}
               </Link>
             </li>

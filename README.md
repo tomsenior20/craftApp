@@ -50,7 +50,6 @@ What things you need to install the software and how to install them.
 ## 🎈 Usage <a name="usage"></a>
 
 # Admin User ~ Should be able to perform following scenario:
-
 1. See Open Tickets.
 2. See Deleted Tickets.
 3. Archive & Delete Tickets.
