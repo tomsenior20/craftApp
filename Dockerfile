@@ -17,4 +17,4 @@ RUN npm run build
 EXPOSE 3000 3010
 
 # Command to run your application
-CMD sh -c "node server/server.js & npm --prefix ./app run dev"
+CMD ["sh", "-c", "node server/server.js & npm --prefix ./app run dev"]
