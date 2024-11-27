@@ -53,6 +53,9 @@ jobs:
     needs: [audit, test]
     runs-on: ubuntu-latest
     steps:
+      # Check out the repository again in the deploy job
+      - name: Checkout repository
+        uses: actions/checkout@v3
       # Build the project
       - name: Build project
         run: npm run build
