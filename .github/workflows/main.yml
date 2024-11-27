@@ -38,10 +38,6 @@ jobs:
         if: success()
         run: npm run build
 
-      # Check parent directory contents for debugging
-      - name: Check parent directory
-        run: ls -la ..
-
       # Build Docker Image
       - name: Construct Docker Image
-        run: docker build -t craftapp:latest -f ../craftApp/Dockerfile ../craftApp/
+        run: docker build -t craftapp:latest -f ../Dockerfile ../
