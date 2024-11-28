@@ -9,7 +9,8 @@ RUN npm install
 COPY . .
 
 # Build the front-end (Next.js app located in the root)
-RUN npm run build --verbose
+RUN npm run server
+RUN npm run build
 
 # Expose both ports (3000 for front-end, 3010 for the server)
 EXPOSE 3000 3010
