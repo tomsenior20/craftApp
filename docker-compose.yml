@@ -4,7 +4,6 @@ services:
   db:
     container_name: sqllitedb
     image: keinos/sqlite3
-    command: node server.js
     restart: always
     environment:
       DB_Path: ${SQLLite_DB_PATH}
@@ -20,4 +19,4 @@ services:
       dockerfile: Dockerfile
     ports:
       - ${PORT}
-    command: node run server && npm run build
+    command: sh -c "npx node server/server.js && npm run build"

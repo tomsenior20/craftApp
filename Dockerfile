@@ -16,4 +16,4 @@ COPY . .
 EXPOSE 3000 3010
 
 # # Run both the front-end (Next.js) and the back-end (server.js) concurrently
-# CMD ["concurrently", "node", "server/server.js", "npm", "run", "dev"]
+# CMD ["concurrently", "node", "server/server.js", "npm", "run", "build"]
