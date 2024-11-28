@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy package files first to leverage caching
 COPY package*.json ./
-# Copy all project files
+RUN npm install
 COPY . .
 
 # Build the front-end (Next.js app located in the root)
