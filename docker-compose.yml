@@ -24,9 +24,9 @@ services:
     build:
       dockerfile: Dockerfile
     environment:
-      - PORT=3000
+      - PORT=${FRONTEND_PORT}
     ports:
-      - "3000:3000"
+      - "5000:5000"
     # command: sh -c "node server/server.js & npm run build && npm run start"
     command: sh -c "npm run build && npm run start"
 
