@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3010:3013"
+      - "3010:3010"
     volumes:
       - ./app/database:/app/database
     command: sh -c "node server/server.js"
