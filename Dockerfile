@@ -20,4 +20,4 @@ EXPOSE 3000 3010
 RUN npm install -g concurrently
 
 # Run both the front-end (Next.js) and the back-end (server.js) concurrently
-CMD ["concurrently", "\"npm run start\""]
+CMD ["concurrently", "\"npm run start\"", "\"npm run server]
