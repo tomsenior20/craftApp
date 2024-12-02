@@ -8,8 +8,6 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-COPY ./app/database/database.db /app/database/database.db
-
 # Build the front-end (Next.js app located in the root)
 RUN npm run build
 
@@ -20,4 +18,4 @@ EXPOSE 5000 4000
 RUN npm install -g concurrently
 
 # Run both the front-end (Next.js) and the back-end (server.js) concurrently
-CMD ["concurrently", "\"npm run server\"", "\"npm run start\""]
+CMD ["concurrently",  "\"npm run start\""]

@@ -4,16 +4,16 @@ services:
   #   image: nouchka/sqlite3
   #   restart: always
 
-  backend:
-    container_name: node_backend
-    build:
-      context: .
-      dockerfile: Dockerfile
-    environment:
-      - PORT=${PORT}
-    volumes:
-      - ./app/database:/app/database
-    command: sh -c "node server/server.js"
+  # backend:
+  #   container_name: node_backend
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - PORT=${PORT}
+  #   volumes:
+  #     - ./app/database:/app/database
+  #   command: sh -c "node server/server.js"
   app:
     container_name: app
     # depends_on:
