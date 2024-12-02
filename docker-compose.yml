@@ -9,8 +9,6 @@ services:
       SQLLite_DB_PATH: /app/database/database.db
     volumes:
       - ./app/database:/app/database
-    ports:
-      - 3000:3000
 
   app:
     container_name: app
