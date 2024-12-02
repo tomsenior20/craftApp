@@ -1,20 +1,16 @@
-version: '3.8'
-
 services:
-  db:
-    container_name: sqllitedb
-    image: nouchka/sqlite3
-    restart: always
-    environment:
-      SQLLite_DB_PATH: /app/database/database.db
-    volumes:
-      - ./app/database:/app/database
-    command: tail -f /dev/null
+  # db:
+  #   container_name: test_db
+  #   image: nouchka/sqlite3
+  #   volumes:
+  #     - ./app/database:/app/database  # Mount your local db folder to container
+  #   command: sqlite3 /app/database/database.db  # Execute sqlite3 with the correct db path
+  #   restart: always
 
   app:
     container_name: app
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     restart: always
     build:
       dockerfile: Dockerfile

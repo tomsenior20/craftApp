@@ -8,6 +8,8 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
+COPY ./app/database/database.db /app/database/database.db
+
 # Build the front-end (Next.js app located in the root)
 RUN npm run build
 
