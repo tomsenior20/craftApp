@@ -1,7 +1,7 @@
 FROM node:20
 
 # Set working directory to /app
-WORKDIR /src
+WORKDIR /app
 
 # Copy package files first to leverage caching
 COPY package*.json ./
@@ -20,4 +20,4 @@ EXPOSE 3000 3010
 RUN npm install -g concurrently
 
 # Run both the front-end (Next.js) and the back-end (server.js) concurrently
-CMD ["sh", "-c", "node server/server.js && npm run build"]
+CMD ["concurrently", "\"npm run start\"", "\"node server/server.js\""]
