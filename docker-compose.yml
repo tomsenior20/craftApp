@@ -9,6 +9,7 @@ services:
       SQLLite_DB_PATH: /app/database/database.db
     volumes:
       - ./app/database:/app/database
+    command: tail -f /dev/null
 
   app:
     container_name: app
