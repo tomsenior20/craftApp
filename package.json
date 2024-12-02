@@ -6,7 +6,7 @@
     "dev": "next dev",
     "server": "node server/server.js",
     "build": "next build",
-    "start": "node app/server.js",
+    "start": "next start",
     "lint": "next lint",
     "test": "jest"
   },

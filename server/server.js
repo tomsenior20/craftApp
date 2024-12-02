@@ -13,6 +13,7 @@ const dev = process.env.NODE_ENV !== "production";
 
 const app = express();
 const port = process.env.PORT || 8989;
+const dbPath = process.env.SQLLite_DB_PATH || '/database/database.db';
 
 // Custom HTTP Headers
 const corsOptions = {
@@ -26,7 +27,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // URL of Database is in ENV File
-const db = new sqlite3.Database(process.env.SQLLite_DB_PATH, (error) => {
+const db = new sqlite3.Database(dbPath, (error) => {
     if (error) {
         console.log("Error Connecting to database");
     } else {

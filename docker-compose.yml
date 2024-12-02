@@ -3,12 +3,14 @@ version: '3.8'
 services:
   db:
     container_name: sqllitedb
-    image: keinos/sqlite3
+    image: nouchka/sqlite3
     restart: always
     environment:
-      DB_Path: ${SQLLite_DB_PATH}
+      SQLLite_DB_PATH: /app/database/database.db
+    volumes:
+      - ./app/database:/app/database
     ports:
-      - ${PORT}
+      - 3000:3000
 
   app:
     container_name: app
@@ -18,5 +20,5 @@ services:
     build:
       dockerfile: Dockerfile
     ports:
-      - ${PORT}
-    command: sh -c "npx node server/server.js && npm run build"
+      - 3009:3010
+    command: sh -c "npx node server/server.js && npm run build && npm run start"
