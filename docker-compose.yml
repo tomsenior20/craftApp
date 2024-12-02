@@ -11,8 +11,6 @@ services:
       dockerfile: Dockerfile
     environment:
       - PORT=${PORT}
-    # ports:
-    #   - "3010:3010"
     volumes:
       - ./app/database:/app/database
     command: sh -c "node server/server.js"
@@ -25,8 +23,6 @@ services:
       dockerfile: Dockerfile
     environment:
       - PORT=${FRONTEND_PORT}
-    ports:
-      - "5000:5000"
     # command: sh -c "node server/server.js & npm run build && npm run start"
     command: sh -c "npm run build && npm run start"
 
