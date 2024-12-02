@@ -15,6 +15,6 @@ services:
     build:
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 3000:3005
       - 3010:3010
     command: sh -c "node server/server.js & npm run build && npm run start"
