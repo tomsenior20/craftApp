@@ -9,6 +9,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - PORT=3010
     ports:
       - "3010:3010"
     volumes:
@@ -22,7 +24,7 @@ services:
     build:
       dockerfile: Dockerfile
     environment:
-      - PORTS=${PORT}
+      - PORT=3000
     ports:
       - "3000:3000"
     # command: sh -c "node server/server.js & npm run build && npm run start"
