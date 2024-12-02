@@ -14,7 +14,7 @@ COPY ./app/database/database.db /app/database/database.db
 RUN npm run build
 
 # Expose both ports (3000 for front-end, 3010 for the server)
-EXPOSE 5000 3010
+EXPOSE 5000 4000
 
 # Install concurrently to run both front-end and back-end
 RUN npm install -g concurrently
