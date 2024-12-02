@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - PORT=3010
+      - PORT=${PORT}
     ports:
       - "3010:3010"
     volumes:
