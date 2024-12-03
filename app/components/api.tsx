@@ -5,7 +5,7 @@ import { METHODS } from 'http';
 import { json } from 'stream/consumers';
 
 const PortNumber: string = process.env.PORT ?? '3010';
-const BASE_URL = process.env.NEXT_PUBLIC_APP ||  `http://${process.env.NEXT_PUBLIC_APP}:${PortNumber}`;
+const BASE_URL = process.env.NEXT_PUBLIC_APP || `http://localhost:${PortNumber}`;
 
 type Ticket = {
   id: number;
