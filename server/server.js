@@ -56,7 +56,6 @@ function checkReq(req, res) {
 
 // API Endpoints
 app.get("/", (req, res) => {
-    res.send("Welcome");
     res.status(200).send("Service is running");
 });
 
