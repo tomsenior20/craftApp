@@ -9,7 +9,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP
   ? `https://${process.env.NEXT_PUBLIC_APP}:${PortNumber}` 
   : `http://localhost:${PortNumber}`;
 
-console.log("NEXT_PUBLIC_APP in frontend:", process.env);
+console.log("NEXT_PUBLIC_APP in frontend:", process.env.NEXT_PUBLIC_APP);
+console.log("NEXT_PUBLIC_APP in frontend:", process.env.PORT);
 console.log("BASE_URL", BASE_URL);
 
 type Ticket = {
