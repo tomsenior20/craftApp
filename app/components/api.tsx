@@ -6,7 +6,7 @@ import { json } from 'stream/consumers';
 
 const PortNumber: string = process.env.PORT ?? '3010';
 const BASE_URL = process.env.NEXT_PUBLIC_APP 
-  ? `http://${process.env.NEXT_PUBLIC_APP}:${PortNumber}` 
+  ? `https://${process.env.NEXT_PUBLIC_APP}:${PortNumber}` 
   : `http://localhost:${PortNumber}`;
 
 console.log("NEXT_PUBLIC_APP in frontend:", process.env.NEXT_PUBLIC_APP);
