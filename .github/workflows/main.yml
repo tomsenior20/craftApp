@@ -48,6 +48,9 @@ jobs:
        # Check for vulnerabilities
       - name: Check for Vulnerabilities
         run: npm audit
+      # Run Audit fix for the vulnerabilities.
+      - name: Fix vulnerabilities
+        run: npm audit fix --force
 
   build:
     needs: [audit, test]
