@@ -25,7 +25,7 @@ jobs:
       # Install npm dependencies
       - name: Install npm dependencies
         run: |
-          npm install next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet jest @testing-library/react @testing-library/jest-dom jest-environment-jsdom dev identity-obj-proxy jest-transform-stub
+          npm install next react react-dom sqlite3 typescript @types/react @types/react-dom express cors helmet jest @testing-library/react @testing-library/jest-dom jest-environment-jsdom dev identity-obj-proxy jest-transform-stub
       
       - name: Install Docker Compose 
         run: |
