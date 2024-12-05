@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.20.5'
+      - name: Clear npm cache
+        run: npm cache clean --force
       # Install npm dependencies
       - name: Install npm dependencies
         run: |
