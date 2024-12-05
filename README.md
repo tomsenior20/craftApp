@@ -11,30 +11,34 @@
     </p>
     
     ## General User:
-    - <p>Explore website</p>
-    - <p>Submit Contact Forms</p>
-    - <p>Sign Into Portal</p>
-    - <p>See Current tickets</p>
-    - <p>See Deleted tickets / Delete Tickets</p>
+    - Explore website
+    - Submit Contact Forms
+    - Sign Into Portal
+    - See Current tickets
+    - See Deleted tickets / Delete Tickets
 
     ## Admin User:
-    - <p>Explore website</p>
-    - <p>Submit Contact Forms</p>
-    - <p>Sign Into Portal</p>
-    - <p>See Current tickets</p>
-    - <p>See Deleted tickets / Delete Tickets</p>
-    - <p>See Archived tickets / Archive Tickets</p>
+    - Explore website
+    - Submit Contact Forms
+    - Sign Into Portal
+    - See Current tickets
+    - See Deleted tickets / Delete Tickets
+    - See Archived tickets / Archive Tickets
 </div>
 
 ## Things to note
 
-### Pulling the code branch
-Upon pulling the code down there will be a requirement for an .env file to be created for the following:
-    1: PORT ( number )
-    2: SQLLite_DB_PATH ( Location path to where the DB Is )
-    3: NEXT_PUBLIC_APP ( set to localhost)
+<div>
+### Pulling the code branch Locally
 
-you will need this inside of the server folder, alongside having on in the public directory.
+<h3>Upon pulling the code down there will be a requirement for an .env file to be created for the following</h3>
+    <p>PORT ( number )</p>
+    <p>SQLLite_DB_PATH ( Location path to where the DB Is )</p> 
+    <p>NEXT_PUBLIC_APP (  set to name of the production back end service name )</p> 
+
+    you will need this inside of the server folder, alongside having on in the public directory
+
+</div>
 
 ### Password Creation for users.
 1) Requires SHA256 Format in HEX
