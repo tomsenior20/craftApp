@@ -21,7 +21,8 @@ jobs:
        # Install npm dependencies
       - name: Install npm dependencies
         run: |
-          npm install next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet
+          npm install next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet 
+      - name: Install Docker Compose
 
   test:
     runs-on: ubuntu-latest
@@ -76,6 +77,9 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
+      - name: Install Docker Compose 
+        run: npm install docker-compose
 
       - name: Log into Docker
         uses: docker/login-action@v2
