@@ -22,7 +22,6 @@ jobs:
       - name: Install npm dependencies
         run: |
           npm install next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet 
-      - name: Install Docker Compose
 
   test:
     runs-on: ubuntu-latest
@@ -85,7 +84,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_PASSWORD }} 
 
       # Build Docker Image
       # - name: Construct Docker Image
