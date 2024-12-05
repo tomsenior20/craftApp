@@ -97,7 +97,7 @@ jobs:
         chmod +x ~/.docker/cli-plugins/docker-compose
 
       - name: Run Docker Compose
-        run: docker-compose up --build -d
+        run: docker compose up --build -d
 
       # Push Docker Image
       - name: Push Docker Image
