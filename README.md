@@ -31,14 +31,18 @@
 ### Pulling the code branch Locally
 <div>
     <h3>Upon pulling the code down there will be a requirement for an .env file to be created for the following</h3>
-    <p>PORT ( number )</p>
-    <p>SQLLite_DB_PATH ( Location path to where the DB Is )</p> 
-    <p>NEXT_PUBLIC_APP (  set to name of the production back end service name )</p> 
-    <p>you will need this inside of the server folder, alongside having on in the public directory</p> 
+    - 1) <p>PORT ( number )</p>
+    - 2) <p>SQLLite_DB_PATH ( Location path to where the DB Is )</p> 
+    - 3) <p>NEXT_PUBLIC_APP (  set to name of the production back end service name )</p> 
+    -<p>you will need this inside of the server folder, alongside having on in the public directory</p> 
 </div>
+
+--- 
 
 ### Password Creation for users.
 1) Requires SHA256 Format in HEX
+
+--- 
 
 ### Prerequisites
 <div>
@@ -50,11 +54,12 @@
     5. Typescript
 </div>
 
+--- 
 ### Installing
 <div>
 ## To run the project Locally
-<p>CD into the server directory and run: Node server.js</p>
-<p>In another terminal, run "NPM Run dev", access the URL provided</p>
+    -<p>CD into the server directory and run: Node server.js</p>
+    -<p>In another terminal, run "NPM Run dev", access the URL provided</p>
 </div>
 <div>
 ## To run the project through hosted
@@ -62,6 +67,7 @@
 <p>Attempt to try and log in with both users</p>
 </div>
 
+--- 
 
 <div>
 ## ⛏️ Built Using <a name = "built_using"></a>
