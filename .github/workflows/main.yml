@@ -38,6 +38,8 @@ jobs:
       # Run Unit Tests
       - name: Run Unit Tests
         run: npm test
+      - name: Run NPM TEST Coverage
+        run: npm test -- --coverage
 
   audit:
     runs-on: ubuntu-latest
