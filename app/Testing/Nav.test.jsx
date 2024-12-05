@@ -1,8 +1,8 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react';
 import '@testing-library/jest-dom';
-import Nav from '../components/nav';  // Adjust import based on file location
-import { ApiCalls } from '../components/api';  // Mock the ApiCalls import
+import Nav from '../components/nav';
+import { ApiCalls } from '../components/api';
 
 // Mock the ApiCalls function
 jest.mock('../components/api', () => ({
