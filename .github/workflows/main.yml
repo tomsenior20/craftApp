@@ -8,53 +8,57 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    # Steps for setup
     steps:
+      # Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+      # Configure Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.20.5'
-          
+
       - name: Clear npm cache
         run: npm cache clean --force
-
+        
+      # Install npm dependencies
       - name: Install npm dependencies
         run: |
           npm install next react react-dom sqlite3 --save-dev typescript --save-dev @types/react @types/react-dom express cors helmet jest @testing-library/react @testing-library/jest-dom jest-environment-jsdom dev identity-obj-proxy jest-transform-stub
-          
+      
       - name: Install Docker Compose 
         run: |
           sudo apt-get update
           sudo apt-get install docker-compose
-
   test:
     runs-on: ubuntu-latest
     needs: setup
+    # Steps for test
     steps:
+      # Check out the repository again in the build job
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Install npm dependencies
         run: npm install
-
+      # Run Unit Tests
       - name: Run Unit Tests
         run: npm test
-
       - name: Run NPM TEST Coverage
         run: npm test -- --coverage
 
   audit:
     runs-on: ubuntu-latest
     needs: setup
+    # Steps for test
     steps:
+      # Check out the repository again in the build job
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+      # Check for vulnerabilities
       - name: Check for Vulnerabilities
         run: npm audit
-
+      # Run Audit fix for the vulnerabilities.
       - name: Fix vulnerabilities
         run: npm audit fix
 
@@ -62,19 +66,21 @@ jobs:
     needs: [audit, test]
     runs-on: ubuntu-latest
     steps:
+      # Check out the repository again in the deploy job
       - name: Checkout repository
         uses: actions/checkout@v3
-        
       - name: Install npm dependencies
         run: npm install
-
+      # Build the project
       - name: Build project
         run: npm run build
+        working-directory: ./
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      # Check out the repository again in the deploy job
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -85,9 +91,11 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_PASSWORD }} 
 
+      # Build Docker Image
       - name: Construct Docker Image
+        # run: docker build --no-cache -t craftapp:latest -f Dockerfile .
         run: |
           docker build --no-cache -t tomsenior98/craftapp:latest -t tomsenior98/craftapp:${{ github.sha }} .
 
@@ -102,7 +110,9 @@ jobs:
           docker compose --version
           docker compose up --build -d
 
+      # Push Docker Image
       - name: Push Docker Image
-        run: |
-          docker push tomsenior98/craftapp:latest
-          docker push tomsenior98/craftapp:${{ github.sha }}
+        run: | 
+            docker push tomsenior98/craftapp:latest
+            docker push tomsenior98/craftapp:${{ github.sha }}
+        
