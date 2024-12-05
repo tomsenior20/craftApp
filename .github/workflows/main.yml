@@ -110,9 +110,9 @@ jobs:
           docker compose --version
           docker compose up --build -d
 
-      # Push Docker Image
-      - name: Push Docker Image
-        run: | 
-            docker push tomsenior98/craftapp:latest
-            docker push tomsenior98/craftapp:${{ github.sha }}
+      # # Push Docker Image
+      # - name: Push Docker Image
+      #   run: | 
+      #       docker push tomsenior98/craftapp:latest
+      #       docker push tomsenior98/craftapp:${{ github.sha }}
         
