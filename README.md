@@ -1,22 +1,56 @@
 <h3 align="center">Self Service Website ~ Ticket System</h3>
-
+---
 <div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
+    <h4>This applicaton has been designed as a full service solution, for everyday users and professionals. It permits the user to explore the site and submit contact form as they request some help or assistance with an issue. However, there is also an login section to where you can see the open tickets alongside deleted and archived (For admin only)! </h4>
 </div>
 
----
+<div>
+    ## 🧐 About <a name = "about"></a>
+    <p>
+        This project reflects currrent systems within workforce architecture, this allows a fully operational website where an end user can do the following:
+        
+        ## General User:
+        <ul>
+            <li>
+                <p>Explore website</p>
+            </li>
+            <li>
+                <p>Submit Contact Forms</p>
+            </li>
+            <li>
+                <p>Sign Into Portal</p>
+            </li>
+            <li>
+                <p>See Current tickets</p>
+            </li>
+            <li>
+                <p>See Deleted tickets / Delete Tickets</p>
+            </li>
+        </ul>
 
-<h1>This applicaton has been designed as a full service solution, for everyday users and professsionals </h1>
-<h2>Allowing users to log new tickets, whilst professionals to maintain and see all tickets</h2>
-
-## 🧐 About <a name = "about"></a>
-
-This project reflects currrent systems within workforce architecture, this solution allows a fully condensed solution allowing users to control how there workforce works. It allows for deletion and archiving of tickets, whilst being able to select the assignee of the new tickets.
+        ## Admin User:
+        <ul>
+            <li>
+                <p>Explore website</p>
+            </li>
+            <li>
+                <p>Submit Contact Forms</p>
+            </li>
+            <li>
+                <p>Sign Into Portal</p>
+            </li>
+            <li>
+                <p>See Current tickets</p>
+            </li>
+            <li>
+                <p>See Deleted tickets / Delete Tickets</p>
+            </li>
+            <li>
+                <p>See Archived tickets / Archive Tickets</p>
+            </li>
+        </ul>
+    </p>
+</div>
 
 ## Things to note
 
@@ -47,26 +81,10 @@ What things you need to install the software and how to install them.
 
 - npm run start
 
-## 🎈 Usage <a name="usage"></a>
-
-# Admin User ~ Should be able to perform following scenario:
-1. See Open Tickets.
-2. See Deleted Tickets.
-3. Archive & Delete Tickets.
-4. See Archived Tickets.
-
-# Non Admin User ~ Should be able to perform following scenario:
-
-1. See Open Tickets.
-2. See Deleted Tickets.
-3. Delete Tickets.
-
 ## ⛏️ Built Using <a name = "built_using"></a>
-
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
 ## ✍️ Authors <a name = "authors"></a>
-
 - [@tomsenior20](https://github.com/tomsenior20) - Idea & work

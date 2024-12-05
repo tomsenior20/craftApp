@@ -2,6 +2,7 @@
 // Import Modules
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 // CSS Styling Imports
 import '../styling/nav.scss';
