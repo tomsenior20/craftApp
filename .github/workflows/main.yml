@@ -50,7 +50,7 @@ jobs:
         run: npm audit
       # Run Audit fix for the vulnerabilities.
       - name: Fix vulnerabilities
-        run: npm audit fix --force
+        run: npm audit fix
 
   build:
     needs: [audit, test]
