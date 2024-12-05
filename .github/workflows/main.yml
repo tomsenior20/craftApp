@@ -89,11 +89,12 @@ jobs:
       #   # run: docker build --no-cache -t craftapp:latest -f Dockerfile .
       #   run: |
       #     docker build -t tomsenior98/craftapp:latest -t tomsenior98/craftapp:${{ github.sha }} .
-     - name: Install Docker Compose Plugin
+
+      - name: Install Docker Compose Plugin
         run: |
-          mkdir -p ~/.docker/cli-plugins/
-          curl -SL https://github.com/docker/compose/releases/download/v2.22.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-          chmod +x ~/.docker/cli-plugins/docker-compose
+        mkdir -p ~/.docker/cli-plugins/
+        curl -SL https://github.com/docker/compose/releases/download/v2.22.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+        chmod +x ~/.docker/cli-plugins/docker-compose
 
       - name: Run Docker Compose
         run: docker-compose up --build -d
