@@ -28,41 +28,48 @@
 
 ## Things to note
 
-<div>
 ### Pulling the code branch Locally
-
-<h3>Upon pulling the code down there will be a requirement for an .env file to be created for the following</h3>
+<div>
+    <h3>Upon pulling the code down there will be a requirement for an .env file to be created for the following</h3>
     <p>PORT ( number )</p>
     <p>SQLLite_DB_PATH ( Location path to where the DB Is )</p> 
     <p>NEXT_PUBLIC_APP (  set to name of the production back end service name )</p> 
-
-    you will need this inside of the server folder, alongside having on in the public directory
-
+    <p>you will need this inside of the server folder, alongside having on in the public directory</p> 
 </div>
 
 ### Password Creation for users.
 1) Requires SHA256 Format in HEX
 
 ### Prerequisites
-
-What things you need to install the software and how to install them.
-
-1. Node JS
-2. NPM
-3. Bootstrap
-4. Next.js
-5. Typescript
+<div>
+    <p>What things you need to install the software and how to install them </p>
+    1. Node JS
+    2. NPM
+    3. Bootstrap
+    4. Next.js
+    5. Typescript
+</div>
 
 ### Installing
+<div>
+## To run the project Locally
+<p>CD into the server directory and run: Node server.js</p>
+<p>In another terminal, run "NPM Run dev", access the URL provided</p>
+</div>
+<div>
+## To run the project through hosted
+<p> Can just access via the hosted URL.</p>
+<p>Attempt to try and log in with both users</p>
+</div>
 
-1. To run the project
 
-- npm run start
-
+<div>
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
-
+</div>
+<div>
 ## ✍️ Authors <a name = "authors"></a>
 - [@tomsenior20](https://github.com/tomsenior20) - Idea & work
+</div>
