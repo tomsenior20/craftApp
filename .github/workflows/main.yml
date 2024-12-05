@@ -84,10 +84,13 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       # Build Docker Image
-      - name: Construct Docker Image
-        # run: docker build --no-cache -t craftapp:latest -f Dockerfile .
-        run: |
-          docker build -t tomsenior98/craftapp:latest -t tomsenior98/craftapp:${{ github.sha }} .
+      # - name: Construct Docker Image
+      #   # run: docker build --no-cache -t craftapp:latest -f Dockerfile .
+      #   run: |
+      #     docker build -t tomsenior98/craftapp:latest -t tomsenior98/craftapp:${{ github.sha }} .
+
+      - name: Run Docker Compose
+        run: docker-compose up --build -d
 
       # Push Docker Image
       - name: Push Docker Image
