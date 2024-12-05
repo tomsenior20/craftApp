@@ -8,48 +8,22 @@
     ## 🧐 About <a name = "about"></a>
     <p>
         This project reflects currrent systems within workforce architecture, this allows a fully operational website where an end user can do the following:
-        
-        ## General User:
-        <ul>
-            <li>
-                <p>Explore website</p>
-            </li>
-            <li>
-                <p>Submit Contact Forms</p>
-            </li>
-            <li>
-                <p>Sign Into Portal</p>
-            </li>
-            <li>
-                <p>See Current tickets</p>
-            </li>
-            <li>
-                <p>See Deleted tickets / Delete Tickets</p>
-            </li>
-        </ul>
-
-        ## Admin User:
-        <ul>
-            <li>
-                <p>Explore website</p>
-            </li>
-            <li>
-                <p>Submit Contact Forms</p>
-            </li>
-            <li>
-                <p>Sign Into Portal</p>
-            </li>
-            <li>
-                <p>See Current tickets</p>
-            </li>
-            <li>
-                <p>See Deleted tickets / Delete Tickets</p>
-            </li>
-            <li>
-                <p>See Archived tickets / Archive Tickets</p>
-            </li>
-        </ul>
     </p>
+    
+    ## General User:
+    - <p>Explore website</p>
+    - <p>Submit Contact Forms</p>
+    - <p>Sign Into Portal</p>
+    - <p>See Current tickets</p>
+    - <p>See Deleted tickets / Delete Tickets</p>
+
+    ## Admin User:
+    - <p>Explore website</p>
+    - <p>Submit Contact Forms</p>
+    - <p>Sign Into Portal</p>
+    - <p>See Current tickets</p>
+    - <p>See Deleted tickets / Delete Tickets</p>
+    - <p>See Archived tickets / Archive Tickets</p>
 </div>
 
 ## Things to note
