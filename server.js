@@ -12,7 +12,7 @@ const helmet = require('helmet');
 const dev = process.env.NODE_ENV !== "production";
 
 const app = express();
-const port = process.env.PORT || 8989;
+const port = process.env.NEXT_PUBLIC_BACKEND_PORT || 8989;
 const dbPath = process.env.SQLLite_DB_PATH || '/database/database.db';
 
 // Custom HTTP Headers
@@ -22,7 +22,12 @@ const corsOptions = {
 };
 
 // Middleware
-app.use(helmet());
+app.use(
+    helmet({
+        frameguard: { action: 'deny' }, 
+        noSniff: true,
+        hidePoweredBy: true,
+    }));
 app.use(cors(corsOptions));
 app.use(express.json());
 

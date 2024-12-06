@@ -4,14 +4,13 @@ import handleLogIn from '../admin/adminForm';
 import { METHODS } from 'http';
 import { json } from 'stream/consumers';
 
-const PortNumber: string = process.env.PORT ?? '3010';
+const PortNumber = process.env.NEXT_PUBLIC_BACKEND_PORT;
 const BASE_URL = process.env.NEXT_PUBLIC_APP 
-  ? `https://${process.env.NEXT_PUBLIC_APP}:${PortNumber}` 
+  ? `http://${process.env.NEXT_PUBLIC_APP}:${PortNumber}` 
   : `http://localhost:${PortNumber}`;
 
-console.log("NEXT_PUBLIC_APP in frontend:", process.env.NEXT_PUBLIC_APP);
-console.log("NEXT_PUBLIC_APP in frontend:", process.env.PORT);
-console.log("BASE_URL", BASE_URL);
+
+  console.log("BASE_URL", BASE_URL);
 
 type Ticket = {
   id: number;
