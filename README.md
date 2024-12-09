@@ -5,6 +5,9 @@
 </div>
 
 <div>
+    ## Hosted Application URL 
+    URL - https://craftapp-2.onrender.com 
+
     ## 🧐 About <a name = "about"></a>
     <p>
         This project reflects currrent systems within workforce architecture, this allows a fully operational website where an end user can do the following:
