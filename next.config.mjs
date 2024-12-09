@@ -15,10 +15,10 @@ const nextConfig = {
         includePaths: ['./styling'],
     },
     env: {
-      NEXT_PUBLIC_FRONTEND_PORT : NEXT_PUBLIC_FRONTEND_PORT,
-      NEXT_PUBLIC_BACKEND_PORT: NEXT_PUBLIC_BACKEND_PORT,
-      NEXT_PUBLIC_APP: NEXT_PUBLIC_APP,
-      SQLLite_DB_PATH : SQLLite_DB_PATH
+      NEXT_PUBLIC_FRONTEND_PORT: process.env.NEXT_PUBLIC_FRONTEND_PORT,
+      NEXT_PUBLIC_BACKEND_PORT: process.env.NEXT_PUBLIC_BACKEND_PORT,
+      NEXT_PUBLIC_APP: process.env.NEXT_PUBLIC_APP,
+      SQLLite_DB_PATH: process.env.SQLLite_DB_PATH,
     },
     webpack(config, { isServer }) {
         // Conditionally disable Babel for production build
