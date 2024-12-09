@@ -11,11 +11,15 @@ COPY . .
 # Build the front-end (Next.js app located in the root)
 RUN npm run build
 
+ENV SQLITE_DB_PATH=/app/app/database/database.db
+
 # Expose both ports (3000 for front-end, 3010 for the server)
-EXPOSE 5000 4000
+EXPOSE 5000 4000 4025
+
+ENV PORT=4000
 
 # Install concurrently to run both front-end and back-end
 RUN npm install -g concurrently
 
 # Run both the front-end (Next.js) and the back-end (server.js) concurrently
-CMD ["concurrently",  "\"npm run start\""]
+CMD ["concurrently", "\"node server.js\"", "\"npm start\""]

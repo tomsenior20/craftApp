@@ -2,6 +2,9 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
+    serverRuntimeConfig: {
+      port: process.env.NEXT_PUBLIC_FRONTEND_PORT || 3000, // Default to 3000 if no PORT variable is set
+    },
     experimental: {
         forceSwcTransforms: true,
       },
