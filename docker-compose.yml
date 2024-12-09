@@ -20,9 +20,9 @@ services:
       - "${NEXT_PUBLIC_BACKEND_PORT}:4025"
     volumes:
       - ./app/database:/app/database
-    command: sh -c "node server.js"
     networks:
       - app_network
+    command: sh -c "node server.js"
   
   app:
     container_name: app
@@ -40,13 +40,13 @@ services:
     ports:
       - "${NEXT_PUBLIC_FRONTEND_PORT}:4000"
     # command: sh -c "node server/server.js & npm run build && npm run start"
-    command: sh -c "npm run build && npm run start"
     depends_on:
       - backend
     networks:
       - app_network
+    command: sh -c "npm run build && npm run start"
       
-  networks:
+networks:
   app_network:
     driver: bridge
 
