@@ -14,7 +14,7 @@ const nextConfig = {
     sassOptions: {
         includePaths: ['./styling'],
     },
-    env:{
+    env: {
       NEXT_PUBLIC_FRONTEND_PORT : NEXT_PUBLIC_FRONTEND_PORT,
       NEXT_PUBLIC_BACKEND_PORT: NEXT_PUBLIC_BACKEND_PORT,
       NEXT_PUBLIC_APP: NEXT_PUBLIC_APP,
