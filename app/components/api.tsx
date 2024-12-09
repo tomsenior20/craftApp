@@ -10,6 +10,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_APP
 
 
   console.log("BASE_URL", BASE_URL);
+  console.log("NEXT_PUBLIC_APP", process.env.NEXT_PUBLIC_APP );
   console.log("PORT Number", PortNumber ? PortNumber : "NULL" )
 
 type Ticket = {
