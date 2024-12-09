@@ -4,16 +4,18 @@ services:
   #   image: nouchka/sqlite3
   #   restart: always
 
-  # backend:
-  #   container_name: node_backend
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   environment:
-  #     - PORT=${PORT}
-  #   volumes:
-  #     - ./app/database:/app/database
-  #   command: sh -c "node server/server.js"
+  backend:
+    container_name: node_backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=${NEXT_PUBLIC_BACKEND_PORT}
+    ports:
+      - "${NEXT_PUBLIC_BACKEND_PORT}:4025"
+    volumes:
+      - ./app/database:/app/database
+    command: sh -c "node server.js"
   app:
     container_name: app
     # depends_on:
@@ -22,7 +24,9 @@ services:
     build:
       dockerfile: Dockerfile
     environment:
-      - PORT=${FRONTEND_PORT}
+      - PORT=${NEXT_PUBLIC_FRONTEND_PORT}
+    ports:
+      - "${NEXT_PUBLIC_FRONTEND_PORT}:4000"
     # command: sh -c "node server/server.js & npm run build && npm run start"
     command: sh -c "npm run build && npm run start"
 
