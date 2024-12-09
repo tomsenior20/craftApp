@@ -7,6 +7,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+COPY database.db /app/database.db
+
 
 ARG NEXT_PUBLIC_BACKEND_PORT
 ARG NEXT_PUBLIC_FRONTEND_PORT
@@ -18,6 +20,7 @@ ENV NEXT_PUBLIC_BACKEND_PORT=$NEXT_PUBLIC_BACKEND_PORT
 ENV NEXT_PUBLIC_FRONTEND_PORT=$NEXT_PUBLIC_FRONTEND_PORT
 ENV SQLLite_DB_PATH=$SQLLite_DB_PATH
 ENV NEXT_PUBLIC_APP=$NEXT_PUBLIC_APP
+
 
 # Build the front-end (Next.js app located in the root)
 RUN npm run build
