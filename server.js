@@ -16,20 +16,20 @@ const port = process.env.NEXT_PUBLIC_BACKEND_PORT || 8989;
 const dbPath = process.env.SQLLite_DB_PATH || '/database/database.db';
 
 // Custom HTTP Headers
-const corsOptions = {
-    origin: (origin, callback) => {
-        const allowedOrigins = [
-            "*",
-        ];
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    methods: ["GET", "POST", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-};
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         const allowedOrigins = [
+//             "*",
+//         ];
+//         if (allowedOrigins.includes(origin) || !origin) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error("Not allowed by CORS"));
+//         }
+//     },
+//     methods: ["GET", "POST", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+// };
 
 // Middleware
 app.use(
@@ -37,8 +37,10 @@ app.use(
         frameguard: { action: 'deny' }, 
         noSniff: true,
         hidePoweredBy: true,
+        contentSecurityPolicy: false,
     }));
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // URL of Database is in ENV File
