@@ -1,16 +1,12 @@
+version: "3.8"
 services:
   backend:
     container_name: node_backend
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      - PORT=${NEXT_PUBLIC_BACKEND_PORT}
-      - NEXT_PUBLIC_BACKEND_PORT=${NEXT_PUBLIC_BACKEND_PORT}
-      - NEXT_PUBLIC_FRONTEND_PORT=${NEXT_PUBLIC_FRONTEND_PORT}
-      - SQLLite_DB_PATH=${SQLLite_DB_PATH}
-      - NEXT_PUBLIC_APP=${NEXT_PUBLIC_APP}
-
+    env_file:
+      - .env
     ports:
       - "${NEXT_PUBLIC_BACKEND_PORT}:4025"
     volumes:
@@ -19,19 +15,14 @@ services:
   
   app:
     container_name: app
-    # depends_on:
-    #   - db
     restart: always
     build:
+      context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env
     environment:
       - PORT=${NEXT_PUBLIC_FRONTEND_PORT}
-      - NEXT_PUBLIC_BACKEND_PORT=${NEXT_PUBLIC_BACKEND_PORT}
-      - NEXT_PUBLIC_FRONTEND_PORT=${NEXT_PUBLIC_FRONTEND_PORT}
-      - SQLLite_DB_PATH=${SQLLite_DB_PATH}
-      - NEXT_PUBLIC_APP=${NEXT_PUBLIC_APP}
     ports:
       - "${NEXT_PUBLIC_FRONTEND_PORT}:4000"
-    # command: sh -c "node server/server.js & npm run build && npm run start"
     command: sh -c "npm run build && npm run start"
-    
