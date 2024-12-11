@@ -16,10 +16,9 @@ const port = process.env.NEXT_PUBLIC_BACKEND_PORT || 8989;
 const dbPath = process.env.SQLLite_DB_PATH || '/database/database.db';
 
 const corsOptions = {
-    origin: "https://front-end-tzxw.onrender.com",
+    origin: ["https://front-end-tzxw.onrender.com",'https://craftapp.onrender.com'],
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true // If you need to send cookies or other credentials
 };
 
 // Middleware
@@ -31,7 +30,7 @@ app.use(
         contentSecurityPolicy: false,
     }));
 // app.use(cors(corsOptions));
-app.use(cors(corsOptions));
+app.use("*",cors(corsOptions));
 app.use(express.json());
 
 // URL of Database is in ENV File
