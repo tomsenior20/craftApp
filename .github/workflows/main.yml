@@ -97,7 +97,7 @@ jobs:
       - name: Construct Docker Image
         # run: docker build --no-cache -t craftapp:latest -f Dockerfile .
         run: |
-          docker build --no-cache -t tomsenior98/craftapp:latest -t tomsenior98/craftapp:${{ github.sha }} .
+          docker build --no-cache -t  tomsenior98/craftapp:latest -t tomsenior98/craftapp:${{ github.sha }} .
 
       - name: Install Docker Compose Plugin
         run: |
