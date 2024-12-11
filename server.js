@@ -336,7 +336,7 @@ app.get('/getArchiveTicket', async (req, res) => {
     }
 });
 
-const server = app.listen(port, () => {
+const server = app.listen(port, '0.0.0.0', () => {
     console.log(`Server running on http://${process.env.NEXT_PUBLIC_APP}:${port}`);
 });
 
