@@ -5,8 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file:
-      - .env
     ports:
       - "${NEXT_PUBLIC_BACKEND_PORT}:4025"
     volumes:
@@ -19,8 +17,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file:
-      - .env
     environment:
       - PORT=${NEXT_PUBLIC_FRONTEND_PORT}
     ports:
