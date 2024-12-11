@@ -19,7 +19,7 @@ const dbPath = process.env.SQLLite_DB_PATH || '/database/database.db';
 const corsOptions = {
     origin: (origin, callback) => {
         const allowedOrigins = [
-            "https://craftapp-1.onrender.com",
+            "https://craftapp.onrender.com",
         ];
         if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true);
