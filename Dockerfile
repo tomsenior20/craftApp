@@ -17,7 +17,7 @@ ARG NEXT_PUBLIC_APP=localhost
 ENV NEXT_PUBLIC_BACKEND_PORT=443
 ENV NEXT_PUBLIC_FRONTEND_PORT=4000
 ENV SQLLite_DB_PATH=app\database\database.db
-ENV NEXT_PUBLIC_APP=craftapp.onrender.com
+ENV NEXT_PUBLIC_APP=craftapp-docker.onrender.com
 
 # Build the front-end (Next.js app located in the root)
 RUN npm run build
