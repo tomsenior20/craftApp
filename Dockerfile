@@ -7,8 +7,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-# COPY app/app/database/database.db app/app/database/database.db
-
 
 # ARG NEXT_PUBLIC_BACKEND_PORT
 # ARG NEXT_PUBLIC_FRONTEND_PORT
