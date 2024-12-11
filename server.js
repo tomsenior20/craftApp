@@ -17,6 +17,7 @@ const dbPath = process.env.SQLLite_DB_PATH || '/database/database.db';
 
 // Custom HTTP Headers
 const corsOptions = {
+    origin: 'https://craftapp-1.onrender.com',
     methods: ["GET", "POST", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
 };
