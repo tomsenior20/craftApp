@@ -341,18 +341,18 @@ const server = app.listen(port, () => {
 });
 
 
-process.on('SIGTERM', () => {
-    console.log('SIGTERM signal received: closing HTTP server');
-    if (server) {
-        server.close(() => {
-            console.log('HTTP server closed');
-            process.exit(0);
-        });
-    } else {
-        console.log('Server is not initialized.');
-        process.exit(1);
-    }
-});
+// process.on('SIGTERM', () => {
+//     console.log('SIGTERM signal received: closing HTTP server');
+//     if (server) {
+//         server.close(() => {
+//             console.log('HTTP server closed');
+//             process.exit(0);
+//         });
+//     } else {
+//         console.log('Server is not initialized.');
+//         process.exit(1);
+//     }
+// });
 
 process.on('SIGINT', () => {
     console.log('SIGINT signal received: closing HTTP server');
