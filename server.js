@@ -22,6 +22,7 @@ const corsOptions = {
 };
 
 // Middleware
+app.use(cors(corsOptions));
 app.use(
     helmet({
         frameguard: { action: 'deny' }, 
@@ -30,7 +31,6 @@ app.use(
         contentSecurityPolicy: false,
     }));
 
-app.use(cors(corsOptions));
 app.use(express.json());
 app.options('*', cors(corsOptions));
 
@@ -335,7 +335,7 @@ const server = app.listen(port, '0.0.0.0', () => {
 
 
 // process.on('SIGTERM', () => {
-//     console.log('SIGTERM signal received: closing HTTP server');
+//     console.log('SIGTERM signal re`ceived: closing HTTP server');
 //     if (server) {
 //         server.close(() => {
 //             console.log('HTTP server closed');
