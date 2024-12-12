@@ -18,7 +18,14 @@ const dbPath = process.env.SQLLite_DB_PATH || 'app/database/database.db';
 console.log(dbPath);
 
 const corsOptions = {
-    origin: ["https://front-end-tzxw.onrender.com", "https://craftapp.onrender.com"],
+    origin: function (origin, callback) {
+        const allowedOrigins = ["https://front-end-tzxw.onrender.com", "https://craftapp.onrender.com"];
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'), false);
+        }
+    },
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
 };
