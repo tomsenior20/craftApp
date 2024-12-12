@@ -314,7 +314,10 @@ export const ApiCalls = () => {
   const FetchTradeMark = async () => {
     try {
       const data = await fetchData('getTrademarkName', {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
       });
       if (data && data.length > 0) {
         return data;
@@ -327,7 +330,10 @@ export const ApiCalls = () => {
   const FetchBrandName = async () => {
     try {
       const data = await fetchData('selectBrandName', {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
       });
       if (data && data.length > 0) {
         return data;
