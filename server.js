@@ -12,7 +12,7 @@ const helmet = require('helmet');
 const dev = process.env.NODE_ENV !== "production";
 
 const app = express();
-const port =  process.NODE_ENV != 'production' ? process.env.NEXT_PUBLIC_BACKEND_PORT : process.env.PORT;
+const port =  process.NODE_ENV !== 'production' ? process.env.NEXT_PUBLIC_BACKEND_PORT : process.env.PORT;
 const dbPath = process.env.SQLLite_DB_PATH || 'app/database/database.db';
 
 console.log(dbPath);
@@ -45,6 +45,10 @@ const db = new sqlite3.Database(dbPath, (error) => {
     }
 })
 
+app.use((req, res, next) => {
+    console.log('Incoming Origin:', req.headers.origin);
+    next();
+});
 
 // Function to hash passwords
 function hashPassword(password) {
