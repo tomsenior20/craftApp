@@ -13,7 +13,7 @@ const dev = process.env.NODE_ENV !== "production";
 
 const app = express();
 const port =  process.env.NODE_ENV !== 'production' ? process.env.NEXT_PUBLIC_BACKEND_PORT : process.env.PORT;
-const dbPath = process.env.SQLLite_DB_PATH || 'app/database/database.db';
+const dbPath = path.join(__dirname, 'app', 'database', 'database.db');
 
 console.log(dbPath);
 
