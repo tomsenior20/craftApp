@@ -28,7 +28,7 @@ const corsOptions = {
         }
     },
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type"],
 };
 
 // Middleware
