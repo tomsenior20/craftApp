@@ -39,13 +39,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-// app.use(
-//     helmet({
-//         frameguard: { action: 'deny' }, 
-//         noSniff: true,
-//         hidePoweredBy: true,
-//         contentSecurityPolicy: false,
-//     }));
+app.use(
+    helmet({
+        frameguard: { action: 'deny' }, 
+        noSniff: true,
+        hidePoweredBy: true,
+        contentSecurityPolicy: false,
+    }));
 
 app.use(express.json());
 
