@@ -22,7 +22,7 @@ export default function AdminForm() {
   const [type, setType] = useState<'success' | 'error'>('success');
   const [accountLocked, setAccountLocked] = useState<number>(0);
 
-  const regex = /^[a-zA-Z]+$/;
+  const regex = /^[a-zA-Z0-9]+$/;
   const router = useRouter();
   const { InsertAuditLog, LogInFormAttempt, LockAccount, CheckIfLocked } =
     ApiCalls();
