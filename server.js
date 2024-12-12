@@ -12,7 +12,7 @@ const helmet = require('helmet');
 const dev = process.env.NODE_ENV !== "production";
 
 const app = express();
-const port = process.env.NEXT_PUBLIC_BACKEND_PORT || 8989;
+const port =  process.NODE_ENV != 'production' ? process.env.NEXT_PUBLIC_BACKEND_PORT : process.env.PORT;
 const dbPath = process.env.SQLLite_DB_PATH || '/database/database.db';
 
 const corsOptions = {
@@ -330,22 +330,8 @@ app.get('/getArchiveTicket', async (req, res) => {
 });
 
 const server = app.listen(port, '0.0.0.0', () => {
-    console.log(`Server running on http://${process.env.NEXT_PUBLIC_APP}:${port}`);
+    console.log(`Server running on Port: ${port}`);
 });
-
-
-// process.on('SIGTERM', () => {
-//     console.log('SIGTERM signal re`ceived: closing HTTP server');
-//     if (server) {
-//         server.close(() => {
-//             console.log('HTTP server closed');
-//             process.exit(0);
-//         });
-//     } else {
-//         console.log('Server is not initialized.');
-//         process.exit(1);
-//     }
-// });
 
 process.on('SIGINT', () => {
     console.log('SIGINT signal received: closing HTTP server');

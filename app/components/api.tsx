@@ -3,7 +3,7 @@ import handleLogIn from '../admin/adminForm';
 import { METHODS } from 'http';
 import { json } from 'stream/consumers';
 
-const PortNumber = process.env.NEXT_PUBLIC_BACKEND_PORT;
+const PortNumber = process.env.NEXT_PUBLIC_BACKEND_PORT || 4000 ;
 const BASE_URL = process.env.NODE_ENV === 'production' 
   ? `https://${process.env.NEXT_PUBLIC_APP}` 
   : `http://localhost:${PortNumber}`;
