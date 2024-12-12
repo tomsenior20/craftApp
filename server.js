@@ -94,6 +94,8 @@ app.get("/selectBrandName", async (req, res) => {
         db.all(query, [], (error, results) => {
             if (!error) {
                 res.json(results);
+            } else{
+                return handleErrorResponse(req.originalUrl, res, error);
             }
         })
     } catch (error) {
