@@ -6,7 +6,7 @@ const sqlite3 = require('sqlite3').verbose();
 const cors = require("cors");
 const crypto = require('crypto');
 const helmet = require('helmet');
-
+const path = require('path');
 
 // Check if we are in development mode
 const dev = process.env.NODE_ENV !== "production";
