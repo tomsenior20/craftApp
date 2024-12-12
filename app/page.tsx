@@ -55,11 +55,11 @@ export default function Home() {
 
   const partnerships: Partnership[] = [
     {
-      Name: 'Stackoverflow',
+      Name: 'stackoverflow',
       Desc: 'This Partnership collobrates with Stackoverflow, providing help with all technology matters'
     },
     {
-      Name: 'Github',
+      Name: 'github',
       Desc: 'Providing a repositry to allow code to be kept and maintained, allowing full progression and growth'
     }
   ];
