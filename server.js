@@ -18,20 +18,20 @@ const dbPath = process.env.SQLLite_DB_PATH || 'app/database/database.db';
 console.log(dbPath);
 
 const corsOptions = {
-    origin: ["https://front-end-tzxw.onrender.com",'https://craftapp.onrender.com'],
+    origin: ["https://front-end-tzxw.onrender.com", "https://craftapp.onrender.com"],
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 // Middleware
 app.use(cors(corsOptions));
-app.use(
-    helmet({
-        frameguard: { action: 'deny' }, 
-        noSniff: true,
-        hidePoweredBy: true,
-        contentSecurityPolicy: false,
-    }));
+// app.use(
+//     helmet({
+//         frameguard: { action: 'deny' }, 
+//         noSniff: true,
+//         hidePoweredBy: true,
+//         contentSecurityPolicy: false,
+//     }));
 
 app.use(express.json());
 
