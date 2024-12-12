@@ -34,7 +34,6 @@ app.use(
     }));
 
 app.use(express.json());
-app.options('*', cors(corsOptions));
 
 // URL of Database is in ENV File
 const db = new sqlite3.Database(dbPath, (error) => {
