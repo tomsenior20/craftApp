@@ -19,7 +19,11 @@ console.log(dbPath);
 
 const corsOptions = {
     origin: function (origin, callback) {
-        console.log(origin);
+        console.log('Incoming Origin:', origin);
+        if (!origin) {
+            callback(null, true);
+            return;
+        }
         const allowedOrigins = ["https://front-end-tzxw.onrender.com", "https://craftapp.onrender.com"];
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
