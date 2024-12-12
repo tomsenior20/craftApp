@@ -88,6 +88,7 @@ app.get("/", (req, res) => {
 
 // Select Brand Name for navigation
 app.get("/selectBrandName", async (req, res) => {
+    console.log("selectBrandName endpoint hit");
     const query = "SELECT BrandName FROM SystemConfig";
     try {
         db.all(query, [], (error, results) => {
