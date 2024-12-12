@@ -24,7 +24,7 @@ const corsOptions = {
             callback(null, true);
             return;
         }
-        const allowedOrigins = ["https://front-end-tzxw.onrender.com", "https://craftapp.onrender.com"];
+        const allowedOrigins = ["https://craftapp-39bd.onrender.com", "https://craftapp-frontend.onrender.com"];
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
