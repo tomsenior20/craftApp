@@ -51,8 +51,7 @@
 ## To run the project Locally
     Requires two terminals in a VS Instance.
     In terminal 1, type the following command: 
-        node servr.js
-</div>
+        node server.js
 <div>
 ## To run the project through hosted
 <p> Can just access via the hosted URL.</p>
