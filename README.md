@@ -4,7 +4,7 @@
 </div>
 
 --- 
-## Hosted Application URL 
+### Hosted Application URL 
     URL:
     ```bash
         https://craftapp-frontend.onrender.com
@@ -58,8 +58,17 @@
         npm run dev
 ```
 ## To run the project through hosted
-<p> Can just access via the hosted URL.</p>
-<p>Attempt to try and log in with both users</p>
+Can just access via the hosted URL, either local or hosted:
+
+Hosted:
+```bash
+    https://craftapp-frontend.onrender.com
+```
+Local
+```bash
+    localhost:3000
+```
+Attempt to try and log in with both users
 
 --- 
 
