@@ -54,7 +54,7 @@ Requires two terminals in a VS Instance.
 In terminal 1, type the following command: 
 ```bash
         node server.js
-       
+``` 
 ## To run the project through hosted
 <p> Can just access via the hosted URL.</p>
 <p>Attempt to try and log in with both users</p>
