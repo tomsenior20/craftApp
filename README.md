@@ -48,15 +48,16 @@
     - Typescript
 --- 
 ### Installing
-## To run the project Locally
-    Requires two terminals in a VS Instance.
-    In terminal 1, type the following command: 
+
+#### To run the project Locally
+Requires two terminals in a VS Instance.
+In terminal 1, type the following command: 
+```bash
         node server.js
-<div>
+
 ## To run the project through hosted
 <p> Can just access via the hosted URL.</p>
 <p>Attempt to try and log in with both users</p>
-</div>
 --- 
 <div>
 ## ⛏️ Built Using <a name = "built_using"></a>
