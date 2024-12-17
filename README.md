@@ -27,18 +27,18 @@
 ---
 ## Things to note
 
-### Pulling the code branch Locally
+## Pulling the code branch Locally
     Upon pulling the code down there will be a requirement for an .env file to be created for the following
-    - <p>PORT ( number )</p>
-    - <p>SQLLite_DB_PATH ( Location path to where the DB Is )</p> 
-    - <p>NEXT_PUBLIC_APP (  set to name of the production back end service name )</p> 
-    - <p>you will need this inside of the server folder, alongside having on in the public directory</p> 
+    - PORT ( number )
+    - SQLLite_DB_PATH ( Location path to where the DB Is )
+    - NEXT_PUBLIC_APP (  set to name of the production back end service name )
+    - you will need this inside of the server folder, alongside having on in the public directory
 --- 
 ### Password Creation for users.
 1) Requires SHA256 Format in HEX
 --- 
 ## Prerequisites
-    <p>What things you need to install the software and how to install them </p>
+    What things you need to install the software and how to install them
     - Node JS
     - NPM
     - Bootstrap
