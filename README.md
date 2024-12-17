@@ -37,7 +37,7 @@
 ### Password Creation for users.
 1) Requires SHA256 Format in HEX
 --- 
-### Prerequisites
+## Prerequisites
     <p>What things you need to install the software and how to install them </p>
     - Node JS
     - NPM
