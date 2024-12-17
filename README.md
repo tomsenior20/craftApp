@@ -49,10 +49,9 @@
 --- 
 ### Installing
 ## To run the project Locally
-    - Requires two terminals in a VS Instance.
-    - In terminal 1, type the following command: 
-    .. code:: bash
-        node server.js
+    Requires two terminals in a VS Instance.
+    In terminal 1, type the following command: 
+        node servr.js
 </div>
 <div>
 ## To run the project through hosted
