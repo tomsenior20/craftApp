@@ -3,7 +3,7 @@
 import '../styling/globals.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ApiCalls } from '../components/api';
 import { Alert } from '../components/alertModal';
@@ -32,7 +32,7 @@ export default function AdminForm() {
     setusernameInput('');
     setPasswordInput('');
   };
-
+  
   const toggleAlertVisibilityAndMessage = (
     show: boolean,
     message: string,
@@ -175,6 +175,8 @@ export default function AdminForm() {
         onSubmit={(e) => SubmitForm(e)}
         className="adminLogInForm d-flex flex-col bg-dark shadow-lg rounded"
         aria-label="adminLogInForm"
+        autoComplete='off'
+        autoSave='off'
       >
         <h1 className="text-center my-3 p-2 formText">Sign In </h1>
         <div className="usernameContainer form-floating my-3">
@@ -186,6 +188,7 @@ export default function AdminForm() {
             className="form-control"
             value={usernameInput}
             role="textbox"
+            autoComplete='false'
           />
           <label className="" htmlFor="usernameInput">
             Enter Username
@@ -198,6 +201,7 @@ export default function AdminForm() {
             className="form-control"
             value={passwordInput}
             id="passwordInput"
+            autoComplete='false'
             onChange={(e) => setPasswordInput(e.target.value)}
             role="textbox"
           />

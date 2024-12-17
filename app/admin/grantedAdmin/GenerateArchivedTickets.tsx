@@ -124,8 +124,9 @@ export default function GenerateArchiveTickets() {
           </div>
         </div>
       ) : (
+        // No Admin Default message
         <div className="noAdminPrivContainer container-fluid p-4">
-          <p className="noAdminText">
+          <p className="noAdminText text-center">
             You must have admin privileges to see archived tickets
           </p>
         </div>

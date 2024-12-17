@@ -15,16 +15,13 @@ const app = express();
 const port =  process.env.NODE_ENV !== 'production' ? process.env.NEXT_PUBLIC_BACKEND_PORT : process.env.PORT;
 const dbPath = path.join(__dirname, 'app', 'database', 'database.db');
 
-console.log(dbPath);
-
 const corsOptions = {
     origin: function (origin, callback) {
-        console.log('Incoming Origin:', origin);
         if (!origin) {
             callback(null, true);
             return;
         }
-        const allowedOrigins = ["https://craftapp-39bd.onrender.com", "https://craftapp-frontend.onrender.com"];
+        const allowedOrigins = ["https://craftapp-39bd.onrender.com", "https://craftapp-frontend.onrender.com", 'http://localhost:3000', 'http://localhost:4025'];
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
@@ -88,7 +85,6 @@ app.get("/", (req, res) => {
 
 // Select Brand Name for navigation
 app.get("/selectBrandName", async (req, res) => {
-    console.log("selectBrandName endpoint hit");
     const query = "SELECT BrandName FROM SystemConfig";
     try {
         db.all(query, [], (error, results) => {
