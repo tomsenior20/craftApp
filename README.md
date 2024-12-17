@@ -54,19 +54,15 @@ Requires two terminals in a VS Instance.
 In terminal 1, type the following command: 
 ```bash
         node server.js
-
+       
 ## To run the project through hosted
 <p> Can just access via the hosted URL.</p>
 <p>Attempt to try and log in with both users</p>
 --- 
-<div>
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Express](https://expressjs.com/) - Server Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
-</div>
 ---
-<div>
 ## ✍️ Authors <a name = "authors"></a>
 - [@tomsenior20](https://github.com/tomsenior20) - Idea & work
-</div>
