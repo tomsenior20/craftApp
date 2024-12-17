@@ -5,45 +5,44 @@
 
 --- 
 ### Hosted Application URL 
-    URL:
-    ```bash
-        https://craftapp-frontend.onrender.com
-    ```
+URL:
+```bash
+    https://craftapp-frontend.onrender.com
+```
 ---     
 ## General User:
-    - Explore website
-    - Submit Contact Forms
-    - Sign Into Portal
-    - See Current tickets
-    - See Deleted tickets / Delete Tickets
+- Explore website
+- Submit Contact Forms
+- Sign Into Portal
+- See Current tickets
+- See Deleted tickets / Delete Tickets
 
 ## Admin User:
-    - Explore website
-    - Submit Contact Forms
-    - Sign Into Portal
-    - See Current tickets
-    - See Deleted tickets / Delete Tickets
-    - See Archived tickets / Archive Tickets
+- Explore website
+- Submit Contact Forms
+- Sign Into Portal
+- See Current tickets
+- See Deleted tickets / Delete Tickets
 ---
 ## Things to note
 
 ## Pulling the code branch Locally
-    Upon pulling the code down there will be a requirement for an .env file to be created for the following
-    - PORT ( number )
-    - SQLLite_DB_PATH ( Location path to where the DB Is )
-    - NEXT_PUBLIC_APP (  set to name of the production back end service name )
-    - you will need this inside of the server folder, alongside having on in the public directory
+Upon pulling the code down there will be a requirement for an .env file to be created for the following
+- PORT ( number )
+- SQLLite_DB_PATH ( Location path to where the DB Is )
+- NEXT_PUBLIC_APP (  set to name of the production back end service name )
+- you will need this inside of the server folder, alongside having on in the public directory
 --- 
 ### Password Creation for users.
 1) Requires SHA256 Format in HEX
 --- 
 ## Prerequisites
-    What things you need to install the software and how to install them
-    - Node JS
-    - NPM
-    - Bootstrap
-    - Next.js
-    - Typescript
+What things you need to install the software and how to install them
+- Node JS
+- NPM
+- Bootstrap
+- Next.js
+- Typescript
 --- 
 ### Installing
 
