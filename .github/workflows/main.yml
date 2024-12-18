@@ -115,4 +115,10 @@ jobs:
         run: | 
             docker push tomsenior98/craftapp:latest
             docker push tomsenior98/craftapp:${{ github.sha }}
-        
+      # Push To Render Environments.
+      - name: Trigger Render Backend Deployment
+        run: |
+          curl -X POST "https://api.render.com/deploy/srv-ctdcihm8ii6s7392fmvg?key=FrkRD-8FR30?key=${{ secrets.RENDER_KEY }}"
+      - name: Trigger Render Backend Deployment
+        run: |
+          curl -X POST "https://api.render.com/deploy/srv-ctdfhim8ii6s739423rg?key=GilZHjSmSgI?key=${{ secrets.RENDER_KEY }}"
