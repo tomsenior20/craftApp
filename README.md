@@ -47,15 +47,29 @@ What things you need to install the software and how to install them
 ### Installing
 
 #### To run the project Locally
+- Pre Requisited mean we would need an .env file locally.
+- Create .env file, in the root directory of the project ( Not included into git for security puposes )
+- Including the values for the .env, so this can be tested if required by the marker.
+```bash
+    NEXT_PUBLIC_BACKEND_PORT=4025
+    NEXT_PUBLIC_FRONTEND_PORT=4000
+    NEXT_PUBLIC_APP=localhost
+    SQLLite_DB_PATH=app\database\database.db
+```
+---
 - Requires two terminals in a VS Instance.
 - In terminal 1, type the following command: 
 ```bash
-        node server.js
+    node server.js
 ``` 
 - In terminal 2, type the following command:
 ```bash
-        npm run dev
+    npm run dev
 ```
+- Access localhost:3000
+
+## For credentials, please see Report document.
+
 ## To run the project through hosted
 Can just access via the hosted URL, either local or hosted:
 
@@ -68,7 +82,6 @@ Local
     localhost:3000
 ```
 Attempt to try and log in with both users
-
 --- 
 
 ## Built using the following frameworks.
