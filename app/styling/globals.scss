@@ -29,11 +29,12 @@ html {
 }
 
 @mixin DefaultHeaderColor {
-  background: linear-gradient(
-    to right,
-    rgba(2, 61, 254, 0.9) 65%,
-    rgb(3, 75, 200)
-  );
+  // background: linear-gradient(
+  //   to right,
+  //   rgba(2, 61, 254, 0.9) 65%,
+  //   rgb(3, 75, 200)
+  // );
+  background-color: 	#0000FF;
   clip-path: polygon(0 0, 100% 0, 100% 90%, 60% 100%, 0% 100%);
 }
 

@@ -9,6 +9,24 @@ URL:
 ```bash
     https://craftapp-frontend.onrender.com
 ```
+## Secrurity Aspects Added.
+# Hemlet Package
+- frameguard - Prevents people from being able to iframe your website for malicious purposes.
+- noSniff - Prevents user being able to alter MIME time and execute incorrect code.
+- hidePoweredBy - Remove identification of what server site is using, prevents exploitation.
+- contentSecurityPolicy - setting to false prevents cross site sripting attacks.
+
+```bash
+app.use(
+    helmet({
+        frameguard: { action: 'deny' }, 
+        noSniff: true,
+        hidePoweredBy: true,
+        contentSecurityPolicy: false,
+    }));
+```
+# Cors Policy also adapted to the security aspect.
+
 ---     
 ## General User:
 - Explore website

@@ -211,8 +211,8 @@ export const ApiCalls = () => {
             typeof successFunction === 'function' &&
             userData.Lockedout !== 1
           ) {
-            successFunction(userData);
             // Handles if account is locked == 1 ( locked )
+            successFunction(userData);
           }
           await InsertAuditLog(username, 'Successfull Log In Attempt');
         } else {
@@ -376,7 +376,7 @@ export const ApiCalls = () => {
       console.log('Error getting assingee and Contact Tickets', error);
     }
   };
-
+  // Exports all functions, from the APICALLS libary.
   return {
     CheckIfLocked,
     LockAccount,

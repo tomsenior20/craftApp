@@ -36,6 +36,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
+// Adds Hemlet Package - Middleware
+// Extra security Added - See read me for explanation
 app.use(
     helmet({
         frameguard: { action: 'deny' }, 

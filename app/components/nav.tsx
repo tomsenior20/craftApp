@@ -58,7 +58,14 @@ export default function Nav() {
     // Handles the log out
     const handleLogOut = () => {
       if(typeof window !== 'undefined'){
-        return localStorage.removeItem('userID');
+        // All Storage to be removed;
+        const keysToRemove = ['userID', 'admin' ]
+        // ForEach over keys remove all from storage.
+        keysToRemove.forEach(key => {
+           localStorage.removeItem(key);
+        })
+        
+        return true;
       }
       return false;
     }
