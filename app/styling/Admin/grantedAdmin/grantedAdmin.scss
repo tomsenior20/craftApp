@@ -1,9 +1,9 @@
 @import '../../globals.scss';
 
-.mainSection {
+.mainTicketSection {
   @include DefaultHeaderColor();
   flex-direction: row;
-  min-height: 300px;
+  height: 300px;
 }
 
 .ticketSection {
@@ -106,6 +106,12 @@
   color: black;
 }
 
+.noAdminPrivContainer {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
 .noAdminText {
   @include DefaultTextStyle();
   font-size: 2rem;
@@ -150,7 +156,7 @@
 // #region media Query Section
 @media screen and (min-width: 300px) and (max-width: 600px) {
   .mainSection {
-    min-height: 500px !important;
+    min-height: 400px !important;
   }
 }
 // #endregion media Query Section

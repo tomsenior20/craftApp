@@ -3,7 +3,7 @@
 .ContactTitleSection {
   @include DefaultHeaderColor();
   position: relative;
-  min-height: 350px;
+  height: 350px;
   padding: 1rem;
   justify-content: center;
 }

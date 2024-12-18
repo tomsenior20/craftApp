@@ -4,7 +4,7 @@
 .mainSection {
   @include DefaultHeaderColor();
   display: flex;
-  min-height: 850px;
+  height: 650px;
 }
 
 .headerImageContainer {

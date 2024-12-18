@@ -23,7 +23,8 @@ export default function GrantedAdmin() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const userID = localStorage.getItem('userID');
-      setIsUserAuthenticated(userID !== null); // true if userID exists
+      // Set Authenticated Status
+      setIsUserAuthenticated(userID !== null);
     }
 
     const fetchData = async () => {
@@ -95,7 +96,7 @@ export default function GrantedAdmin() {
   return (
     <>
       <Nav />
-      <section className="mainSection d-flex container-fluid w-100">
+      <section className="mainTicketSection d-flex container-fluid w-100">
         <div className="w-100 d-flex justify-content-center align-items-center">
           <h1 className="openTicketTitle">Ticket Portal</h1>
         </div>
