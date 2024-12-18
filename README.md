@@ -46,6 +46,10 @@ What things you need to install the software and how to install them
 --- 
 ### Installing
 
+## Troubleshooting 
+If you access the hosted site, and in the top left cornet "TS LTD" isn't showing with CORS Errors in dev tools. 
+- This is usually down to the server not catching up instantly, a quich cache and hard re-load will resolve this issue.
+
 #### To run the project Locally
 - Pre Requisited mean we would need an .env file locally.
 - Create .env file, in the root directory of the project ( Not included into git for security puposes )

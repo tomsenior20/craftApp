@@ -63,6 +63,7 @@ export default function Assignee({ id: id, Name: Name }: ticketDetails) {
 
   const SelectAssignee = async (name: string) => {
     await InsertAssignee(Name, name);
+    location.reload();
   };
 
   const checkAssignee = async () => {

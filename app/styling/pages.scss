@@ -148,17 +148,18 @@
 
 // Explore Container styling
 .exploreContainer {
-  background-color: rgba(245, 246, 247, 0.984);
+  background-color: rgba(237, 238, 240, 0.984);
   padding: 3rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
+  justify-content: center;
   min-height: 550px;
 }
 
 .exploreContainer h3 {
   @include DefaultTextStyle();
   text-align: center;
-  margin: 70px auto;
+  margin: 50px auto;
   font-weight: 500;
   font-size: 5rem;
   animation: 1s movefromLeftToCenter ease-in;
@@ -171,7 +172,7 @@
   font-size: 2.5rem;
   text-align: center;
   font-weight: 500;
-  margin: auto;
+  margin: 30px auto;
   padding-bottom: 20px;
   animation: 1s movefromLeftToCenter ease-in;
   -webkit-animation: 1s movefromLeftToCenter ease-in;
