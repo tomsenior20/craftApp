@@ -58,6 +58,7 @@ const db = new sqlite3.Database(dbPath, (error) => {
 })
 
 app.use((req, res, next) => {
+    // Determines the incoming headers origin
     console.log('Incoming Origin:', req.headers.origin);
     next();
 });

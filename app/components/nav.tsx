@@ -70,6 +70,8 @@ export default function Nav() {
       return false;
     }
 
+    // Renders the Correct keys, per item check.
+    // Expecting to only display Log Out per sign in
     return (
       <ul>
         {options.map((item, index) =>

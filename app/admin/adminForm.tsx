@@ -73,6 +73,7 @@ export default function AdminForm() {
       setAccountLocked(0);
     }
 
+    // Cross-reference inputs, to match designated REGEX
     if (usernameInput.match(regex) && passwordInput.match(regex)) {
       // Checks Valid Input Enteries
       const username: string = encodeURIComponent(usernameInput);
