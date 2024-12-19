@@ -125,7 +125,7 @@ jobs:
           curl -X POST "https://api.render.com/deploy/srv-ctdfhim8ii6s739423rg?key=GilZHjSmSgI?key=${{ secrets.RENDER_KEY }}"
   push_to_main:
     runs-on: ubuntu-latest
-    needs: [audit, test]
+    needs: [audit, test, build]
     if: github.ref != 'refs/heads/main'
     steps:
       - name: Checkout repository
