@@ -139,6 +139,7 @@ jobs:
         run: |
           git config --global user.name "tomsenior20"
           git config --global user.email "tomsenior20@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GIT_TOKEN }}@github.com/tomsenior20/craftApp.git
           git checkout main
           git merge FutureDevelopment
           git push origin main
