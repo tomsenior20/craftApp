@@ -27,6 +27,7 @@ app.use(
 ```
 # Cors Policy also adapted to the security aspect.
 # Regex Expressions addding for input validation.
+# Security by design implemented, meaning less need for improvements.   
 
 ---     
 ## General User:

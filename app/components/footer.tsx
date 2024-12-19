@@ -8,6 +8,7 @@ import { ApiCalls, fetchData } from './api';
 const GenerateCurrentYear = () => {
   const [currentYear, setCurrentYear] = useState<string>('');
   useEffect(() => {
+    // Gets the current year
     const year = new Date().getFullYear().toString();
     year ? setCurrentYear(year) : 'Current year not set';
   }, []);
@@ -21,6 +22,7 @@ const FetchTrademark = () => {
   useEffect(() => {
     const getTradeMark = async () => {
       try {
+        // Fetches the trademark name
         const result = await FetchTradeMark();
         setTrademarkname(result[0].TradeMarkName);
       } catch (error) {

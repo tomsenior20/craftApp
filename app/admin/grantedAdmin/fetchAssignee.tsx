@@ -26,6 +26,7 @@ export default function Assignee({ id: id, Name: Name }: ticketDetails) {
 
   const fetchAssignee = async () => {
     try {
+      // Fetches the list of assignees
       const data = await fetchData('getAssigneeList', {
         method: 'GET'
       });

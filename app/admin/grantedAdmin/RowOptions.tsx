@@ -73,6 +73,7 @@ export default function RowOptions({ ticketID, record }: Number) {
     try {
       await AddToDeletedTable();
       await DeleteTicket(ticketID);
+      // Reloads the page, after deletion
       window.location.reload();
     } catch (exception) {
       console.log('failed to delete ticket' + exception);

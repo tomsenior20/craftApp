@@ -29,6 +29,7 @@ export default function GrantedAdmin() {
 
     const fetchData = async () => {
       try {
+        // Fetches the tickets
         await GetTicket();
       } catch (error) {
         console.log('Error fetching tickets', error);
